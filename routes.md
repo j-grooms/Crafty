@@ -30,11 +30,12 @@ def get_products_by_tag():
 ```py
 @products.route('/edit/<id>', methods=["PUT"])
 def update_product():
+    pass
 ```
 
 ### Destroy
 ```py
-@products.route('/delete/<id>')
+@products.route('/delete/<id>', methods=["POST"])
 def delete_product():
     pass
 ```
@@ -89,4 +90,21 @@ def add_favorite_product():
 @users.route('/<id>/favorites/remove/<product>')
 def remove_favorite_product():
     pass
+
+
+@users.route('/<id>/history')
+def get_purchase_history():
+    pass
+```
+
+### Update
+```py
+@users.route('/<id>/edit', methods=["PUT"])
+def update_user():
+    pass
+```
+
+### Destroy
+```py
+@users.route('/<id>/delete', methods=["POST"])
 ```
