@@ -44,6 +44,7 @@ function App() {
 				<input type="file" name="filename" onChange={handleChange} />
 				<button type="submit">Submit</button>
 			</form>
+			<img src='https://crafty-app.s3.us-east-2.amazonaws.com/test.jpg' />
 		</>
 	);
 }

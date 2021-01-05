@@ -1,4 +1,5 @@
 import os
+import boto3
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
@@ -10,6 +11,9 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+s3 = boto3.resource('s3',
+                    aws_access_key_id=os.environ.get('S3_KEY'),
+                    aws_secret_access_key=os.environ.get('S3_SECRET'))
 
 
 def allowed_file(filename):
@@ -29,8 +33,16 @@ def upload_file():
         return redirect(request.url)
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        target = os.path.join(APP_ROOT, 'uploads')
-        destination = "/".join([target, filename])
-        file.save(destination)
+        # target = os.path.join(APP_ROOT, 'uploads')
+        # destination = "/".join([target, filename])
+        # file.save(destination)
+        s3.Bucket('crafty-app').put_object(Key='test.jpg', Body=file)
+        return "File Uploaded"
         print(APP_ROOT)
         return 'File uploaded'
+
+    # if request.method == 'GET':
+    #     for bucket in s3.buckets.all():
+    #         print(bucket.name)
+    #     # print(os.environ.get('S3_KEY'))
+    #     return 'test'
