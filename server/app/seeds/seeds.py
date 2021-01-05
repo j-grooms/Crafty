@@ -95,6 +95,17 @@ def seed_all():
     favorite3 = Favorite(user_id=1, product_id=6)
     favorite4 = Favorite(user_id=2, product_id=2)
 
+    purchase = Purchase(user_id=3, product_id=2)
+    purchase2 = Purchase(user_id=2, product_id=2)
+    purchase3 = Purchase(user_id=1, product_id=6)
+
+    rating = Rating(user_id=3, product_id=2, rating=5.0,
+                    comment="Great for sports!")
+    rating2 = Rating(user_id=2, product_id=2, rating=3.5,
+                     comment="Not as durable as I hoped!")
+    rating3 = Rating(user_id=1, product_id=6, rating=5.0,
+                     comment="Keeps my kids safe. 5 stars")
+
     db.session.add(demo)
     db.session.add(demo2)
     db.session.add(demo3)
@@ -121,6 +132,14 @@ def seed_all():
     db.session.add(favorite2)
     db.session.add(favorite3)
     db.session.add(favorite4)
+
+    db.session.add(purchase)
+    db.session.add(purchase2)
+    db.session.add(purchase3)
+
+    db.session.add(rating)
+    db.session.add(rating2)
+    db.session.add(rating3)
 
     db.session.commit()
 
