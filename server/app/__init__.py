@@ -3,15 +3,24 @@ import uuid
 import boto3
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
+from flask_migrate import Migrate
 from flask_cors import CORS
+from .models import db
+from .seeds import seed_commands
+from .config import Config
 
-UPLOAD_FOLDER = '/uploads'
+# UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = {'jpg', 'png', 'jpeg'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+db.init_app(app)
+Migrate(app, db)
+app.cli.add_command(seed_commands)
+app.config.from_object(Config)
 CORS(app)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 s3 = boto3.resource('s3',
                     aws_access_key_id=os.environ.get('S3_KEY'),
                     aws_secret_access_key=os.environ.get('S3_SECRET'))
