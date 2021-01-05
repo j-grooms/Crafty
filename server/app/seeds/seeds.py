@@ -81,6 +81,20 @@ def seed_all():
                        quantity=20,
                        image='demoProduct')
 
+    tag = Tag(product_id=1, tag="Ring")
+    tag2 = Tag(product_id=2, tag="Ball")
+    tag3 = Tag(product_id=3, tag="Kitchen")
+    tag4 = Tag(product_id=4, tag="Candle")
+    tag5 = Tag(product_id=5, tag="Necklace")
+    tag6 = Tag(product_id=6, tag="Padding")
+    tag7 = Tag(product_id=2, tag="Soccer")
+    tag8 = Tag(product_id=1, tag="Opal")
+
+    favorite = Favorite(user_id=3, product_id=1)
+    favorite2 = Favorite(user_id=3, product_id=5)
+    favorite3 = Favorite(user_id=1, product_id=6)
+    favorite4 = Favorite(user_id=2, product_id=2)
+
     db.session.add(demo)
     db.session.add(demo2)
     db.session.add(demo3)
@@ -91,6 +105,22 @@ def seed_all():
     db.session.add(product4)
     db.session.add(product5)
     db.session.add(product6)
+
+    db.session.commit()
+
+    db.session.add(tag)
+    db.session.add(tag2)
+    db.session.add(tag3)
+    db.session.add(tag4)
+    db.session.add(tag5)
+    db.session.add(tag6)
+    db.session.add(tag7)
+    db.session.add(tag8)
+
+    db.session.add(favorite)
+    db.session.add(favorite2)
+    db.session.add(favorite3)
+    db.session.add(favorite4)
 
     db.session.commit()
 

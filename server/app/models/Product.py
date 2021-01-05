@@ -16,6 +16,7 @@ class Product(db.Model):
     image = db.Column(db.String(100))
     user = db.relationship("User", back_populates='products')
     ratings = db.relationship("Rating", back_populates='product')
+    tags = db.relationship("Tag", back_populates='product')
 
     def to_dict(self):
         return {
