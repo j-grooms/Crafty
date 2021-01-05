@@ -2,11 +2,12 @@ Users
 -
 id PK int
 username varchar(100) UNIQUE
+email varchar(50)
 profile_pic string
 banner_pic string
 bio text
-email varchar(50)
 hashed_password string
+money numeric
 
 Ratings
 -
@@ -45,3 +46,9 @@ Tags
 id pk int
 product_id int fk >- Products.id
 tag varchar(30)
+
+Followers
+-
+id int PK
+user_id int FK >- Users.id
+follower int FK >- Users.id

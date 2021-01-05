@@ -22,7 +22,7 @@ def allowed_file(filename):
         filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -45,10 +45,4 @@ def upload_file():
         # target = os.path.join(APP_ROOT, 'uploads')
         # destination = "/".join([target, filename])
         # file.save(destination)
-
-
-    # if request.method == 'GET':
-    #     for bucket in s3.buckets.all():
-    #         print(bucket.name)
-    #     # print(os.environ.get('S3_KEY'))
-    #     return 'test'
+    return "Upload Error"
