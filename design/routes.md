@@ -24,6 +24,11 @@ def get_all_products():
 @products.route('/<tag>')
 def get_products_by_tag():
     pass
+
+
+@products.route('/<user>')
+def get_products_by_user():
+    pass
 ```
 
 ### Update
@@ -48,6 +53,16 @@ def delete_product():
 @users.route('/', methods=["POST"])
 def create_user():
     pass
+
+
+@users.route('/<id>/follow/<user>', methods=["POST"])
+def follow_user():
+    pass
+
+
+@users.route('/<id>/favorites/add/<product>', methods=["POST"])
+def add_favorite_product():
+    pass
 ```
 
 ### Read
@@ -67,28 +82,8 @@ def get_followers():
     pass
 
 
-@users.route('/<id>/follow/<user>')
-def follow_user():
-    pass
-
-
-@users.route('/<id>/unfollow/<user>')
-def unfollow_user():
-    pass
-
-
 @users.route('/<id>/favorites')
 def get_favorite_products():
-    pass
-
-
-@users.route('/<id>/favorites/add/<product>')
-def add_favorite_product():
-    pass
-
-
-@users.route('/<id>/favorites/remove/<product>')
-def remove_favorite_product():
     pass
 
 
@@ -107,4 +102,43 @@ def update_user():
 ### Destroy
 ```py
 @users.route('/<id>/delete', methods=["POST"])
+def delete_user():
+    pass
+
+
+@users.route('/<id>/favorites/remove/<product>', methods=["POST"])
+def remove_favorite_product():
+    pass
+
+
+@users.route('/<id>/unfollow/<user>', methods=["POST"])
+def unfollow_user():
+    pass
 ```
+
+
+## Store Blueprint
+
+### Create
+```py
+
+```
+
+### Read
+```py
+
+```
+
+### Update
+```py
+@store.route('/cart/add/<id>', methods=["POST"])
+def add_to_cart():
+    # Also modify cookie
+    pass
+
+@store.route('/cart/remove/<id>', methods=["POST"])
+def remove_from_cart():
+    pass
+```
+
+### Destroy
