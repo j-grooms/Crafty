@@ -85,12 +85,12 @@ def seed_all():
     db.session.add(demo2)
     db.session.add(demo3)
 
-    # db.session.add(product)
-    # db.session.add(product2)
-    # db.session.add(product3)
-    # db.session.add(product4)
-    # db.session.add(product5)
-    # db.session.add(product6)
+    db.session.add(product)
+    db.session.add(product2)
+    db.session.add(product3)
+    db.session.add(product4)
+    db.session.add(product5)
+    db.session.add(product6)
 
     db.session.commit()
 
