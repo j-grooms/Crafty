@@ -1,4 +1,5 @@
 import os
+import uuid
 import boto3
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
@@ -33,13 +34,18 @@ def upload_file():
         return redirect(request.url)
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
+        split = filename.split(".")
+        unique_filename = uuid.uuid4().hex
+        split[0] = unique_filename
+        file.filename = ".".join(split)
+        s3.Bucket('crafty-app').put_object(Key=file.filename, Body=file)
+        print(file.filename)
+        return "File Uploaded"
+        # For saving a local copy
         # target = os.path.join(APP_ROOT, 'uploads')
         # destination = "/".join([target, filename])
         # file.save(destination)
-        s3.Bucket('crafty-app').put_object(Key='test.jpg', Body=file)
-        return "File Uploaded"
-        print(APP_ROOT)
-        return 'File uploaded'
+
 
     # if request.method == 'GET':
     #     for bucket in s3.buckets.all():
