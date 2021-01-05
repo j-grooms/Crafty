@@ -12,8 +12,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.String(100))
     banner = db.Column(db.String(100))
-    products = db.relationship('Product', back_populates='User')
-    favorites = db.relationship('Favorite', back_populates='User')
+    products = db.relationship('Product', back_populates='user')
+    favorites = db.relationship('Favorite', back_populates='user')
+    purchases = db.relationship('Purchase', back_populates='user')
+    ratings = db.relationship('Rating', back_populates='user')
 
     @property
     def password(self):

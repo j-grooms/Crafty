@@ -14,10 +14,10 @@ ALLOWED_EXTENSIONS = {'jpg', 'png', 'jpeg'}
 
 app = Flask(__name__)
 
+app.config.from_object(Config)
 db.init_app(app)
 Migrate(app, db)
 app.cli.add_command(seed_commands)
-app.config.from_object(Config)
 CORS(app)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 

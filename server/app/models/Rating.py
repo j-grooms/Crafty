@@ -9,6 +9,7 @@ class Rating(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     rating = db.Column(db.Numeric)
     comment = db.Column(db.String(250))
+    user = db.relationship('User', back_populates='ratings')
 
     def to_dict(self):
         return {

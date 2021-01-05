@@ -7,6 +7,7 @@ class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+    user = db.relationship('User', back_populates='favorites')
 
     def to_dict(self):
         return {
