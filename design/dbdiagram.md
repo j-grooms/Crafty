@@ -15,13 +15,6 @@ product int FK >- Products.id
 rating int
 comment varchar(250)
 
-Messages
--
-id PK int
-sender int FK >- Users.id
-recipient int FK >- Users.id
-message varchar(500)
-
 Products
 -
 id PK int
@@ -36,12 +29,6 @@ quantity int
 image string
 
 Favorites
--
-id PK int
-user_id int FK >- Users.id
-product_id int FK >- Products.id
-
-Cart
 -
 id PK int
 user_id int FK >- Users.id

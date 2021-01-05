@@ -6,6 +6,7 @@
 ```py
 @products.route('/', methods=["POST"])
 def create_product():
+    # also create tags
     pass
 ```
 
@@ -35,6 +36,7 @@ def get_products_by_user():
 ```py
 @products.route('/edit/<id>', methods=["PUT"])
 def update_product():
+    # also update tags
     pass
 ```
 
@@ -55,11 +57,6 @@ def create_user():
     pass
 
 
-@users.route('/<id>/follow/<user>', methods=["POST"])
-def follow_user():
-    pass
-
-
 @users.route('/<id>/favorites/add/<product>', methods=["POST"])
 def add_favorite_product():
     pass
@@ -74,11 +71,6 @@ def get_user_by_id():
 
 @users.route('/all')
 def get_all_users():
-    pass
-
-
-@users.route('/<id>/followers')
-def get_followers():
     pass
 
 
@@ -109,11 +101,6 @@ def delete_user():
 @users.route('/<id>/favorites/remove/<product>', methods=["POST"])
 def remove_favorite_product():
     pass
-
-
-@users.route('/<id>/unfollow/<user>', methods=["POST"])
-def unfollow_user():
-    pass
 ```
 
 
@@ -121,24 +108,41 @@ def unfollow_user():
 
 ### Create
 ```py
+@store.route('/checkout', methods=["POST"])
+def checkout():
+    # create purchase entry in db per item
+    # empty_cart()
+    pass
 
+
+@store.route('/<product_id>/rate', methods=["POST"])
+def rate_product():
+    pass
 ```
 
 ### Read
 ```py
-
+@store.route('/cart/items')
+def get_cart_items():
+    # id's from cookie
+    # empty the cart
+    pass
 ```
 
 ### Update
 ```py
 @store.route('/cart/add/<id>', methods=["POST"])
 def add_to_cart():
-    # Also modify cookie
+    # modify cookie
     pass
 
 @store.route('/cart/remove/<id>', methods=["POST"])
 def remove_from_cart():
+    # modify cookie
+    pass
+
+
+@store.route('/<product_id>/rate', methods=["PUT"])
+def update_product_rating():
     pass
 ```
-
-### Destroy
