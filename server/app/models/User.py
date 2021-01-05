@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.String(100))
     banner = db.Column(db.String(100))
     products = db.relationship('Product', back_populates='User')
+    favorites = db.relationship('Favorite', back_populates='User')
 
     @property
     def password(self):

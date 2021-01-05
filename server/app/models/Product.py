@@ -14,3 +14,17 @@ class Product(db.Model):
     weight = db.Column(db.String(40))
     quantity = db.Column(db.Integer)
     image = db.Column(db.String(100))
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "sold_by": self.sold_by,
+            "name": self.name,
+            "price": self.price,
+            "category": self.category,
+            "description": self.description,
+            "dimensions": self.dimensions,
+            "weight": self.weight,
+            "quantity": self.quantity,
+            "image": self.image
+        }
