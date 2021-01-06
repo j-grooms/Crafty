@@ -17,6 +17,7 @@ export const removeUser = () => {
 export const authenticate = () => async (dispatch) =>{
 	const response = await fetch("/api/auth/")
 	const resJSON = await response.json();
+	if (Object.keys(resJSON).includes("errors")) return;
 	dispatch(setUser(resJSON));
 	return response;
 }

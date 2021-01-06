@@ -52,6 +52,15 @@ def login():
     # return "Error"
 
 
+@auth.route('/logout')
+def logout():
+    """
+    Logs a user out
+    """
+    logout_user()
+    return {'message': 'User logged out'}
+
+
 @auth.route('/signup', methods=['POST'])
 def sign_up():
     """
@@ -67,7 +76,7 @@ def sign_up():
         )
         db.session.add(user)
         db.session.commit()
-        login_user(user, remember=True)
+        login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
 

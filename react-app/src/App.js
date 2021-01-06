@@ -12,16 +12,12 @@ function App() {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		return dispatch(authenticate());
 		(async () => {
-			// if (!user.errors) {
-				console.log("user")
-				// 	setAuthenticated(true);
-				// }
-				setLoaded(true);
+			await dispatch(authenticate());
+			setLoaded(true);
 			})();
 		}, []);
-	return (
+	return loaded && (
 		<BrowserRouter>
 			<Navbar />
 			<Switch>
