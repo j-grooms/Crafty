@@ -22,13 +22,15 @@ def add_favorite_product():
 
 # READ
 @users.route('/<id>')
-def get_user_by_id():
-    pass
+def get_user_by_id(id):
+    user = User.query.filter(User.id == id).first()
+    return {"user": user.to_dict()}
 
 
 @users.route('/all')
 def get_all_users():
-    pass
+    users = db.session.query(User).all()
+    return {"users": [user.to_dict() for user in users]}
 
 
 @users.route('/<id>/favorites')
