@@ -19,8 +19,8 @@ class User(db.Model, UserMixin):
     ratings = db.relationship('Rating', back_populates='user')
     followers = db.relationship('User',
                                 secondary="followers",
-                                primaryjoin=id==Follower.c.user_id,
-                                secondaryjoin=id==Follower.c.follower,
+                                primaryjoin=id == Follower.c.user_id,
+                                secondaryjoin=id == Follower.c.follower,
                                 # foreign_keys=[Follower.c.follower]
                                 )
 

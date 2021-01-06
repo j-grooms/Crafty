@@ -1,0 +1,57 @@
+from flask import Blueprint
+
+users = Blueprint('users', __name__)
+
+
+# @users.route('/')
+# def test():
+#     return "Test"
+
+
+# CREATE
+@users.route('/', methods=["POST"])
+def create_user():
+    pass
+
+
+@users.route('/<id>/favorites/add/<product>', methods=["POST"])
+def add_favorite_product():
+    pass
+
+
+# READ
+@users.route('/<id>')
+def get_user_by_id():
+    pass
+
+
+@users.route('/all')
+def get_all_users():
+    pass
+
+
+@users.route('/<id>/favorites')
+def get_favorite_products():
+    pass
+
+
+@users.route('/<id>/history')
+def get_purchase_history():
+    pass
+
+
+# UPDATE
+@users.route('/<id>/edit', methods=["PUT"])
+def update_user():
+    pass
+
+
+# DESTROY
+@users.route('/<id>/delete', methods=["POST"])
+def delete_user():
+    pass
+
+
+@users.route('/<id>/favorites/remove/<product>', methods=["POST"])
+def remove_favorite_product():
+    pass
