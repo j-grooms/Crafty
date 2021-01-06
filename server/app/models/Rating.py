@@ -17,6 +17,13 @@ class Rating(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "product_id": self.product_id,
-            "rating": self.rating,
+            "rating": float(self.rating),
             "comment": self.comment
+        }
+
+    def to_product_dict(self):
+        return {
+            "user": self.user.to_product_dict(),
+            "rating": float(self.rating),
+            "comment": self.comment,
         }

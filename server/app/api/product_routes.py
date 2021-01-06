@@ -1,4 +1,5 @@
 from flask import Blueprint
+from app.models import Product
 
 products = Blueprint('products', __name__)
 
@@ -16,8 +17,10 @@ def create_product():
 
 # READ
 @products.route('/<id>')
-def get_product_by_id():
-    pass
+def get_product_by_id(id):
+    product_id = id
+    product = Product.query.get(product_id)
+    return product.to_dict()
 
 
 @products.route('/all')

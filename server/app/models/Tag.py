@@ -11,7 +11,7 @@ class Tag(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "product_id": self.product_id,
+            # "id": self.id,
+            # "product_id": self.product_id,
             "tag": self.tag
         }

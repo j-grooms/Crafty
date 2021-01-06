@@ -21,13 +21,16 @@ class Product(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "sold_by": self.sold_by,
+            # "sold_by": self.sold_by,
             "name": self.name,
-            "price": self.price,
+            "price": float(self.price),
             "category": self.category,
             "description": self.description,
             "dimensions": self.dimensions,
             "weight": self.weight,
             "quantity": self.quantity,
-            "image": self.image
+            "image": self.image,
+            "rating": [rating.to_product_dict() for rating in self.ratings],
+            "tags": [tag.to_dict() for tag in self.tags],
+            "user": self.user.to_product_dict()
         }

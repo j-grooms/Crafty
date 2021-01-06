@@ -45,3 +45,9 @@ class User(db.Model, UserMixin):
             "bio": self.bio,
             "money": self.money
         }
+
+    def to_product_dict(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+        }
