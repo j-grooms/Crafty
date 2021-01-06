@@ -18,7 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@auth_routes.route('/')
+@auth.route('/')
 def authenticate():
     """
     Authenticates a user.
@@ -37,7 +37,7 @@ def login():
     print(request.get_json())
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
-    form['csrf_token'].data = request.cookies['csrf_token']
+    # form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         print("validated")
         # Add the user to the session, we are logged in!
@@ -49,7 +49,7 @@ def login():
     # return "Error"
 
 
-@auth_routes.route('/signup', methods=['POST'])
+@auth.route('/signup', methods=['POST'])
 def sign_up():
     """
     Creates a new user and logs them in
@@ -69,7 +69,7 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@auth_routes.route('/unauthorized')
+@auth.route('/unauthorized')
 def unauthorized():
     """
     Returns unauthorized JSON when flask-login authentication fails

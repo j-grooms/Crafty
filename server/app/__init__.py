@@ -1,10 +1,12 @@
 import os
 import uuid
 import boto3
+
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask_migrate import Migrate
 from flask_cors import CORS
+from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .models import db
 from .seeds import seed_commands
 from .config import Config
@@ -29,6 +31,29 @@ app.cli.add_command(seed_commands)
 CORS(app)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+
+@app.after_request
+def inject_csrf_token(response):
+    response.set_cookie('csrf_token',
+                        generate_csrf(),
+                        secure=True if os.environ.get(
+                            'FLASK_ENV') == 'production' else False,
+                        samesite='Strict' if os.environ.get(
+                            'FLASK_ENV') == 'production' else None,
+                        httponly=True)
+    return response
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def react_root(path):
+    print("path", path)
+    if path == 'favicon.ico':
+        return app.send_static_file('favicon.ico')
+    return app.send_static_file('index.html')
+
+
+# to be moved to user creation form
 s3 = boto3.resource('s3',
                     aws_access_key_id=os.environ.get('S3_KEY'),
                     aws_secret_access_key=os.environ.get('S3_SECRET'))
