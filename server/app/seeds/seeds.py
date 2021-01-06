@@ -102,13 +102,17 @@ def seed_all():
     rating = Rating(user_id=3, product_id=2, rating=5.0,
                     comment="Great for sports!")
     rating2 = Rating(user_id=2, product_id=2, rating=3.5,
-                     comment="Not as durable as I hoped!")
+                     comment="Not as durable as I'd hoped!")
     rating3 = Rating(user_id=1, product_id=6, rating=5.0,
                      comment="Keeps my kids safe. 5 stars")
 
     db.session.add(demo)
     db.session.add(demo2)
     db.session.add(demo3)
+
+    demo.followers.append(demo3)
+    demo2.followers.append(demo3)
+    demo3.followers.append(demo2)
 
     db.session.add(product)
     db.session.add(product2)
