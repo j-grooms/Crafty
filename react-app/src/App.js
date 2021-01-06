@@ -1,7 +1,8 @@
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
-import LoginForm from "./components/LoginForm";
 import { authenticate } from "./services/auth";
+import LoginForm from "./components/LoginForm";
+import Navbar from "./components/Navbar";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -18,8 +19,9 @@ function App() {
 	}, []);
 	return (
 		<BrowserRouter>
+			<Navbar />
 			<Switch>
-				<Route path="/" exact={true}>
+				<Route path="/login" exact={true}>
 					<LoginForm />
 				</Route>
 			</Switch>

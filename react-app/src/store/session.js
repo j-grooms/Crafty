@@ -8,6 +8,11 @@ const setUser = (user) => {
 	};
 };
 
+export const removeUser = () => {
+	return {
+		type: REMOVE_USER,
+	};
+};
 
 export const login = (user) => async (dispatch) => {
 	const { username, password } = user;
@@ -24,8 +29,17 @@ export const login = (user) => async (dispatch) => {
 	});
 
     let userJson = await response.json();
-    // if (Object.keys(userJson).includes("errors")) return;
+    if (Object.keys(userJson).includes("errors")) return;
 	dispatch(setUser(userJson));
+	return response;
+};
+
+export const logout = () => async (dispatch) => {
+	const response = await fetch("/api/auth/logout", {
+		method: "GET",
+		headers: { "Content-Type": "application/json" },
+	});
+	dispatch(removeUser());
 	return response;
 };
 
