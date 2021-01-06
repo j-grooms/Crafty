@@ -8,7 +8,7 @@ from flask_cors import CORS
 from .models import db
 from .seeds import seed_commands
 from .config import Config
-from .api import products, users, store
+from .api import products, users, store, auth
 
 # UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = {'jpg', 'png', 'jpeg'}
@@ -20,6 +20,7 @@ app.config.from_object(Config)
 app.register_blueprint(products, url_prefix='/api/products')
 app.register_blueprint(users, url_prefix='/api/users')
 app.register_blueprint(store, url_prefix='/api/store')
+app.register_blueprint(auth, url_prefix='/api/auth')
 
 db.init_app(app)
 Migrate(app, db)
