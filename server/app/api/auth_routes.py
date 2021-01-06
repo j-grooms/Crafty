@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from app.models import db, Product, Tag
 from app.forms import LoginForm
 from app.models import User
-
+from flask_login import current_user, login_user, logout_user, login_required
 
 auth = Blueprint('auth', __name__)
 
@@ -34,16 +34,19 @@ def login():
     Logs a user in
     """
     form = LoginForm()
-    print(request.get_json())
+    json = request.get_json()
+    print(json.get("username"))
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['username'].data = json.get("username")
+    form['password'].data = json.get("password")
     if form.validate_on_submit():
         print("validated")
         # Add the user to the session, we are logged in!
         user = (
             User.query.filter(User.username == form.data['username']).first())
-        # login_user(user)
+        login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     # return "Error"

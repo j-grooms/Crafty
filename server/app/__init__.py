@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 from flask_migrate import Migrate
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
+from flask_login import LoginManager
 from .models import db
 from .seeds import seed_commands
 from .config import Config
@@ -16,6 +17,16 @@ from .api import products, users, store, auth
 ALLOWED_EXTENSIONS = {'jpg', 'png', 'jpeg'}
 
 app = Flask(__name__)
+
+# Setup login manager
+login = LoginManager(app)
+login.login_view = 'auth.unauthorized'
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 
 app.config.from_object(Config)
 

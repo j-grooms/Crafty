@@ -10,7 +10,7 @@ const setUser = (user) => {
 
 
 export const login = (user) => async (dispatch) => {
-	const { email, password } = user;
+	const { username, password } = user;
 
 	const response = await fetch("/api/auth/login", {
 		method: "POST",
@@ -18,7 +18,7 @@ export const login = (user) => async (dispatch) => {
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
-			email,
+			username,
 			password,
 		}),
 	});

@@ -41,9 +41,9 @@ class User(db.Model, UserMixin):
             "username": self.username,
             "email": self.email,
             "profile_pic": self.profile_pic,
-            "banner_pic": self.banner_pic,
-            "bio": self.bio,
-            "money": self.money
+            "banner_pic": self.banner,
+            # "bio": self.bio,
+            # "money": self.money
         }
 
     def to_product_dict(self):
