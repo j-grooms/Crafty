@@ -20,7 +20,7 @@ def create_product():
 def get_product_by_id(id):
     product_id = id
     product = Product.query.get(product_id)
-    return product.to_dict()
+    return {"products": product.to_dict()}
 
 
 @products.route('/all')
