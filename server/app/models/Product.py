@@ -31,6 +31,6 @@ class Product(db.Model):
             "quantity": self.quantity,
             "image": self.image,
             "rating": [rating.to_product_dict() for rating in self.ratings],
-            "tags": [tag.to_dict() for tag in self.tags],
+            "tags": [tag.tag for tag in self.tags],
             "user": self.user.to_product_dict()
         }

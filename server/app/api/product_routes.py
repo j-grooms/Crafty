@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import db, Product
+from app.models import db, Product, Tag
 
 products = Blueprint('products', __name__)
 
@@ -29,9 +29,10 @@ def get_all_products():
     return {"products": [product.to_dict() for product in products]}
 
 
-@products.route('/<tag>')
-def get_products_by_tag():
-    pass
+@products.route('/by_tag/<tag>')
+def get_products_by_tag(tag):
+    tags = Tag.query.filter(Tag.tag == tag).all()
+    return {"products": [tag.to_product_dict() for tag in tags]}
 
 
 @products.route('/by_user/<user_id>')

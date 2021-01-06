@@ -13,5 +13,9 @@ class Tag(db.Model):
         return {
             # "id": self.id,
             # "product_id": self.product_id,
-            "tag": self.tag
+            "tag": self.tag,
+            "product": self.product.to_dict()
         }
+
+    def to_product_dict(self):
+        return {"product": self.product.to_dict()}
