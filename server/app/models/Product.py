@@ -18,6 +18,7 @@ class Product(db.Model):
     ratings = db.relationship("Rating", back_populates='product')
     tags = db.relationship("Tag", back_populates='product')
     favorites = db.relationship("Favorite", back_populates='product')
+    purchases = db.relationship("Purchase", back_populates='product')
 
     def to_dict(self):
         return {

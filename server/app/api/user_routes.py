@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import db, User, Favorite
+from app.models import db, User, Favorite, Purchase
 
 users = Blueprint('users', __name__)
 
@@ -38,8 +38,9 @@ def get_favorite_products(id):
 
 
 @users.route('/<id>/history')
-def get_purchase_history():
-    pass
+def get_purchase_history(id):
+    products = Purchase.query.filter(Purchase.user_id == id).all()
+    return {"purchase_history": [purchase.to_dict() for purchase in products]}
 
 
 # UPDATE
