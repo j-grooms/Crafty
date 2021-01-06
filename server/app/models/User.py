@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.String(100))
     banner = db.Column(db.String(100))
+    money = db.Column(db.Numeric)
+    bio = db.Column(db.Text)
     products = db.relationship('Product', back_populates='user')
     favorites = db.relationship('Favorite', back_populates='user')
     purchases = db.relationship('Purchase', back_populates='user')
@@ -41,7 +43,7 @@ class User(db.Model, UserMixin):
             "username": self.username,
             "email": self.email,
             "profile_pic": self.profile_pic,
-            "banner_pic": self.banner,
+            "banner": self.banner,
             # "bio": self.bio,
             # "money": self.money
         }

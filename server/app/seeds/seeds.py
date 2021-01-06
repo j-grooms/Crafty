@@ -12,18 +12,24 @@ def seed_all():
                 password='password',
                 profile_pic='demoProfile.jpg',
                 banner='demoBanner.jpg',
+                money=75.00,
+                bio="I sell things"
                 )
     demo2 = User(username='Demo User 2',
                  email='demo2@aa.io',
                  password='password',
                  profile_pic='demoProfile.jpg',
                  banner='demoBanner.jpg',
+                 money=50.00,
+                 bio="I sell things"
                  )
     demo3 = User(username='Demo User 3',
                  email='demo3@aa.io',
                  password='password',
                  profile_pic='demoProfile.jpg',
                  banner='demoBanner.jpg',
+                 money=100.00,
+                 bio="I buy things"
                  )
 
     product = Product(sold_by=1,
