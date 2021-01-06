@@ -14,6 +14,13 @@ export const removeUser = () => {
 	};
 };
 
+export const authenticate = () => async (dispatch) =>{
+	const response = await fetch("/api/auth/")
+	const resJSON = await response.json();
+	dispatch(setUser(resJSON));
+	return response;
+}
+
 export const login = (user) => async (dispatch) => {
 	const { username, password } = user;
 

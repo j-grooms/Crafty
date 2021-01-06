@@ -1,22 +1,26 @@
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { authenticate } from "./services/auth";
+import { useDispatch } from "react-redux"
+// import { authenticate } from "./services/auth";
+import {authenticate} from './store/session'
 import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
+	const dispatch = useDispatch()
 
 	useEffect(() => {
+		return dispatch(authenticate());
 		(async () => {
-			const user = await authenticate();
-			if (!user.errors) {
-				setAuthenticated(true);
-			}
-			setLoaded(true);
-		})();
-	}, []);
+			// if (!user.errors) {
+				console.log("user")
+				// 	setAuthenticated(true);
+				// }
+				setLoaded(true);
+			})();
+		}, []);
 	return (
 		<BrowserRouter>
 			<Navbar />
