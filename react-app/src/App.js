@@ -1,14 +1,13 @@
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
+import ProtectedRoute from "./components/ProtectedRoute";
 import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 import ProductForm from "./components/ProductForm";
 
 function App() {
-	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
 
@@ -17,7 +16,7 @@ function App() {
 			await dispatch(authenticate());
 			setLoaded(true);
 		})();
-	}, []);
+	}, [dispatch]);
 
 	return (
 		loaded && (
@@ -27,9 +26,9 @@ function App() {
 					<Route path="/login" exact={true}>
 						<LoginForm />
 					</Route>
-					<Route path="/create-product" exact={true}>
+					<ProtectedRoute path="/create-product" exact={true}>
 						<ProductForm />
-					</Route>
+					</ProtectedRoute>
 				</Switch>
 			</BrowserRouter>
 		)

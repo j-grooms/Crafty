@@ -1,5 +1,6 @@
 from flask import Blueprint
 from app.models import db, Product, Tag
+from app.forms import ProductForm
 
 products = Blueprint('products', __name__)
 
