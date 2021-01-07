@@ -37,7 +37,7 @@ def seed_all():
                       price=10.99,
                       category='Jewelry',
                       description='Product description',
-                      dimensions="3ft x 3ft x 3ft",
+                      dimensions="3 ft x 3 ft x 3 ft",
                       weight="1 pound",
                       quantity=10,
                       image='demoProduct.jpg')
@@ -46,7 +46,7 @@ def seed_all():
                        price=18.99,
                        category='Sports',
                        description='Product description',
-                       dimensions="3ft x 3ft x 3ft",
+                       dimensions="13 ft x 3 ft x 3 ft",
                        weight="4 pounds",
                        quantity=4,
                        image='demoProduct.jpg')
@@ -55,7 +55,7 @@ def seed_all():
                        price=13.99,
                        category='Home',
                        description='Product description',
-                       dimensions="1ft x 1ft x 1ft",
+                       dimensions="1 ft x 1 ft x 1 ft",
                        weight="1 pound",
                        quantity=34,
                        image='demoProduct.jpg')
@@ -64,7 +64,7 @@ def seed_all():
                        price=3.99,
                        category='Home',
                        description='Product description',
-                       dimensions="1ft x 1ft x 1ft",
+                       dimensions="1 ft x 1 ft x 1 ft",
                        weight="1 pound",
                        quantity=2,
                        image='demoProduct.jpg')
@@ -73,7 +73,7 @@ def seed_all():
                        price=53.99,
                        category='Jewelry',
                        description='Product description',
-                       dimensions="1ft x 1ft x 1ft",
+                       dimensions="1 ft x 1 ft x 1 ft",
                        weight="1 pound",
                        quantity=1,
                        image='demoProduct.jpg')
@@ -82,7 +82,7 @@ def seed_all():
                        price=19.99,
                        category='Sports',
                        description='Product description',
-                       dimensions="1ft x 1ft x 1ft",
+                       dimensions="1 ft x 1 ft x 1 ft",
                        weight="1 pound",
                        quantity=20,
                        image='demoProduct.jpg')

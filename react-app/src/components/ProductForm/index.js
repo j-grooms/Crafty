@@ -39,7 +39,7 @@ const ProductForm = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const dimensions = `${width}${widthUnits} x ${length}${lengthUnits} x ${height}${heightUnits}`;
+		const dimensions = `${width} ${widthUnits} x ${length} ${lengthUnits} x ${height} ${heightUnits}`;
 
 		const tagArray = tagString.split(", ");
 

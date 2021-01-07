@@ -41,7 +41,7 @@ export const fetchAllProducts = () => async (dispatch) => {
     return response;
 };
 
-const initialState = { product: {id: null}, products: null };
+const initialState = { product: {id: null, user: {id: null}}, products: null };
 
 const productReducer = (state = initialState, action) => {
 	let newState;
