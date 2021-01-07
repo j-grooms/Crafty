@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import ProductForm from "./components/ProductForm";
 import Feed from "./components/Feed";
 import ProductView from "./components/ProductView";
+import ProductEditForm from "./components/ProductEditForm";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -25,7 +26,11 @@ function App() {
 			<BrowserRouter>
 				<Navbar />
 				<Switch>
-					<ProtectedRoute path="/product/:id">
+					<ProtectedRoute exact={true} path="/product/edit/:id">
+						<ProductEditForm />
+						{/* <p>Test</p> */}
+					</ProtectedRoute>
+					<ProtectedRoute exact={true} path="/product/:id">
 						<ProductView />
 					</ProtectedRoute>
 					<Route path="/login" exact={true}>
