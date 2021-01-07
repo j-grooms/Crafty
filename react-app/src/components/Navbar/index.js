@@ -13,6 +13,7 @@ const Navbar = () => {
 			{currentUser ? (
 				<>
 					<NavLink to="/home">Home</NavLink>
+                    <NavLink to="/create-product">List a Product</NavLink>
                     <button onClick={logout}>Log Out</button>
 				</>
 			) : (
