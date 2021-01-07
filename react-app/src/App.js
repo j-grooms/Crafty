@@ -24,6 +24,9 @@ function App() {
 			<BrowserRouter>
 				<Navbar />
 				<Switch>
+					<ProtectedRoute path="/product/:id">
+						<p>Test</p>
+					</ProtectedRoute>
 					<Route path="/login" exact={true}>
 						<LoginForm />
 					</Route>
