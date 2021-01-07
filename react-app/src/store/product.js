@@ -41,6 +41,17 @@ export const fetchAllProducts = () => async (dispatch) => {
     return response;
 };
 
+export const editProduct = (product, productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/edit/${productId}`, {
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product)
+    });
+    const resJSON = await response.json();
+    dispatch(setProduct(resJSON.product))
+    return response;
+};
+
 const initialState = { product: {id: null, user: {id: null}}, products: null };
 
 const productReducer = (state = initialState, action) => {

@@ -12,7 +12,6 @@ products = Blueprint('products', __name__)
 # CREATE
 @products.route('/', methods=["POST"])
 def create_product():
-    # also create tags
     form = ProductForm()
     json = request.get_json(force=True)
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -74,7 +73,41 @@ def get_products_by_user(user_id):
 @products.route('/edit/<id>', methods=["PUT"])
 def update_product(id):
     # also update tags
-    pass
+    form = ProductForm()
+    json = request.get_json(force=True)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['sold_by'].data = json.get('sold_by')
+    form['name'].data = json.get('name')
+    form['price'].data = json.get('price')
+    form['category'].data = json.get('category')
+    if form.validate_on_submit():
+        tags = json.get('tags')
+        product = Product.query.get(json.get("id"))
+        product.name = json.get('name')
+        product.price = json.get('price')
+        product.category = json.get('category')
+        product.description = json.get('description')
+        product.dimensions = json.get('dimensions')
+        product.weight = json.get('weight')
+        product.quantity = json.get('quantity')
+        product.image = json.get('image')
+        # product = Product(sold_by=json.get('sold_by'),
+        #                   name=json.get('name'),
+        #                   price=json.get('price'),
+        #                   category=json.get('category'),
+        #                   description=json.get('description'),
+        #                   dimensions=json.get('dimensions'),
+        #                   weight=json.get('weight'),
+        #                   quantity=json.get('quantity'),
+        #                   image=json.get('image'))
+        # db.session.add(product)
+        db.session.commit()
+        # for tag in tags:
+        #     tag = Tag(product_id=product.id, tag=tag)
+        #     db.session.add(tag)
+        #     db.session.commit()
+        return {'product': product.to_dict()}
+    return {"error": "update rejected"}
 
 
 # DESTROY

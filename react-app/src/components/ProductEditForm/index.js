@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { createProduct } from "../../store/product";
+import { editProduct } from "../../store/product";
 import { getProductById } from "../../store/product";
 
 const ProductEditForm = () => {
@@ -61,6 +61,7 @@ const ProductEditForm = () => {
 		const tagArray = tagString.split(", ");
 
 		const formData = {
+            id: product.id,
 			sold_by: seller,
 			name,
 			price,
@@ -84,7 +85,7 @@ const ProductEditForm = () => {
 			formData["image"] = resJSON.filename;
 		}
 
-		await dispatch(createProduct(formData));
+		await dispatch(editProduct(formData, product.id));
         return <Redirect to="/shop" />;
 	};
 
