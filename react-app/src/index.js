@@ -5,7 +5,11 @@ import configureStore from "./store";
 import "./index.css";
 import App from "./App";
 
-const store = configureStore();
+const preloadedState = {
+	products: {product: {id: null}, products: null}
+}
+
+const store = configureStore(preloadedState);
 
 function Root() {
 	return (

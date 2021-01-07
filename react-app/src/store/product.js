@@ -27,6 +27,13 @@ export const createProduct = (product) => async (dispatch) => {
     dispatch(setProduct(resJSON.product))
 };
 
+export const getProductById = (id) => async (dispatch) => {
+    const response = await fetch(`/api/products/${id}`);
+    const resJSON = await response.json();
+    dispatch(setProduct(resJSON.products));
+    return response;
+};
+
 export const fetchAllProducts = () => async (dispatch) => {
     const response = await fetch(`/api/products/all`)
     const resJSON = await response.json();
@@ -34,7 +41,7 @@ export const fetchAllProducts = () => async (dispatch) => {
     return response;
 };
 
-const initialState = { product: null, products: null };
+const initialState = { product: {id: null}, products: null };
 
 const productReducer = (state = initialState, action) => {
 	let newState;

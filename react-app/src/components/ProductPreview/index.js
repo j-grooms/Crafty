@@ -11,7 +11,7 @@ const ProductPreview = (props) => {
 			<p>
 				{product.name} {product.price}
 			</p>
-			{currentUser.id === product.user.id ? <button>EDIT</button> : <></>}
+
 			<Link to={`product/${product.id}`}>
 				<img
 					className="product-preview-image"

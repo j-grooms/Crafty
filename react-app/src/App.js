@@ -7,6 +7,7 @@ import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 import ProductForm from "./components/ProductForm";
 import Feed from "./components/Feed";
+import ProductView from "./components/ProductView";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -25,7 +26,7 @@ function App() {
 				<Navbar />
 				<Switch>
 					<ProtectedRoute path="/product/:id">
-						<p>Test</p>
+						<ProductView />
 					</ProtectedRoute>
 					<Route path="/login" exact={true}>
 						<LoginForm />
