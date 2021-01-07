@@ -21,6 +21,7 @@ def create_product():
     form['price'].data = json.get('price')
     form['category'].data = json.get('category')
     if form.validate_on_submit():
+        tags = json.get('tags')
         product = Product(sold_by=json.get('sold_by'),
                           name=json.get('name'),
                           price=json.get('price'),
@@ -31,7 +32,12 @@ def create_product():
                           quantity=json.get('quantity'),
                           image=json.get('image'))
         db.session.add(product)
-    pass
+        for tag in tags:
+            tag = Tag(product_id=product.id, tag=tag)
+            db.session.add(tag)
+        db.session.commit()
+        return {'product': product.to_dict()}
+    return {"error": "Product Rejected"}
 
 
 # READ

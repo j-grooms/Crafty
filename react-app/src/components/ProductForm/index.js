@@ -36,8 +36,11 @@ const ProductForm = () => {
 
 	const handleSubmit = async(event) => {
 		event.preventDefault();
-		const data = new FormData();
+
 		const dimensions = `${width}${widthUnits} x ${length}${lengthUnits} x ${height}${heightUnits}`;
+
+		const tagArray = tagString.split(", ")
+
 		const formData = {
 			sold_by: seller,
 			name,
@@ -46,17 +49,18 @@ const ProductForm = () => {
 			description,
 			dimensions,
 			weight: `${weight} ${weightUnits}`,
-			// tags,
+			tags: tagArray,
 			image: null
 		};
+
 		if (image) {
+			const data = new FormData();
 			data.append("file", image);
 			const response = await fetch("/api/store/upload", {
 				method: "POST",
 				body: data,
 			});
 			const resJSON = await response.json();
-
 			formData["image"] = resJSON.filename;
 		}
 		console.log(dimensions);
