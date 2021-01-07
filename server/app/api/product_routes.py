@@ -14,7 +14,7 @@ products = Blueprint('products', __name__)
 def create_product():
     # also create tags
     form = ProductForm()
-    json = request.get_json()
+    json = request.get_json(force=True)
     form['csrf_token'].data = request.cookies['csrf_token']
     form['sold_by'].data = json.get('sold_by')
     form['name'].data = json.get('name')
@@ -32,10 +32,13 @@ def create_product():
                           quantity=json.get('quantity'),
                           image=json.get('image'))
         db.session.add(product)
-        for tag in tags:
-            tag = Tag(product_id=product.id, tag=tag)
-            db.session.add(tag)
         db.session.commit()
+        newProduct = Product.query.filter(Product.name == json.get(
+            'name')).order_by(Product.id.desc()).first()
+        for tag in tags:
+            tag = Tag(product_id=newProduct.id, tag=tag)
+            db.session.add(tag)
+            db.session.commit()
         return {'product': product.to_dict()}
     return {"error": "Product Rejected"}
 
