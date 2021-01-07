@@ -72,7 +72,7 @@ def get_products_by_user(user_id):
 
 # UPDATE
 @products.route('/edit/<id>', methods=["PUT"])
-def update_product():
+def update_product(id):
     # also update tags
     pass
 

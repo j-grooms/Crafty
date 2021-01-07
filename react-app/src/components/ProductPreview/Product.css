@@ -1,0 +1,11 @@
+.product-container {
+    width: 400px;
+    height: 300px;
+    margin: 10px;
+
+}
+
+.product-preview-image {
+    width: 400px;
+    height: 250px;
+}

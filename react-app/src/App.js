@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import LoginForm from "./components/LoginForm";
 import Navbar from "./components/Navbar";
 import ProductForm from "./components/ProductForm";
+import Feed from "./components/Feed";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -28,6 +29,9 @@ function App() {
 					</Route>
 					<ProtectedRoute path="/create-product" exact={true}>
 						<ProductForm />
+					</ProtectedRoute>
+					<ProtectedRoute path="/shop" exact={true}>
+						<Feed />
 					</ProtectedRoute>
 				</Switch>
 			</BrowserRouter>

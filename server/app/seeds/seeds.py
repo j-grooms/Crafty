@@ -40,7 +40,7 @@ def seed_all():
                       dimensions="3ft x 3ft x 3ft",
                       weight="1 pound",
                       quantity=10,
-                      image='demoProduct')
+                      image='demoProduct.jpg')
     product2 = Product(sold_by=1,
                        name='Product 2',
                        price=18.99,
@@ -49,7 +49,7 @@ def seed_all():
                        dimensions="3ft x 3ft x 3ft",
                        weight="4 pounds",
                        quantity=4,
-                       image='demoProduct')
+                       image='demoProduct.jpg')
     product3 = Product(sold_by=1,
                        name='Product 3',
                        price=13.99,
@@ -58,7 +58,7 @@ def seed_all():
                        dimensions="1ft x 1ft x 1ft",
                        weight="1 pound",
                        quantity=34,
-                       image='demoProduct')
+                       image='demoProduct.jpg')
     product4 = Product(sold_by=2,
                        name='Product 4',
                        price=3.99,
@@ -67,7 +67,7 @@ def seed_all():
                        dimensions="1ft x 1ft x 1ft",
                        weight="1 pound",
                        quantity=2,
-                       image='demoProduct')
+                       image='demoProduct.jpg')
     product5 = Product(sold_by=2,
                        name='Product 5',
                        price=53.99,
@@ -76,7 +76,7 @@ def seed_all():
                        dimensions="1ft x 1ft x 1ft",
                        weight="1 pound",
                        quantity=1,
-                       image='demoProduct')
+                       image='demoProduct.jpg')
     product6 = Product(sold_by=2,
                        name='Product 6',
                        price=19.99,
@@ -85,7 +85,7 @@ def seed_all():
                        dimensions="1ft x 1ft x 1ft",
                        weight="1 pound",
                        quantity=20,
-                       image='demoProduct')
+                       image='demoProduct.jpg')
 
     tag = Tag(product_id=1, tag="Ring")
     tag2 = Tag(product_id=2, tag="Ball")

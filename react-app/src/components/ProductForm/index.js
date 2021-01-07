@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { createProduct } from '../../store/product'
+import { createProduct } from "../../store/product";
 
 const ProductForm = () => {
 	const seller = useSelector((state) => state.session.user.id);
@@ -21,7 +21,7 @@ const ProductForm = () => {
 	const [tagString, setTagString] = useState("");
 	const [image, setImage] = useState("");
 	const [imageurl, setImageurl] = useState("");
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
 	const handleChange = (e) => {
 		const file = e.target.files[0];
@@ -36,12 +36,12 @@ const ProductForm = () => {
 		}
 	};
 
-	const handleSubmit = async(event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		const dimensions = `${width}${widthUnits} x ${length}${lengthUnits} x ${height}${heightUnits}`;
 
-		const tagArray = tagString.split(", ")
+		const tagArray = tagString.split(", ");
 
 		const formData = {
 			sold_by: seller,
@@ -53,7 +53,7 @@ const ProductForm = () => {
 			weight: `${weight} ${weightUnits}`,
 			tags: tagArray,
 			quantity,
-			image: null
+			image: null,
 		};
 
 		if (image) {
@@ -67,9 +67,8 @@ const ProductForm = () => {
 			formData["image"] = resJSON.filename;
 		}
 
-		console.log(dimensions);
-		console.log(formData);
-		return dispatch(createProduct(formData));
+		await dispatch(createProduct(formData));
+		return <Redirect to="/" />;
 	};
 
 	return (
@@ -201,11 +200,13 @@ const ProductForm = () => {
 					/>
 				</div>
 				<div>
+					{image ? (
+						<img className="user-image" src={imageurl} alt="userPhoto" />
+					) : (
+						<></>
+					)}
 					<label htmlFor="image">Image</label>
-					<input
-						type="file"
-						onChange={handleChange}
-					/>
+					<input type="file" onChange={handleChange} />
 				</div>
 				<div>
 					<button type="submit">Clicky Clicky</button>
