@@ -8,4 +8,3 @@ class ProductForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     price = DecimalField('price', validators=[DataRequired()])
     category = StringField('category', validators=[DataRequired()])
-    description = StringField('description')

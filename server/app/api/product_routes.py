@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models import db, Product, Tag
 from app.forms import ProductForm
 
@@ -13,6 +13,24 @@ products = Blueprint('products', __name__)
 @products.route('/', methods=["POST"])
 def create_product():
     # also create tags
+    form = ProductForm()
+    json = request.get_json()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['sold_by'].data = json.get('sold_by')
+    form['name'].data = json.get('name')
+    form['price'].data = json.get('price')
+    form['category'].data = json.get('category')
+    if form.validate_on_submit():
+        product = Product(sold_by=json.get('sold_by'),
+                          name=json.get('name'),
+                          price=json.get('price'),
+                          category=json.get('category'),
+                          description=json.get('description'),
+                          dimensions=json.get('dimensions'),
+                          weight=json.get('weight'),
+                          quantity=json.get('quantity'),
+                          image=json.get('image'))
+        db.session.add(product)
     pass
 
 

@@ -93,7 +93,7 @@ def upload_file():
         file.filename = ".".join(split)
         s3.Bucket('crafty-app').put_object(Key=file.filename, Body=file)
         print(file.filename)
-        return "File Uploaded"
+        return {"filename": file.filename}
         # For saving a local copy
         # target = os.path.join(APP_ROOT, 'uploads')
         # destination = "/".join([target, filename])
