@@ -15,10 +15,14 @@ class Product(db.Model):
     quantity = db.Column(db.Integer)
     image = db.Column(db.String(100))
     user = db.relationship("User", back_populates='products')
-    ratings = db.relationship("Rating", back_populates='product')
-    tags = db.relationship("Tag", back_populates='product')
-    favorites = db.relationship("Favorite", back_populates='product')
-    purchases = db.relationship("Purchase", back_populates='product')
+    ratings = db.relationship(
+        "Rating", back_populates='product', cascade="all, delete-orphan")
+    tags = db.relationship("Tag", back_populates='product',
+                           cascade="all, delete-orphan")
+    favorites = db.relationship(
+        "Favorite", back_populates='product', cascade="all, delete-orphan")
+    purchases = db.relationship(
+        "Purchase", back_populates='product', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

@@ -15,10 +15,14 @@ class User(db.Model, UserMixin):
     banner = db.Column(db.String(100))
     money = db.Column(db.Numeric)
     bio = db.Column(db.Text)
-    products = db.relationship('Product', back_populates='user')
-    favorites = db.relationship('Favorite', back_populates='user')
-    purchases = db.relationship('Purchase', back_populates='user')
-    ratings = db.relationship('Rating', back_populates='user')
+    products = db.relationship(
+        'Product', back_populates='user',  cascade="all, delete-orphan")
+    favorites = db.relationship(
+        'Favorite', back_populates='user',  cascade="all, delete-orphan")
+    purchases = db.relationship(
+        'Purchase', back_populates='user',  cascade="all, delete-orphan")
+    ratings = db.relationship(
+        'Rating', back_populates='user',  cascade="all, delete-orphan")
     followers = db.relationship('User',
                                 secondary="followers",
                                 primaryjoin=id == Follower.c.user_id,
