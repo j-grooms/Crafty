@@ -23,7 +23,6 @@ class User(db.Model, UserMixin):
                                 secondary="followers",
                                 primaryjoin=id == Follower.c.user_id,
                                 secondaryjoin=id == Follower.c.follower,
-                                # foreign_keys=[Follower.c.follower]
                                 )
 
     @property
@@ -45,7 +44,8 @@ class User(db.Model, UserMixin):
             "profile_pic": self.profile_pic,
             "banner": self.banner,
             "bio": self.bio,
-            "money": float(self.money)
+            "money": float(self.money),
+            "favorites": [favorite.to_dict() for favorite in self.favorites]
         }
 
     def to_product_dict(self):

@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models import db, User, Favorite, Purchase
 from app.forms import LoginForm
+from flask_login import logout_user
 
 users = Blueprint('users', __name__)
 
@@ -57,9 +58,19 @@ def update_user(id):
 
 # DESTROY
 @users.route('/<id>/delete', methods=["POST"])
-def delete_user():
-    pass
-
+def delete_user(id):
+    form = LoginForm()
+    body = request.get_json()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['username'].data = body.get('username')
+    form['password'].data = body.get('password')
+    if form.validate_on_submit():
+        user = User.query.get(id)
+        db.session.delete(user)
+        db.session.commit()
+        logout_user()
+        return {"message": "User deleted"}
+    return {"error": "Deletion rejected"}
 
 @users.route('/<id>/favorites/remove/<product>', methods=["POST"])
 def remove_favorite_product():

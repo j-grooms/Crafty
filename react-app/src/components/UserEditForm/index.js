@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../store/session";
 
@@ -12,7 +12,8 @@ const UserEditForm = () => {
 	const [profileUrl, setProfileUrl] = useState("");
 	const [bannerPic, setBannerPic] = useState("");
 	const [bannerUrl, setBannerUrl] = useState("");
-	const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
 	const handleBanner = (e) => {
 		const file = e.target.files[0];
@@ -74,7 +75,7 @@ const UserEditForm = () => {
 		}
 
         await dispatch(updateUser(formData, currentUser.id));
-        return <Redirect to="/shop" />
+        return history.push('/shop')
 	};
 
 	return (
