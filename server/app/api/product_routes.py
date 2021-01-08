@@ -82,6 +82,7 @@ def update_product(id):
     form['category'].data = json.get('category')
     if form.validate_on_submit():
         tags = json.get('tags')
+        old_tags = Tag.query.filter(Tag.product_id == json.get("id")).all()
         product = Product.query.get(json.get("id"))
         product.name = json.get('name')
         product.price = json.get('price')
@@ -91,21 +92,14 @@ def update_product(id):
         product.weight = json.get('weight')
         product.quantity = json.get('quantity')
         product.image = json.get('image')
-        # product = Product(sold_by=json.get('sold_by'),
-        #                   name=json.get('name'),
-        #                   price=json.get('price'),
-        #                   category=json.get('category'),
-        #                   description=json.get('description'),
-        #                   dimensions=json.get('dimensions'),
-        #                   weight=json.get('weight'),
-        #                   quantity=json.get('quantity'),
-        #                   image=json.get('image'))
-        # db.session.add(product)
         db.session.commit()
-        # for tag in tags:
-        #     tag = Tag(product_id=product.id, tag=tag)
-        #     db.session.add(tag)
-        #     db.session.commit()
+        for tag in old_tags:
+            db.session.delete(tag)
+            db.session.commit()
+        for tag in tags:
+            tag = Tag(product_id=product.id, tag=tag)
+            db.session.add(tag)
+            db.session.commit()
         return {'product': product.to_dict()}
     return {"error": "update rejected"}
 
