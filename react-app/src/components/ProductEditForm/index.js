@@ -36,7 +36,7 @@ const ProductEditForm = () => {
             await dispatch(getProductById(id))
             return setLoaded(true);
         })()
-    }, [dispatch])
+    }, [dispatch, id])
 
     if (currentUser.id !== product.user.id) { return <Redirect to='/shop' />}
 

@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./ProductPreview.css";
 
 const ProductPreview = (props) => {
-	const currentUser = useSelector((state) => state.session.user);
+	// const currentUser = useSelector((state) => state.session.user);
 	const product = props.product;
 
 	return (
