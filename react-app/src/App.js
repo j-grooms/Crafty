@@ -5,9 +5,10 @@ import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
+import UserEditForm from "./components/UserEditForm";
 import Navbar from "./components/Navbar";
-import ProductForm from "./components/ProductForm";
 import Feed from "./components/Feed";
+import ProductForm from "./components/ProductForm";
 import ProductView from "./components/ProductView";
 import ProductEditForm from "./components/ProductEditForm";
 import ProductDeleteForm from "./components/ProductDeleteForm";
@@ -32,7 +33,7 @@ function App() {
 						<ProductEditForm />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/edit/:id">
-						<p>Test</p>
+						<UserEditForm />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/product/delete/:id">
 						<ProductDeleteForm />

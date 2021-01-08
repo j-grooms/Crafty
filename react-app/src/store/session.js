@@ -64,6 +64,17 @@ export const signup = (user) => async(dispatch) => {
 
 };
 
+export const updateUser = (formData, userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}/edit`, {
+		method: 'PUT',
+		headers: { "Content-Type": "application/json"},
+		body: JSON.stringify(formData),
+	});
+	const resJSON = await response.json();
+	if (Object.keys(resJSON).includes("errors")) return response;
+	dispatch(setUser(resJSON.user));
+	return response;
+};
 
 const initialState = { user: null };
 

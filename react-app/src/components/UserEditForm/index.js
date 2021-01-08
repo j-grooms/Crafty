@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../../store/session";
+import { updateUser } from "../../store/session";
 
 const UserEditForm = () => {
-	const currentUser = useSelector((state) => state.session.user);
+    const currentUser = useSelector((state) => state.session.user);
+    const [password, setPassword] = useState("");
 	const [bio, setBio] = useState(currentUser.bio);
+	const [money, setMoney] = useState(currentUser.money);
 	const [profilePic, setProfilePic] = useState("");
 	const [profileUrl, setProfileUrl] = useState("");
 	const [bannerPic, setBannerPic] = useState("");
 	const [bannerUrl, setBannerUrl] = useState("");
-	const [money, setMoney] = useState(currentUser.money);
 	const dispatch = useDispatch();
-
-	if (currentUser) return <Redirect to="/shop" />;
 
 	const handleBanner = (e) => {
 		const file = e.target.files[0];
@@ -43,8 +42,9 @@ const UserEditForm = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		if (password !== confirmPassword) return;
 		const formData = {
+            username: currentUser.username,
+            password,
 			profile_pic: currentUser.profile_pic,
 			banner: currentUser.banner,
 			money,
@@ -73,12 +73,18 @@ const UserEditForm = () => {
 			formData["banner"] = resJSON.filename;
 		}
 
-		return dispatch(signup(formData));
+        await dispatch(updateUser(formData, currentUser.id));
+        return <Redirect to="/shop" />
 	};
 
 	return (
 		<>
 			<form encType="multipart/form-data" onSubmit={handleSubmit}>
+                <div>
+                    <p>For security, enter your CURRENT password below:</p>
+                    <label htmlFor="password">Password *</label>
+                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </div>
 				<div>
 					<label htmlFor="bio">Bio</label>
 					<textarea

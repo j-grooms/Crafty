@@ -45,7 +45,7 @@ class User(db.Model, UserMixin):
             "profile_pic": self.profile_pic,
             "banner": self.banner,
             "bio": self.bio,
-            "money": self.money
+            "money": float(self.money)
         }
 
     def to_product_dict(self):

@@ -1,6 +1,6 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from app.models import db, User, Favorite, Purchase
-from app.forms import SignUpForm
+from app.forms import LoginForm
 
 users = Blueprint('users', __name__)
 
@@ -37,8 +37,22 @@ def get_purchase_history(id):
 
 # UPDATE
 @users.route('/<id>/edit', methods=["PUT"])
-def update_user():
-    pass
+def update_user(id):
+    form = LoginForm()
+    body = request.get_json()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['username'].data = body.get('username')
+    form['password'].data = body.get('password')
+    if form.validate_on_submit():
+        user = User.query.get(id)
+        user.bio = body.get('bio')
+        user.profile_pic = body.get('profile_pic')
+        user.banner = body.get('banner')
+        user.money = body.get('money')
+        db.session.add(user)
+        db.session.commit()
+        return {"user": user.to_dict()}
+    return {"error": "Update failed"}
 
 
 # DESTROY
