@@ -1,13 +1,9 @@
 from flask import Blueprint, request
 from app.models import db, Product, Tag
-from app.forms import ProductForm
+from app.forms import ProductForm, LoginForm
 
 products = Blueprint('products', __name__)
 
-
-# @products.route('/')
-# def test():
-#     return "Test"
 
 # CREATE
 @products.route('/', methods=["POST"])
@@ -72,7 +68,6 @@ def get_products_by_user(user_id):
 # UPDATE
 @products.route('/edit/<id>', methods=["PUT"])
 def update_product(id):
-    # also update tags
     form = ProductForm()
     json = request.get_json(force=True)
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -106,5 +101,15 @@ def update_product(id):
 
 # DESTROY
 @products.route('/delete/<id>', methods=["POST"])
-def delete_product():
-    pass
+def delete_product(id):
+    form = LoginForm()
+    json = request.get_json()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    form['username'].data = json.get('username')
+    form['password'].data = json.get('password')
+    product = Product.query.get(id)
+    if form.validate_on_submit():
+        db.session.delete(product)
+        db.session.commit()
+        return {"product": "product deleted"}
+    return {"error": "deletion rejected"}

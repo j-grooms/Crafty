@@ -19,11 +19,12 @@ const ProductView = () => {
 	}, [dispatch, id]);
 
 	const editProduct = () => history.push(`/product/edit/${id}`);
+	const deleteProduct = () => history.push(`/product/delete/${id}`)
 
 	return (
 		loaded && (
 			<>
-				{currentUser.id === product.user.id ? <button onClick={editProduct}>EDIT</button> : <></>}
+				{currentUser.id === product.user.id ? <><button onClick={editProduct}>EDIT</button><button onClick={deleteProduct}>DELETE</button></> : <></>}
 				<p>Product #{product.id}</p>
 			</>
 		)

@@ -52,6 +52,15 @@ export const editProduct = (product, productId) => async (dispatch) => {
     return response;
 };
 
+export const deleteProduct = (formData, productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/delete/${productId}`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(formData)
+    });
+    dispatch(setProduct({ id: null, user: { id: null } }));
+};
+
 const initialState = { product: {id: null, user: {id: null}}, products: null };
 
 const productReducer = (state = initialState, action) => {

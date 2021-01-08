@@ -1,0 +1,28 @@
+.product-container {
+    width: 400px;
+    height: 310px;
+    margin: 10px;
+    border: 1px solid black;
+    /* padding: 3px; */
+    border-radius: 3px;
+}
+
+.product-preview-image-container {
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.product-preview-image {
+    overflow: hidden;
+    width: 400px;
+    padding-bottom: 9px;
+}
+
+.product-preview-header {
+    display: flex;
+    padding: 3px;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.2)
+}

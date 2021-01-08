@@ -9,6 +9,7 @@ import ProductForm from "./components/ProductForm";
 import Feed from "./components/Feed";
 import ProductView from "./components/ProductView";
 import ProductEditForm from "./components/ProductEditForm";
+import ProductDeleteForm from "./components/ProductDeleteForm";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -28,7 +29,9 @@ function App() {
 				<Switch>
 					<ProtectedRoute exact={true} path="/product/edit/:id">
 						<ProductEditForm />
-						{/* <p>Test</p> */}
+					</ProtectedRoute>
+					<ProtectedRoute exact={true} path="/product/delete/:id">
+						<ProductDeleteForm />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/product/:id">
 						<ProductView />
