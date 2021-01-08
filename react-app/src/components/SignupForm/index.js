@@ -13,7 +13,7 @@ const SignupForm = () => {
 	const [profileUrl, setProfileUrl] = useState("");
 	const [bannerPic, setBannerPic] = useState("");
 	const [bannerUrl, setBannerUrl] = useState("");
-	const [money, setMoney] = useState(0);
+	const [money, setMoney] = useState(0.0);
 
 	if (currentUser) return <Redirect to="/shop" />;
 
@@ -45,13 +45,45 @@ const SignupForm = () => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+		if (password !== confirmPassword) return;
+		const formData = {
+			username,
+			email,
+			password,
+			profile_pic: null,
+			banner: null,
+			money,
+			bio,
+		};
+
+		if (profilePic) {
+			const data = new FormData();
+			data.append("file", profilePic);
+			const response = await fetch("/api/store/upload", {
+				method: "POST",
+				body: data,
+			});
+			const resJSON = await response.json();
+			formData["profile_pic"] = resJSON.filename;
+		}
+
+		if (bannerPic) {
+			const data = new FormData();
+			data.append("file", bannerPic);
+			const response = await fetch("/api/store/upload", {
+				method: "POST",
+				body: data,
+			});
+			const resJSON = await response.json();
+			formData["banner"] = resJSON.filename;
+		}
 	};
 
 	return (
 		<>
-			<form enctype="multipart/form-data">
+			<form encType="multipart/form-data" onSubmit={handleSubmit}>
 				<div>
-					<label htmlFor="username">Username</label>
+					<label htmlFor="username">Username *</label>
 					<input
 						required
 						type="text"
@@ -61,7 +93,7 @@ const SignupForm = () => {
 					/>
 				</div>
 				<div>
-					<label htmlFor="email">Email</label>
+					<label htmlFor="email">Email *</label>
 					<input
 						required
 						type="email"
@@ -71,7 +103,7 @@ const SignupForm = () => {
 					/>
 				</div>
 				<div>
-					<label htmlFor="password">Password</label>
+					<label htmlFor="password">Password *</label>
 					<input
 						required
 						type="password"
@@ -81,7 +113,7 @@ const SignupForm = () => {
 					/>
 				</div>
 				<div>
-					<label htmlFor="confirmPassword">Confirm Password</label>
+					<label htmlFor="confirmPassword">Confirm Password *</label>
 					<input
 						required
 						type="password"
@@ -89,6 +121,11 @@ const SignupForm = () => {
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 					/>
+					{confirmPassword && password !== confirmPassword ? (
+						<p>Warning: Passwords do not match</p>
+					) : (
+						<></>
+					)}
 				</div>
 				<div>
 					<label htmlFor="bio">Bio</label>
@@ -107,6 +144,31 @@ const SignupForm = () => {
 						value={money}
 						onChange={(e) => setMoney(e.target.value)}
 					/>
+				</div>
+				<div>
+					{profilePic ? (
+						<img className="user-image" src={profileUrl} alt="userPhoto" />
+					) : (
+						<></>
+					)}
+				</div>
+				<div>
+					<label htmlFor="profilePic">Profile Picture</label>
+					<input type="file" name="profilePic" onChange={handleProfile} />
+				</div>
+				<div>
+					{bannerPic ? (
+						<img className="user-image" src={bannerUrl} alt="userPhoto" />
+					) : (
+						<></>
+					)}
+				</div>
+				<div>
+					<label htmlFor="bannerPic">Profile Banner</label>
+					<input type="file" name="bannerPic" onChange={handleBanner} />
+				</div>
+				<div>
+					<button type="submit">Sign me up!</button>
 				</div>
 			</form>
 		</>

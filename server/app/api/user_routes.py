@@ -5,17 +5,6 @@ from app.forms import SignUpForm
 users = Blueprint('users', __name__)
 
 
-# @users.route('/')
-# def test():
-#     return "Test"
-
-
-# CREATE
-@users.route('/', methods=["POST"])
-def create_user():
-    pass
-
-
 @users.route('/<id>/favorites/add/<product>', methods=["POST"])
 def add_favorite_product():
     pass
