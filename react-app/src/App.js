@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import UserEditForm from "./components/UserEditForm";
+import UserDeleteForm from "./components/UserDeleteForm";
 import Navbar from "./components/Navbar";
 import Feed from "./components/Feed";
 import ProductForm from "./components/ProductForm";
@@ -34,6 +35,9 @@ function App() {
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/edit/:id">
 						<UserEditForm />
+					</ProtectedRoute>
+					<ProtectedRoute exact={true} path="/user/delete/:id">
+						<UserDeleteForm />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/product/delete/:id">
 						<ProductDeleteForm />

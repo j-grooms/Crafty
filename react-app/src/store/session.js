@@ -76,6 +76,18 @@ export const updateUser = (formData, userId) => async (dispatch) => {
 	return response;
 };
 
+export const deleteUser = (formData, userId) => async(dispatch) => {
+	const response = await fetch(`/api/users/${userId}/delete`, {
+		method: 'POST',
+		headers: { "Content-Type": "application/json"},
+		body: JSON.stringify(formData),
+	});
+	const resJSON = await response.json();
+	if (Object.keys(resJSON).includes("errors")) return response;
+	dispatch(removeUser());
+	return response;
+};
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {

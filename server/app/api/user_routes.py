@@ -72,6 +72,7 @@ def delete_user(id):
         return {"message": "User deleted"}
     return {"error": "Deletion rejected"}
 
+
 @users.route('/<id>/favorites/remove/<product>', methods=["POST"])
 def remove_favorite_product():
     pass

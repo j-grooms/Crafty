@@ -13,7 +13,8 @@ const ProductDeleteForm = () => {
 	const handleSubmit = async(event) => {
         event.preventDefault();
         const formData = { username, password }
-        await dispatch(deleteProduct(formData, product.id));
+		await dispatch(deleteProduct(formData, product.id));
+		return history.push('/shop')
 	};
 
 	return (
