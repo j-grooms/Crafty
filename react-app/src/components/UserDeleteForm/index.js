@@ -41,6 +41,9 @@ const UserDeleteForm = () => {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 			</div>
+            <div>
+                <button type="submit">Delete Account</button>
+            </div>
 		</form>
 	);
 };

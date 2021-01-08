@@ -10,6 +10,7 @@ const Navbar = () => {
 
 	const logout = () => dispatch(sessionActions.logout());
 	const editProfile = () => history.push(`/user/edit/${currentUser.id}`)
+	const deleteProfile = () => history.push(`/user/delete/${currentUser.id}`)
 
 	return (
 		<div>
@@ -20,6 +21,7 @@ const Navbar = () => {
 						<NavLink to="/create-product">List a Product</NavLink>
 						<button onClick={logout}>Log Out</button>
 						<button onClick={editProfile}>Edit Profile</button>
+						<button onClick={deleteProfile}>Delete Profile</button>
 					</div>
 				) : (
 					<div className="nav-link-container">
