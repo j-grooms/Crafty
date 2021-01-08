@@ -51,6 +51,19 @@ export const logout = () => async (dispatch) => {
 	return response;
 };
 
+export const signup = (user) => async(dispatch) => {
+	const response = await fetch(`/api/auth/signup`, {
+		method: "POST",
+		headers: { "Content-Type": "application/json"},
+		body: JSON.stringify(user),
+	});
+	const resJSON = await response.json();
+	if (Object.keys(resJSON).includes("errors")) return response;
+	dispatch(setUser(resJSON.user));
+	return response;
+
+};
+
 
 const initialState = { user: null };
 

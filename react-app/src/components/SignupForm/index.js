@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { signup } from '../../store/session'
 
 const SignupForm = () => {
 	const currentUser = useSelector((state) => state.session.user);
@@ -13,7 +14,8 @@ const SignupForm = () => {
 	const [profileUrl, setProfileUrl] = useState("");
 	const [bannerPic, setBannerPic] = useState("");
 	const [bannerUrl, setBannerUrl] = useState("");
-	const [money, setMoney] = useState(0.0);
+    const [money, setMoney] = useState(0.0);
+    const dispatch = useDispatch();
 
 	if (currentUser) return <Redirect to="/shop" />;
 
@@ -65,7 +67,7 @@ const SignupForm = () => {
 			});
 			const resJSON = await response.json();
 			formData["profile_pic"] = resJSON.filename;
-		}
+		};
 
 		if (bannerPic) {
 			const data = new FormData();
@@ -76,7 +78,9 @@ const SignupForm = () => {
 			});
 			const resJSON = await response.json();
 			formData["banner"] = resJSON.filename;
-		}
+        };
+
+        return dispatch(signup(formData));
 	};
 
 	return (

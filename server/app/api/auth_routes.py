@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from app.models import db, Product, Tag
-from app.forms import LoginForm
+from app.forms import LoginForm, SignUpForm
 from app.models import User
 from flask_login import current_user, login_user, logout_user, login_required
 
@@ -75,12 +75,16 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            profile_pic=body.get('profile_pic'),
+            banner=body.get('banner'),
+            bio=body.get('bio'),
+            money=body.get('money'),
         )
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return user.to_dict()
+        return {"user": user.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 

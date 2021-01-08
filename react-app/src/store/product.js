@@ -59,6 +59,7 @@ export const deleteProduct = (formData, productId) => async (dispatch) => {
         body: JSON.stringify(formData)
     });
     dispatch(setProduct({ id: null, user: { id: null } }));
+    return response;
 };
 
 const initialState = { product: {id: null, user: {id: null}}, products: null };
