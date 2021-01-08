@@ -31,6 +31,9 @@ function App() {
 					<ProtectedRoute exact={true} path="/product/edit/:id">
 						<ProductEditForm />
 					</ProtectedRoute>
+					<ProtectedRoute exact={true} path="/user/edit/:id">
+						<p>Test</p>
+					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/product/delete/:id">
 						<ProductDeleteForm />
 					</ProtectedRoute>

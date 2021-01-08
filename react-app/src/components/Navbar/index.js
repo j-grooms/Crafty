@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import './Navbar.css'
@@ -6,8 +6,10 @@ import './Navbar.css'
 const Navbar = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const logout = () => dispatch(sessionActions.logout());
+	const editProfile = () => history.push(`/user/edit/${currentUser.id}`)
 
 	return (
 		<div>
@@ -17,6 +19,7 @@ const Navbar = () => {
 						<NavLink to="/shop">Home</NavLink>
 						<NavLink to="/create-product">List a Product</NavLink>
 						<button onClick={logout}>Log Out</button>
+						<button onClick={editProfile}>Edit Profile</button>
 					</div>
 				) : (
 					<div className="nav-link-container">
