@@ -1,19 +1,26 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux"
+import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
 import * as sessionActions from '../../store/session'
 
 const LoginForm = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const currentUser = useSelector((state) => state.session.user)
 
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-	const handleLogin = (event) => {
+	useEffect(() => {}, [currentUser])
+
+	const handleLogin = async(event) => {
 		event.preventDefault();
 		const body = { username, password };
         console.log(body);
-        return dispatch(sessionActions.login(body))
+		await dispatch(sessionActions.login(body))
+
 	};
+
+	if (currentUser) return <Redirect to='/shop' />
 
 	const handleUsername = (e) => setUsername(e.target.value);
 	const handlePassword = (e) => setPassword(e.target.value);

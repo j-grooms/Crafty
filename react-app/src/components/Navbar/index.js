@@ -19,9 +19,10 @@ const Navbar = () => {
 						<button onClick={logout}>Log Out</button>
 					</div>
 				) : (
-					<>
+					<div className="nav-link-container">
 						<NavLink to="/login">Login</NavLink>
-					</>
+						<NavLink to="/signup">Sign Up</NavLink>
+					</div>
 				)}
 			</div>
 		</div>

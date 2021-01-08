@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
 import Navbar from "./components/Navbar";
 import ProductForm from "./components/ProductForm";
 import Feed from "./components/Feed";
@@ -36,12 +37,15 @@ function App() {
 					<ProtectedRoute exact={true} path="/product/:id">
 						<ProductView />
 					</ProtectedRoute>
-					<Route path="/login" exact={true}>
-						<LoginForm />
-					</Route>
 					<ProtectedRoute path="/create-product" exact={true}>
 						<ProductForm />
 					</ProtectedRoute>
+					<Route path="/login" exact={true}>
+						<LoginForm />
+					</Route>
+					<Route path="/signup" exact={true}>
+						<SignupForm />
+					</Route>
 					<ProtectedRoute path="/shop" exact={true}>
 						<Feed />
 					</ProtectedRoute>

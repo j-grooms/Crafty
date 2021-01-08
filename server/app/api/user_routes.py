@@ -1,5 +1,6 @@
 from flask import Blueprint
 from app.models import db, User, Favorite, Purchase
+from app.forms import SignUpForm
 
 users = Blueprint('users', __name__)
 
