@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { addFavorite, removeFavorite } from "../../store/session";
-import { checkFavorite } from "../../store/favorite";
 
 const FavoriteButton = () => {
 	const currentFavorites = useSelector((state) => state.favorites.favorites);
