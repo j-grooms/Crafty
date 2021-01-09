@@ -8,31 +8,44 @@ const FavoriteButton = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [isFavorite, setIsFavorite] = useState(false);
 	const product = useSelector((state) => state.products.product);
+	const [loaded, setLoaded] = useState(false);
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		(async () => {
+			console.log("looping");
 			for (let i = 0; i < currentFavorites.length; i++) {
 				let favorite = currentFavorites[i];
-				if (favorite.product.id === product.id) await setIsFavorite(true);
+				if (favorite.product.id === product.id) {
+					console.log("is a favorite");
+					await setIsFavorite(true);
+				}
 			}
+			return setLoaded(true);
 		})();
-	}, [currentFavorites, isFavorite]);
+	}, [currentFavorites, product.id]);
 
-	const handleFavorite = () => {
-		if (isFavorite) return dispatch(removeFavorite(product.id, currentUser.id));
-		return dispatch(addFavorite(product.id, currentUser.id));
+	const handleFavorite = async() => {
+		if (isFavorite) {
+			await dispatch(removeFavorite(product.id, currentUser.id));
+			return setIsFavorite(false);
+		} else {
+			await setIsFavorite(true);
+			return dispatch(addFavorite(product.id, currentUser.id));
+		}
 	};
 
 	return (
-		<>
-			{isFavorite ? (
-				<button onClick={handleFavorite}>remove favorite</button>
-			) : (
-				<button onClick={handleFavorite}>add favorite</button>
-			)}
-		</>
+		loaded && (
+			<>
+				{isFavorite ? (
+					<button onClick={handleFavorite}>remove favorite</button>
+				) : (
+					<button onClick={handleFavorite}>add favorite</button>
+				)}
+			</>
+		)
 	);
 };
 
