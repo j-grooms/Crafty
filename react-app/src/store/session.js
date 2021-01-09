@@ -88,6 +88,20 @@ export const deleteUser = (formData, userId) => async(dispatch) => {
 	return response;
 };
 
+export const addFavorite = (productId, userId) => async (dispatch) =>{
+	const response = await fetch(`/api/users/${userId}/favorites/add/${productId}`, { method: "POST" });
+	const resJSON = await response.json();
+	dispatch(setUser(resJSON.user));
+	return response;
+};
+
+export const removeFavorite = (productId, userId) => async (dispatch) => {
+	const response = await fetch(`/api/users/${userId}/favorites/remove/${productId}`, { method: "POST"});
+	const resJSON = await response.json();
+	dispatch(setUser(resJSON.user));
+	return response;
+};
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {

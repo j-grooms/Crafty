@@ -7,8 +7,12 @@ users = Blueprint('users', __name__)
 
 
 @users.route('/<id>/favorites/add/<product>', methods=["POST"])
-def add_favorite_product():
-    pass
+def add_favorite_product(id, product):
+    favorite = Favorite(user_id=id, product_id=product)
+    db.session.add(favorite)
+    db.session.commit()
+    user = User.query.get(id)
+    return {"user": user.to_dict()}
 
 
 # READ
@@ -74,5 +78,10 @@ def delete_user(id):
 
 
 @users.route('/<id>/favorites/remove/<product>', methods=["POST"])
-def remove_favorite_product():
-    pass
+def remove_favorite_product(id, product):
+    favorite = Favorite.query.filter(Favorite.user_id == id,
+                                     Favorite.product_id == product).first()
+    db.session.delete(favorite)
+    db.session.commit()
+    user = User.query.get(id)
+    return {"user": user.to_dict()}
