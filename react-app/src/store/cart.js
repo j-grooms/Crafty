@@ -8,9 +8,9 @@ const setCart = (cart) => {
 };
 
 export const getCart = () => async (dispatch) => {
-    let cart = localStorage.getItem("cart")
+    let cart = JSON.parse(localStorage.getItem("cart"))
     if (!cart) {
-        localStorage.setItem("cart", [])
+        localStorage.setItem("cart", JSON.stringify([]))
         return dispatch(setCart([]))
     } else {
         return dispatch(setCart(cart))
@@ -19,15 +19,17 @@ export const getCart = () => async (dispatch) => {
 };
 
 export const addToCart = (id) => async (dispatch) => {
-    let cart = localStorage.getItem("cart")
-    localStorage.setItem("cart", [...cart, id]);
-    dispatch(setCart(localStorage.getItem("cart")))
+    let cart = JSON.parse(localStorage.getItem("cart"))
+    const newCart = [...cart, id]
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    console.log(newCart)
+    // dispatch(setCart(localStorage.getItem("cart")))
 };
 
 export const removeFromCart = (id) => async (dispatch) => {
-    let cart = localStorage.getItem("cart")
+    let cart = JSON.parse(localStorage.getItem("cart"))
     const newCart = cart.filter(item => item !== id);
-    localStorage.setItem("cart", newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
     dispatch(setCart(newCart));
 }
 

@@ -5,6 +5,7 @@ import { getProductById } from "../../store/product";
 import { checkFavorite } from "../../store/favorite";
 import FavoriteButton from "../FavoriteButton";
 import FollowButton from "../FollowButton";
+import CartButton from "../CartButton";
 
 const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
@@ -37,6 +38,7 @@ const ProductView = () => {
 					<>
 						<FavoriteButton />
 						<FollowButton />
+						<CartButton />
 					</>
 				)}
 				<p>Product #{product.id}</p>
