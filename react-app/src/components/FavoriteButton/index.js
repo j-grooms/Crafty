@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { addFavorite, removeFavorite } from "../../store/session";
-
+  
 const FavoriteButton = () => {
 	const currentFavorites = useSelector((state) => state.favorites.favorites);
 	const currentUser = useSelector((state) => state.session.user);

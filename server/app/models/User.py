@@ -28,6 +28,11 @@ class User(db.Model, UserMixin):
                                 primaryjoin=id == Follower.c.user_id,
                                 secondaryjoin=id == Follower.c.follower,
                                 )
+    following = db.relationship('User',
+                                secondary="followers",
+                                primaryjoin=id == Follower.c.follower,
+                                secondaryjoin=id == Follower.c.user_id,
+                                )
 
     @property
     def password(self):
@@ -51,7 +56,9 @@ class User(db.Model, UserMixin):
             "money": float(self.money),
             "favorites": [favorite.to_dict() for favorite in self.favorites],
             "followers": [
-                follower.to_product_dict() for follower in self.followers]
+                follower.to_product_dict() for follower in self.followers],
+            "following": [
+                follower.to_product_dict() for follower in self.following]
         }
 
     def to_product_dict(self):
