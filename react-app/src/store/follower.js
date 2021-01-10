@@ -1,22 +1,24 @@
 const SET_FOLLOWERS = "setFollowers"
 
-const setFollowers = (followers) => {
+const setFollowing = (following) => {
     return {
         type: SET_FOLLOWERS,
-        payload: followers,
+        payload: following,
     };
 };
 
+export const isFollowing = (userId, currentUserId) => async (dispatch) => {
+    const response = await fetch(`/api/users/`)
+};
 
+const initialState = {following: null}
 
-const initialState = {followers: null}
-
-const followerReducer = (state = initialState, action) => {
+const followingReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_FOLLOWERS:
             newState = Object.assign({}, state);
             newState.followers = action.payload;
-            
+
     };
 };

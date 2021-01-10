@@ -14,13 +14,13 @@ export const removeUser = () => {
 	};
 };
 
-export const authenticate = () => async (dispatch) =>{
-	const response = await fetch("/api/auth/")
+export const authenticate = () => async (dispatch) => {
+	const response = await fetch("/api/auth/");
 	const resJSON = await response.json();
 	if (Object.keys(resJSON).includes("errors")) return response;
 	dispatch(setUser(resJSON));
 	return response;
-}
+};
 
 export const login = (user) => async (dispatch) => {
 	const { username, password } = user;
@@ -36,8 +36,8 @@ export const login = (user) => async (dispatch) => {
 		}),
 	});
 
-    let userJson = await response.json();
-    if (Object.keys(userJson).includes("errors")) return response;
+	let userJson = await response.json();
+	if (Object.keys(userJson).includes("errors")) return response;
 	dispatch(setUser(userJson));
 	return response;
 };
@@ -51,23 +51,22 @@ export const logout = () => async (dispatch) => {
 	return response;
 };
 
-export const signup = (user) => async(dispatch) => {
+export const signup = (user) => async (dispatch) => {
 	const response = await fetch(`/api/auth/signup`, {
 		method: "POST",
-		headers: { "Content-Type": "application/json"},
+		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(user),
 	});
 	const resJSON = await response.json();
 	if (Object.keys(resJSON).includes("errors")) return response;
 	dispatch(setUser(resJSON.user));
 	return response;
-
 };
 
 export const updateUser = (formData, userId) => async (dispatch) => {
 	const response = await fetch(`/api/users/${userId}/edit`, {
-		method: 'PUT',
-		headers: { "Content-Type": "application/json"},
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(formData),
 	});
 	const resJSON = await response.json();
@@ -76,10 +75,10 @@ export const updateUser = (formData, userId) => async (dispatch) => {
 	return response;
 };
 
-export const deleteUser = (formData, userId) => async(dispatch) => {
+export const deleteUser = (formData, userId) => async (dispatch) => {
 	const response = await fetch(`/api/users/${userId}/delete`, {
-		method: 'POST',
-		headers: { "Content-Type": "application/json"},
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(formData),
 	});
 	const resJSON = await response.json();
@@ -88,15 +87,41 @@ export const deleteUser = (formData, userId) => async(dispatch) => {
 	return response;
 };
 
-export const addFavorite = (productId, userId) => async (dispatch) =>{
-	const response = await fetch(`/api/users/${userId}/favorites/add/${productId}`, { method: "POST" });
+export const addFavorite = (productId, userId) => async (dispatch) => {
+	const response = await fetch(
+		`/api/users/${userId}/favorites/add/${productId}`,
+		{ method: "POST" }
+	);
 	const resJSON = await response.json();
 	dispatch(setUser(resJSON.user));
 	return response;
 };
 
 export const removeFavorite = (productId, userId) => async (dispatch) => {
-	const response = await fetch(`/api/users/${userId}/favorites/remove/${productId}`, { method: "POST"});
+	const response = await fetch(
+		`/api/users/${userId}/favorites/remove/${productId}`,
+		{ method: "POST" }
+	);
+	const resJSON = await response.json();
+	dispatch(setUser(resJSON.user));
+	return response;
+};
+
+export const follow = (sellerId, currentUserId) => async (dispatch) => {
+	const response = await fetch(
+		`/api/users/${currentUserId}/follow/${sellerId}`,
+		{ method: "POST" }
+	);
+	const resJSON = await response.json();
+	dispatch(setUser(resJSON.user));
+	return response;
+};
+
+export const unfollow = (sellerId, currentUserId) => async (dispatch) => {
+	const response = await fetch(
+		`/api/users/${currentUserId}/unfollow/${sellerId}`,
+		{ method: "POST" }
+	);
 	const resJSON = await response.json();
 	dispatch(setUser(resJSON.user));
 	return response;
@@ -117,7 +142,7 @@ const sessionReducer = (state = initialState, action) => {
 			return newState;
 		default:
 			return state;
-	};
+	}
 };
 
 export default sessionReducer;

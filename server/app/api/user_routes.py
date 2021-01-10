@@ -15,6 +15,16 @@ def add_favorite_product(id, product):
     return {"user": user.to_dict()}
 
 
+@users.route('/<id>/follow/<seller_id>', methods=['POST'])
+def follow_seller(id, seller_id):
+    seller = User.query.get(seller_id)
+    user = User.query.get(id)
+    seller.followers.append(seller)
+    db.session.add(seller)
+    db.session.commit()
+    return {"user": user.to_dict()}
+
+
 # READ
 @users.route('/<id>')
 def get_user_by_id(id):
@@ -84,4 +94,14 @@ def remove_favorite_product(id, product):
     db.session.delete(favorite)
     db.session.commit()
     user = User.query.get(id)
+    return {"user": user.to_dict()}
+
+
+@users.route('/<id>/unfollow/<seller_id>', methods=['POST'])
+def follow_seller(id, seller_id):
+    seller = User.query.get(seller_id)
+    user = User.query.get(id)
+    seller.followers.remove(seller)
+    db.session.add(seller)
+    db.session.commit()
     return {"user": user.to_dict()}

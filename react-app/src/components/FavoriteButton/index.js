@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { addFavorite, removeFavorite } from "../../store/session";
-  
+
 const FavoriteButton = () => {
 	const currentFavorites = useSelector((state) => state.favorites.favorites);
 	const currentUser = useSelector((state) => state.session.user);
@@ -13,11 +13,9 @@ const FavoriteButton = () => {
 
 	useEffect(() => {
 		(async () => {
-			console.log("looping");
 			for (let i = 0; i < currentFavorites.length; i++) {
 				let favorite = currentFavorites[i];
 				if (favorite.product.id === product.id) {
-					console.log("is a favorite");
 					await setIsFavorite(true);
 				}
 			}
