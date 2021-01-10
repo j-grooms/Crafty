@@ -19,7 +19,7 @@ def add_favorite_product(id, product):
 def follow_seller(id, seller_id):
     seller = User.query.get(seller_id)
     user = User.query.get(id)
-    seller.followers.append(seller)
+    seller.followers.append(user)
     db.session.add(seller)
     db.session.commit()
     return {"user": user.to_dict()}
@@ -98,10 +98,10 @@ def remove_favorite_product(id, product):
 
 
 @users.route('/<id>/unfollow/<seller_id>', methods=['POST'])
-def follow_seller(id, seller_id):
+def unfollow_seller(id, seller_id):
     seller = User.query.get(seller_id)
     user = User.query.get(id)
-    seller.followers.remove(seller)
+    seller.followers.remove(user)
     db.session.add(seller)
     db.session.commit()
     return {"user": user.to_dict()}

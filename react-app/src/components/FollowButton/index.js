@@ -25,11 +25,11 @@ const FollowButton = () => {
 
 	const handleFollow = async () => {
 		if (isFollowing) {
-			await dispatch(follow(sellerId, currentUserId));
-			return setisFollowing(false);
+			await dispatch(unfollow(sellerId, currentUserId));
+			return setIsFollowing(false);
 		} else {
 			await setIsFollowing(true);
-			return dispatch(unfollow(sellerId, currentUserId));
+			return dispatch(follow(sellerId, currentUserId));
 		}
 	};
 

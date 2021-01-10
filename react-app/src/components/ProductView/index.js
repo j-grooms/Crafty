@@ -2,8 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { getProductById } from "../../store/product";
-import FavoriteButton from "../FavoriteButton"
 import { checkFavorite } from "../../store/favorite";
+import FavoriteButton from "../FavoriteButton";
+import FollowButton from "../FollowButton"
 
 const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
@@ -34,7 +35,7 @@ const ProductView = () => {
 						<button onClick={deleteProduct}>DELETE</button>
 					</>
 				) : (
-					<><FavoriteButton /></>
+					<><FavoriteButton /><FollowButton /></>
 				)}
 				<p>Product #{product.id}</p>
 			</>
