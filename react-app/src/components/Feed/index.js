@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../store/product";
+import { getCart } from "../../store/cart"
 import ProductPreview from "../ProductPreview";
 
 const Feed = () => {
@@ -10,6 +11,7 @@ const Feed = () => {
 
 	useEffect(() => {
 		(async () => {
+			await dispatch(getCart())
 			await dispatch(fetchAllProducts());
 			return setLoaded(true);
 		})();

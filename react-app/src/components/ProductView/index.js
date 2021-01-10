@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { checkFavorite } from "../../store/favorite";
 import FavoriteButton from "../FavoriteButton";
-import FollowButton from "../FollowButton"
+import FollowButton from "../FollowButton";
 
 const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
@@ -16,7 +16,7 @@ const ProductView = () => {
 
 	useEffect(() => {
 		(async () => {
-			await dispatch(checkFavorite(currentUser.id))
+			await dispatch(checkFavorite(currentUser.id));
 			await dispatch(getProductById(id));
 			return setLoaded(true);
 		})();
@@ -24,7 +24,6 @@ const ProductView = () => {
 
 	const editProduct = () => history.push(`/product/edit/${id}`);
 	const deleteProduct = () => history.push(`/product/delete/${id}`);
-
 
 	return (
 		loaded && (
@@ -35,7 +34,10 @@ const ProductView = () => {
 						<button onClick={deleteProduct}>DELETE</button>
 					</>
 				) : (
-					<><FavoriteButton /><FollowButton /></>
+					<>
+						<FavoriteButton />
+						<FollowButton />
+					</>
 				)}
 				<p>Product #{product.id}</p>
 			</>
