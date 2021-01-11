@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../store/product";
 import { getCart } from "../../store/cart"
 import ProductPreview from "../ProductPreview";
+import './Feed.css'
 
 const Feed = () => {
 	const [loaded, setLoaded] = useState(false);
@@ -19,11 +20,11 @@ const Feed = () => {
 
 	return (
 		loaded && (
-			<>
+			<div className="feed-container">
 				{products.map((product, i) => (
 					<ProductPreview key={product.name.concat(i)} product={product} />
 				))}
-			</>
+			</div>
 		)
 	);
 };

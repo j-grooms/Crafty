@@ -1,7 +1,7 @@
 .product-container {
     width: 400px;
     height: 310px;
-    margin: 10px;
+    margin: 30px;
     border: 1px solid black;
     /* padding: 3px; */
     border-radius: 3px;
@@ -25,4 +25,15 @@
     flex-direction: row;
     justify-content: space-around;
     background-color: rgba(0, 0, 0, 0.2)
+}
+
+.product-preview-rating {
+    width: 400px;
+    text-align: end;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: relative;
+    bottom: 20px;
+    /* padding-left: 5px; */
+    /* -webkit-text-stroke: 1px black; */
 }
