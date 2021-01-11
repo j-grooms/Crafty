@@ -14,7 +14,7 @@ const Navbar = () => {
 	const deleteProfile = () => history.push(`/user/delete/${currentUser.id}`)
 
 	return (
-		<div>
+		<div className="navbar-main-div">
 			<div>
 				{currentUser ? (
 					<div className="nav-link-container">

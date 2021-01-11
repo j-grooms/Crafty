@@ -1,5 +1,12 @@
 .nav-link-container {
     display: flex;
-    /* flex-direction: row; */
+    position: relative;
     justify-content: space-around;
+    align-items: center;
+}
+
+.navbar-main-div {
+    position: static;
+    background-color: pink;
+    height: 60px;
 }

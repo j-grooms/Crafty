@@ -1,6 +1,12 @@
 .profile-button-dropdown {
+    position: absolute;
+    background-color: yellow;
+    top: 60px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 150px;
+    height: 200px;
 }
 
 .nav-user-icon {
@@ -12,4 +18,8 @@
     max-width: 100%;
     height: auto;
     border-radius: 50%;
+}
+
+.nav-holder {
+    padding-top: 5px;
 }
