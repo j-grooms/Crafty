@@ -29,7 +29,7 @@ const ProductPreview = (props) => {
 	return (
 		<div className="product-container">
 			<div className="product-preview-header">
-				<p>{product.name}</p> <p>{product.price}</p>
+				<p className="product-preview-name">{product.name}</p> <p>$ {product.price}</p>
 			</div>
 
 			<Link to={`product/${product.id}`}>
@@ -42,7 +42,9 @@ const ProductPreview = (props) => {
 				</div>
 			</Link>
 			<div className="product-preview-rating">
-				{rating ? (`${rating} stars`) : ("No ratings yet")}
+				{rating
+					? <>{rating} <i class="far fa-star product-preview-star"></i></>
+					: "No ratings yet"}
 			</div>
 		</div>
 	);
