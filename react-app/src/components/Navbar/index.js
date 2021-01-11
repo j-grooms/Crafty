@@ -1,6 +1,7 @@
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import ProfileButton from "../ProfileButton"
 import './Navbar.css'
 
 const Navbar = () => {
@@ -18,10 +19,7 @@ const Navbar = () => {
 				{currentUser ? (
 					<div className="nav-link-container">
 						<NavLink to="/shop">Home</NavLink>
-						<NavLink to="/create-product">List a Product</NavLink>
-						<button onClick={logout}>Log Out</button>
-						<button onClick={editProfile}>Edit Profile</button>
-						<button onClick={deleteProfile}>Delete Profile</button>
+						<ProfileButton />
 					</div>
 				) : (
 					<div className="nav-link-container">
