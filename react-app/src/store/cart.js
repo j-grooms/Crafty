@@ -22,8 +22,7 @@ export const addToCart = (id) => async (dispatch) => {
     let cart = JSON.parse(localStorage.getItem("cart"))
     const newCart = [...cart, id]
     localStorage.setItem("cart", JSON.stringify(newCart));
-    console.log(newCart)
-    // dispatch(setCart(localStorage.getItem("cart")))
+    dispatch(setCart(newCart))
 };
 
 export const removeFromCart = (id) => async (dispatch) => {
@@ -33,7 +32,7 @@ export const removeFromCart = (id) => async (dispatch) => {
     dispatch(setCart(newCart));
 }
 
-const initialState = {cart: null}
+const initialState = {cart: []}
 
 const cartReducer = (state = initialState, action) => {
     let newState;
