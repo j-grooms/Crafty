@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "../ProfileButton";
+import Searchbar from "../Searchbar";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -12,6 +13,7 @@ const Navbar = () => {
 				{currentUser ? (
 					<div className="nav-link-right">
 						<NavLink to="/shop">Home</NavLink>
+						<Searchbar />
 						<div className="nav-control-buttons">
 							<ProfileButton />
 							<i class="fas fa-shopping-cart cart-icon"></i>
