@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
-import { checkFavorite } from "../../store/favorite";
+import { getFavorites } from "../../store/favorite";
 import FavoriteButton from "../FavoriteButton";
 import FollowButton from "../FollowButton";
 import CartButton from "../CartButton";
@@ -17,7 +17,7 @@ const ProductView = () => {
 
 	useEffect(() => {
 		(async () => {
-			await dispatch(checkFavorite(currentUser.id));
+			await dispatch(getFavorites(currentUser.id));
 			await dispatch(getProductById(id));
 			return setLoaded(true);
 		})();

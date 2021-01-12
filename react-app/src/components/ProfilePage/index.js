@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getSeller } from "../../store/seller";
 import { fetchAllProductsBySeller } from "../../store/product";
+import { getFavorites } from "../../store/favorite";
 import FollowButton from "../FollowButton";
 import ProductPreview from "../ProductPreview";
 import "./ProfilePage.css";
@@ -11,6 +12,7 @@ const ProfilePage = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const seller = useSelector((state) => state.seller.seller);
 	const products = useSelector((state) => state.products.products);
+	const favorites = useSelector((state) => state.favorites.favorites);
 	const isSeller = currentUser.id === seller.id;
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const ProfilePage = () => {
 
 	useEffect(() => {
 		(async () => {
+			await dispatch(getFavorites(currentUser.id));
 			await dispatch(fetchAllProductsBySeller(id));
 			await dispatch(getSeller(id));
 			return setLoaded(true);
@@ -69,6 +72,21 @@ const ProfilePage = () => {
 								/>
 							))}
 						</div>
+						{isSeller ? (
+							<>
+								<p className="profile-products-header">Your favorites</p>
+								<div className="profile-favorites-container">
+									{favorites.map((favorite, i) => (
+										<ProductPreview
+											key={favorite.product.name.concat(i)}
+											product={favorite.product}
+										/>
+									))}
+								</div>
+							</>
+						) : (
+							<></>
+						)}
 					</div>
 				</div>
 			</>

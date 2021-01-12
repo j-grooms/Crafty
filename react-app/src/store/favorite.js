@@ -7,7 +7,7 @@ const setFavorites = (favorites) => {
     };
 };
 
-export const checkFavorite = (userId) => async (dispatch) => {
+export const getFavorites = (userId) => async (dispatch) => {
     const response = await fetch(`/api/users/${userId}/favorites`);
     const resJSON = await response.json();
     dispatch(setFavorites(resJSON.favorites));
@@ -16,7 +16,7 @@ export const checkFavorite = (userId) => async (dispatch) => {
 
 
 
-const initialState = { favorites: null };
+const initialState = { favorites: [] };
 
 const favoriteReducer = (state = initialState, action) => {
 	let newState;
