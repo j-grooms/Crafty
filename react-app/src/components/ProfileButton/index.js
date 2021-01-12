@@ -39,7 +39,7 @@ const ProfileButton = () => {
 			{showMenu && (
 				<div className="profile-button-dropdown">
 					<Link to="/create-product">List a Product</Link>
-					<Link to={`/user/edit/${currentUser.id}`}>Edit Profile</Link>
+					<Link to={`/user/edit/${currentUser.id}`}>Edit Info</Link>
 					<Link to={`/user/delete/${currentUser.id}`}>Delete Profile</Link>
 					<button onClick={logout}>Log Out</button>
 				</div>
