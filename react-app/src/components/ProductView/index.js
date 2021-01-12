@@ -37,7 +37,7 @@ const ProductView = () => {
 				) : (
 					<>
 						<FavoriteButton />
-						<FollowButton />
+						<FollowButton seller={product.user.id} />
 						<CartButton />
 					</>
 				)}

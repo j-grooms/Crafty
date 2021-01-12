@@ -4,10 +4,12 @@ import sessionReducer from "./session";
 import productReducer from "./product";
 import favoriteReducer from "./favorite";
 import cartReducer from "./cart";
+import sellerReducer from "./seller";
 
 
 const rootReducer = combineReducers({
 	session: sessionReducer,
+	seller: sellerReducer,
 	products: productReducer,
 	favorites: favoriteReducer,
 	cart: cartReducer,
