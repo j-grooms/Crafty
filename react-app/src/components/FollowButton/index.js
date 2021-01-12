@@ -23,7 +23,7 @@ const FollowButton = (props) => {
 			}
 			await setLoaded(true);
 		})();
-	}, [sellerId, currentFollowList]);
+	}, [sellerId, currentFollowList, props.seller, dispatch]);
 
 	const handleFollow = async () => {
 		if (isFollowing) {

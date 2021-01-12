@@ -13,6 +13,7 @@ import ProductForm from "./components/ProductForm";
 import ProductView from "./components/ProductView";
 import ProductEditForm from "./components/ProductEditForm";
 import ProductDeleteForm from "./components/ProductDeleteForm";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -34,7 +35,7 @@ function App() {
 						<ProductEditForm />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/:id">
-						<p>Test</p>
+						<ProfilePage />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/edit/:id">
 						<UserEditForm />
