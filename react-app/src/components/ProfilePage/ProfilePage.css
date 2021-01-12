@@ -1,61 +1,86 @@
 .profile-banner-container {
-    height: 250px;
+	max-height: 250px;
     overflow: hidden;
+	border-bottom: 1px solid black;
+}
+
+.profile-banner {
+    height: auto;
+    width: 100%;
 }
 
 .profile-avatar-container {
-    margin: 25px;
-    height: 200px;
-    width: 250px;
-    display: flex;
-    justify-content: center;
+	margin: 25px;
+	height: 200px;
+	width: 250px;
+	display: flex;
+	justify-content: center;
 }
 
 .profile-username-container {
-    width: 250px;
-    margin-left: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+	width: 250px;
+	margin-left: 25px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .profile-info-container {
-    margin: 25px;
+	margin: 25px;
+}
+
+.profile-products-container {
+	max-width: 1400px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.profile-products-header {
+	margin-top: 25px;
+	font-size: 14pt;
+	text-align: center;
+	text-decoration: underline;
+	text-decoration-color: #ffe1bf;
+	text-decoration-thickness: 3px;
+	font-weight: 600;
 }
 
 .profile-avatar {
-    height: 100%;
-    width: auto;
-    border-radius: 50%;
-    background-color: rgba(0,0,0,0.5)
+	height: 100%;
+	width: auto;
+	border-radius: 50%;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .profile-username {
-    font-size: 18pt;
+	font-size: 18pt;
+	font-weight: 600;
 }
 
 .profile-info-header {
-    text-decoration: underline;
-    text-decoration-color: #FFE1BF;
-    text-decoration-thickness: 3px;
-    font-size: 14pt;
+	text-decoration: underline;
+	text-decoration-color: #ffe1bf;
+	text-decoration-thickness: 3px;
+	font-size: 14pt;
+	font-weight: 600;
 }
 
 .profile-bio {
-    margin-top: 25px;
+	margin-top: 25px;
 }
 
 .profile-grid-div {
-    display: grid;
-    grid-template-columns: 1fr, 3fr;
-    grid-template-areas: "info products";
+	display: grid;
+	grid-template-columns: 1fr, 3fr;
+	grid-template-areas: "info products";
 }
 
 .profile-user-grid-div {
-    grid-area: info;
+	grid-area: info;
 }
 
 .profile-products-grid-div {
-    grid-area: products;
+	grid-area: products;
 }

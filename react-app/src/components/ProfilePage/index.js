@@ -30,6 +30,7 @@ const ProfilePage = () => {
 			<>
 				<div className="profile-banner-container">
 					<img
+						className="profile-banner"
 						src={`https://crafty-app.s3.us-east-2.amazonaws.com/${seller.banner}`}
 						alt="banner"
 					/>
@@ -59,6 +60,7 @@ const ProfilePage = () => {
 						</div>
 					</div>
 					<div className="profile-products-grid-div">
+						<p className="profile-products-header">Products by this user</p>
 						<div className="profile-products-container">
 							{products.map((product, i) => (
 								<ProductPreview
