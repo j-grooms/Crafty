@@ -1,25 +1,21 @@
-import { NavLink, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import * as sessionActions from "../../store/session";
-import ProfileButton from "../ProfileButton"
-import './Navbar.css'
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProfileButton from "../ProfileButton";
+import "./Navbar.css";
 
 const Navbar = () => {
 	const currentUser = useSelector((state) => state.session.user);
-	const dispatch = useDispatch();
-	const history = useHistory();
-
-	const logout = () => dispatch(sessionActions.logout());
-	const editProfile = () => history.push(`/user/edit/${currentUser.id}`)
-	const deleteProfile = () => history.push(`/user/delete/${currentUser.id}`)
 
 	return (
 		<div className="navbar-main-div">
 			<div>
 				{currentUser ? (
-					<div className="nav-link-container">
+					<div className="nav-link-right">
 						<NavLink to="/shop">Home</NavLink>
-						<ProfileButton />
+						<div className="nav-control-buttons">
+							<ProfileButton />
+							<i class="fas fa-shopping-cart cart-icon"></i>
+						</div>
 					</div>
 				) : (
 					<div className="nav-link-container">

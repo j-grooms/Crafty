@@ -4,27 +4,24 @@ import { Link } from "react-router-dom";
 import "./ProductPreview.css";
 
 const ProductPreview = (props) => {
-	// const currentUser = useSelector((state) => state.session.user);
 	const product = props.product;
 	const [rating, setRating] = useState("");
 
 	useEffect(() => {
-		parseRating();
-	}, []);
-
-	const parseRating = () => {
-		const ratings = product.rating;
-		console.log(ratings);
-		if (ratings.length === 0) {
-			return;
-		} else {
-			let totalRating = 0;
-			for (let i = 0; i < ratings.length; i++) {
-				totalRating += parseInt(ratings[i].rating);
+		(async() => {
+			const ratings = product.rating;
+			console.log(ratings);
+			if (ratings.length === 0) {
+				return;
+			} else {
+				let totalRating = 0;
+				for (let i = 0; i < ratings.length; i++) {
+					totalRating += parseInt(ratings[i].rating);
+				}
+				return setRating(parseInt(totalRating) / parseInt(ratings.length));
 			}
-			return setRating(parseInt(totalRating) / parseInt(ratings.length));
-		}
-	};
+		})();
+	}, [product.rating]);
 
 	return (
 		<div className="product-container">
