@@ -28,7 +28,7 @@ const ProductPreview = (props) => {
 				<p className="product-preview-name">{product.name}</p> <p>$ {product.price}</p>
 			</div>
 
-			<Link to={`product/${product.id}`}>
+			<Link to={`/product/${product.id}`}>
 				<div className="product-preview-image-container">
 					<img
 						className="product-preview-image"
