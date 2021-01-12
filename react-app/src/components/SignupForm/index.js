@@ -23,7 +23,6 @@ const SignupForm = () => {
 		const file = e.target.files[0];
 		const fileReader = new FileReader();
 		setBannerPic(file);
-		console.log(bannerPic);
 		if (file) {
 			fileReader.readAsDataURL(file);
 			fileReader.onloadend = () => {
@@ -36,7 +35,6 @@ const SignupForm = () => {
 		const file = e.target.files[0];
 		const fileReader = new FileReader();
 		setProfilePic(file);
-		console.log(profilePic);
 		if (file) {
 			fileReader.readAsDataURL(file);
 			fileReader.onloadend = () => {

@@ -10,7 +10,6 @@ const ProductPreview = (props) => {
 	useEffect(() => {
 		(async() => {
 			const ratings = product.rating;
-			console.log(ratings);
 			if (ratings.length === 0) {
 				return;
 			} else {

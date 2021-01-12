@@ -8,7 +8,6 @@ function ImageUploadForm() {
 		const file = e.target.files[0];
 		const fileReader = new FileReader();
 		setImage(file);
-		console.log(image);
 		if (file) {
 			fileReader.readAsDataURL(file);
 			fileReader.onloadend = () => {
@@ -28,8 +27,6 @@ function ImageUploadForm() {
 				body: data,
 			});
 			const resJSON = await response.json();
-
-			console.log(resJSON);
 		}
 	};
 

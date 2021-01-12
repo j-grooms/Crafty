@@ -25,7 +25,7 @@ const ProfilePage = () => {
 		loaded && (
 			<>
 				<p>NAME: {seller.username}</p>
-				{currentUser.id===seller.id ? <></> : <FollowButton seller={seller.id} />}
+				{isSeller ? <></> : <FollowButton seller={seller.id} />}
 			</>
 		)
 	);

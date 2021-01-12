@@ -15,7 +15,6 @@ const LoginForm = () => {
 	const handleLogin = async(event) => {
 		event.preventDefault();
 		const body = { username, password };
-        console.log(body);
 		await dispatch(sessionActions.login(body))
 
 	};
