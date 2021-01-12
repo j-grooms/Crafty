@@ -58,12 +58,12 @@ const ProfilePage = () => {
 							)}
 						</div>
 						<div className="profile-info-container">
-							<p className="profile-info-header">About this user</p>
+							<p className="profile-info-header">About this User</p>
 							<p className="profile-bio">{seller.bio}</p>
 						</div>
 					</div>
 					<div className="profile-products-grid-div">
-						<p className="profile-products-header">Products by this user</p>
+						<p className="profile-products-header">{isSeller ? "Your Products": "Products by this User"}</p>
 						<div className="profile-products-container">
 							{products.map((product, i) => (
 								<ProductPreview
@@ -74,7 +74,7 @@ const ProfilePage = () => {
 						</div>
 						{isSeller ? (
 							<>
-								<p className="profile-products-header">Your favorites</p>
+								<p className="profile-products-header">Your Favorites</p>
 								<div className="profile-favorites-container">
 									{favorites.map((favorite, i) => (
 										<ProductPreview

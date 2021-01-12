@@ -10,7 +10,8 @@
 }
 
 .profile-avatar-container {
-	margin: 25px;
+    margin: 25px;
+    margin-top: 75px;
 	height: 200px;
 	width: 250px;
 	display: flex;
@@ -44,7 +45,7 @@
 	text-decoration: underline;
 	text-decoration-color: #ffe1bf;
 	text-decoration-thickness: 3px;
-	font-weight: 600;
+    font-weight: 600;
 }
 
 .profile-avatar {
@@ -64,7 +65,7 @@
 	text-decoration-color: #ffe1bf;
 	text-decoration-thickness: 3px;
 	font-size: 14pt;
-	font-weight: 600;
+    font-weight: 600;
 }
 
 .profile-bio {
