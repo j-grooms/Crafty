@@ -1,4 +1,4 @@
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
@@ -33,6 +33,9 @@ function App() {
 					<ProtectedRoute exact={true} path="/product/edit/:id">
 						<ProductEditForm />
 					</ProtectedRoute>
+					<ProtectedRoute exact={true} path="/user/:id">
+						<p>Test</p>
+					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/edit/:id">
 						<UserEditForm />
 					</ProtectedRoute>
@@ -48,15 +51,21 @@ function App() {
 					<ProtectedRoute path="/create-product" exact={true}>
 						<ProductForm />
 					</ProtectedRoute>
+					<ProtectedRoute path="/shop" exact={true}>
+						<Feed />
+					</ProtectedRoute>
 					<Route path="/login" exact={true}>
 						<LoginForm />
 					</Route>
 					<Route path="/signup" exact={true}>
 						<SignupForm />
 					</Route>
-					<ProtectedRoute path="/shop" exact={true}>
-						<Feed />
-					</ProtectedRoute>
+					<Route path="/404" exact={true}>
+						<p>404</p>
+					</Route>
+					<Route path="*">
+						<Redirect to='/404' />
+					</Route>
 				</Switch>
 			</BrowserRouter>
 		)

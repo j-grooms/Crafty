@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { checkFavorite } from "../../store/favorite";
 import FavoriteButton from "../FavoriteButton";
@@ -42,6 +42,10 @@ const ProductView = () => {
 					</>
 				)}
 				<p>Product #{product.id}</p>
+				<p>{product.name}</p>
+				<p>
+					Sold by: <Link to={`/user/${product.user.id}`}>{product.user.username}</Link>
+				</p>
 			</>
 		)
 	);
