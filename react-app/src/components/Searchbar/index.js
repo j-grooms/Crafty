@@ -21,7 +21,7 @@ const Searchbar = () => {
 							placeholder="Search for anything"
 						/>
 						<button className="searchbar-submit-button" type="submit">
-							<i class="fas fa-search"></i>
+							<i className="fas fa-search"></i>
 						</button>
 					</form>
 				</div>

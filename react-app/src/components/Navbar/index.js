@@ -16,7 +16,7 @@ const Navbar = () => {
 						<Searchbar />
 						<div className="nav-control-buttons">
 							<ProfileButton />
-							<i class="fas fa-shopping-cart cart-icon"></i>
+							<i className="fas fa-shopping-cart cart-icon"></i>
 						</div>
 					</div>
 				) : (

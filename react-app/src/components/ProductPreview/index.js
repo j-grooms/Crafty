@@ -40,7 +40,7 @@ const ProductPreview = (props) => {
 			</Link>
 			<div className="product-preview-rating">
 				{rating
-					? <>{rating} <i class="far fa-star product-preview-star"></i></>
+					? <>{rating} <i className="far fa-star product-preview-star"></i></>
 					: "No ratings yet"}
 			</div>
 		</div>
