@@ -12,7 +12,7 @@ const Navbar = () => {
 			<div>
 				{currentUser ? (
 					<div className="nav-link-right">
-						<NavLink to="/shop">Home</NavLink>
+						<NavLink to="/shop" className="navbar-logo">Crafty</NavLink>
 						<Searchbar />
 						<div className="nav-control-buttons">
 							<ProfileButton />
