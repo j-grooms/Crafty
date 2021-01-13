@@ -54,7 +54,8 @@ def get_all_products():
 
 @products.route('/by_tag/<tag>')
 def get_products_by_tag(tag):
-    tags = Tag.query.filter(Tag.tag == tag).all()
+    formatted_tag = f'%{tag}%'
+    tags = db.session.query(Tag).filter(Tag.tag.ilike(formatted_tag)).all()
     return {"products": [tag.to_product_dict() for tag in tags]}
 
 

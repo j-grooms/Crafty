@@ -18,4 +18,4 @@ class Tag(db.Model):
         }
 
     def to_product_dict(self):
-        return {"product": self.product.to_dict()}
+        return self.product.to_dict()
