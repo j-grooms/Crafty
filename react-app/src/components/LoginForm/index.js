@@ -21,6 +21,11 @@ const LoginForm = () => {
 
 	if (currentUser) return <Redirect to="/shop" />;
 
+	const demoLogin = (event) => {
+		event.preventDefault();
+		dispatch(sessionActions.login({username: "Demo User", password: "password"}))
+	}
+
 	return (
 		<>
 			<form className="login-form" onSubmit={handleLogin}>
@@ -48,9 +53,17 @@ const LoginForm = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</div>
+				<div className="login-button-container">
+					<button className="login-button" type="submit">
+						Login<span className="login-spacer"></span>
+						<i class="fas fa-arrow-circle-right"></i>
+					</button>
+				</div>
 				<div>
-
-				<button className="login-button" type="submit">Login</button>
+					<button onClick={demoLogin} className="login-button">
+						Demo User<span className="login-spacer"></span>
+						<i class="fas fa-arrow-circle-right"></i>
+					</button>
 				</div>
 			</form>
 		</>
