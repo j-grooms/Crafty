@@ -73,7 +73,7 @@ const UserEditForm = () => {
 		}
 
         await dispatch(updateUser(formData, currentUser.id));
-        return history.push('/shop')
+        return history.push(`/user/${currentUser.id}`)
 	};
 
 	return (

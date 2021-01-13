@@ -26,7 +26,7 @@ const ProfilePage = () => {
 			await dispatch(getSeller(id));
 			return setLoaded(true);
 		})();
-	}, [id, dispatch]);
+	}, [id, currentUser.id, dispatch]);
 
 	return (
 		loaded && (
@@ -58,7 +58,7 @@ const ProfilePage = () => {
 							)}
 						</div>
 						<div className="profile-info-container">
-							<p className="profile-info-header">About this User</p>
+							<p className="profile-info-header">About this Seller</p>
 							<p className="profile-bio">{seller.bio}</p>
 						</div>
 					</div>

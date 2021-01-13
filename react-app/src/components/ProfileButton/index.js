@@ -38,10 +38,10 @@ const ProfileButton = () => {
 			</div>
 			{showMenu && (
 				<div className="profile-button-dropdown">
-					<Link to="/create-product">List a Product</Link>
-					<Link to={`/user/${currentUser.id}`}>Your Profile</Link>
-					<Link to={`/user/delete/${currentUser.id}`}>Delete Profile</Link>
-					<button onClick={logout}>Log Out</button>
+					<Link className="profile-dropdown-links" to="/create-product">List a Product</Link>
+					<Link className="profile-dropdown-links" to={`/user/${currentUser.id}`}>Your Profile</Link>
+					<Link className="profile-dropdown-links" to={`/user/delete/${currentUser.id}`}>Delete Profile</Link>
+					<Link className="profile-dropdown-links" onClick={logout}>Log Out</Link>
 				</div>
 			)}
 		</div>

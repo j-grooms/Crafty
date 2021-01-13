@@ -1,39 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@500&display=swap");
 
 .navbar-main-div {
-    display: flex;
-    justify-content: center;
-    position: static;
-    background: linear-gradient(#FFE1BF, #FFF0DF);
-    height: 60px;
-    border-bottom: 2px solid grey;
+	display: flex;
+	justify-content: center;
+	position: static;
+	background: linear-gradient(#ffe1bf, #fff0df);
+	height: 80px;
+	border-bottom: 2px solid black;
 }
 
-.nav-link-right {
-    width: 1600px;
-    display: flex;
-    position: relative;
-    justify-content: space-around;
-    align-items: center;
+.navbar-widgets {
+	width: 1600px;
+	display: flex;
+	position: relative;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .nav-control-buttons {
-    display: flex;
-    justify-content: space-around;
-    width: 150px;
-    align-items: center;
+	display: flex;
+	justify-content: space-around;
+	width: 150px;
+	align-items: center;
 }
 
 .cart-icon {
-    font-size: 30px;
+	font-size: 30px;
 }
 
 .cart-icon:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .navbar-logo {
-    font-family: 'Fraunces', serif;
-    font-size: 32px;
-    font-weight: 600;
+	font-family: "Fraunces", serif;
+	font-size: 32px;
+	font-weight: 600;
+}
+
+.navbar-category-container {
+	background-color: #cdffbf;
+	height: 30px;
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+
+.navbar-categories {
+	margin: 0 auto;
+	padding-top: 2px;
+	width: 800px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }

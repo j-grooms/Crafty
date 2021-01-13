@@ -8,11 +8,13 @@ const Navbar = () => {
 	const currentUser = useSelector((state) => state.session.user);
 
 	return (
-		<div className="navbar-main-div">
-			<div>
+		<>
+			<div className="navbar-main-div">
 				{currentUser ? (
-					<div className="nav-link-right">
-						<NavLink to="/shop" className="navbar-logo">Crafty</NavLink>
+					<div className="navbar-widgets">
+						<NavLink to="/shop" className="navbar-logo">
+							Crafty
+						</NavLink>
 						<Searchbar />
 						<div className="nav-control-buttons">
 							<ProfileButton />
@@ -26,7 +28,14 @@ const Navbar = () => {
 					</div>
 				)}
 			</div>
-		</div>
+			<div className="navbar-category-container">
+				<div className="navbar-categories">
+					<NavLink to=''>Clothing</NavLink>
+					<NavLink to=''>Jewelry</NavLink>
+					<NavLink to=''>Home & Bath</NavLink>
+				</div>
+			</div>
+		</>
 	);
 };
 

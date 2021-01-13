@@ -18,7 +18,7 @@ const Searchbar = () => {
 							type="text"
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							placeholder="Search for anything"
+							placeholder="Search for tags"
 						/>
 						<button className="searchbar-submit-button" type="submit">
 							<i className="fas fa-search"></i>
