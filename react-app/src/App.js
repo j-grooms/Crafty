@@ -14,6 +14,7 @@ import ProductView from "./components/ProductView";
 import ProductEditForm from "./components/ProductEditForm";
 import ProductDeleteForm from "./components/ProductDeleteForm";
 import ProfilePage from "./components/ProfilePage";
+import SearchResults from "./components/SearchResults";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -51,6 +52,9 @@ function App() {
 					</ProtectedRoute>
 					<ProtectedRoute path="/create-product" exact={true}>
 						<ProductForm />
+					</ProtectedRoute>
+					<ProtectedRoute path="/search/:term" exact={true}>
+						<SearchResults />
 					</ProtectedRoute>
 					<ProtectedRoute path="/shop" exact={true}>
 						<Feed />

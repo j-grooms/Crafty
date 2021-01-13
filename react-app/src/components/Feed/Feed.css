@@ -5,3 +5,9 @@
     width: 1400px;
     margin: 0px auto;
 }
+
+.feed-header {
+    padding-top: 20px;
+    font-size: 18pt;
+    text-align: center;
+}

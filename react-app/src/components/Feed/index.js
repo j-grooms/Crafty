@@ -20,11 +20,14 @@ const Feed = () => {
 
 	return (
 		loaded && (
+			<>
+			<p className="feed-header">All Items</p>
 			<div className="feed-container">
 				{products.map((product, i) => (
 					<ProductPreview key={product.name.concat(i)} product={product} />
 				))}
 			</div>
+			</>
 		)
 	);
 };

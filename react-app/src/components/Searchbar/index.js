@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./Searchbar.css";
 
 const Searchbar = () => {
 	const [searchTerm, setSearchTerm] = useState("");
+	const history = useHistory();
 
-	const submitSearch = (event) => {
+	const submitSearch = async(event) => {
 		event.preventDefault();
+		return history.push(`/search/${searchTerm}`)
 	};
 
 	return (

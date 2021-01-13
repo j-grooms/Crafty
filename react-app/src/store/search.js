@@ -9,6 +9,9 @@ const setResults = (results) => {
 
 export const searchByTag = (tag) => async (dispatch) => {
     const response = await fetch(`/api/products/by_tag/${tag}`)
+    const resJSON = await response.json();
+    dispatch(setResults(resJSON.products));
+    return response;
 }
 
 const initialState = { results: [] };

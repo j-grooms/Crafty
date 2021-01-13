@@ -5,6 +5,7 @@ import productReducer from "./product";
 import favoriteReducer from "./favorite";
 import cartReducer from "./cart";
 import sellerReducer from "./seller";
+import searchReducer from "./search";
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	products: productReducer,
 	favorites: favoriteReducer,
 	cart: cartReducer,
+	search: searchReducer,
 });
 
 let enhancer;
