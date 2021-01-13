@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import configureStore from "./store";
 import "./reset.css";
 import "./index.css";
+// import "./forms.css";
 import App from "./App";
 
 const preloadedState = {

@@ -28,13 +28,17 @@ const Navbar = () => {
 					</div>
 				)}
 			</div>
-			<div className="navbar-category-container">
-				<div className="navbar-categories">
-					<NavLink to=''>Clothing</NavLink>
-					<NavLink to=''>Jewelry</NavLink>
-					<NavLink to=''>Home & Bath</NavLink>
+			{currentUser ? (
+				<div className="navbar-category-container">
+					<div className="navbar-categories">
+						<NavLink to="">Clothing</NavLink>
+						<NavLink to="">Jewelry</NavLink>
+						<NavLink to="">Home & Bath</NavLink>
+					</div>
 				</div>
-			</div>
+			) : (
+				<></>
+			)}
 		</>
 	);
 };

@@ -15,7 +15,7 @@ const SearchResults = () => {
             await dispatch(searchByTag(term));
             return setLoaded(true);
         })();
-    }, [term])
+    }, [term, dispatch])
 
     return loaded && (
         <>
