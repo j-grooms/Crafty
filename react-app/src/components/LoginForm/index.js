@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
-import "../../forms.css"
 
 const LoginForm = () => {
 	const [username, setUsername] = useState("");

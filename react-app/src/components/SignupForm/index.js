@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from '../../store/session'
+import { signup } from "../../store/session";
 
 const SignupForm = () => {
 	const currentUser = useSelector((state) => state.session.user);
@@ -14,8 +14,8 @@ const SignupForm = () => {
 	const [profileUrl, setProfileUrl] = useState("");
 	const [bannerPic, setBannerPic] = useState("");
 	const [bannerUrl, setBannerUrl] = useState("");
-    const [money, setMoney] = useState(0.0);
-    const dispatch = useDispatch();
+	const [money, setMoney] = useState(0.0);
+	const dispatch = useDispatch();
 
 	if (currentUser) return <Redirect to="/shop" />;
 
@@ -65,7 +65,7 @@ const SignupForm = () => {
 			});
 			const resJSON = await response.json();
 			formData["profile_pic"] = resJSON.filename;
-		};
+		}
 
 		if (bannerPic) {
 			const data = new FormData();
@@ -76,17 +76,24 @@ const SignupForm = () => {
 			});
 			const resJSON = await response.json();
 			formData["banner"] = resJSON.filename;
-        };
+		}
 
-        return dispatch(signup(formData));
+		return dispatch(signup(formData));
 	};
 
 	return (
 		<>
-			<form encType="multipart/form-data" onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="username">Username *</label>
+			<form
+				className="signup-form"
+				encType="multipart/form-data"
+				onSubmit={handleSubmit}
+			>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="username">
+						Username *
+					</label>
 					<input
+						className="signup-form-input"
 						required
 						type="text"
 						name="username"
@@ -94,9 +101,12 @@ const SignupForm = () => {
 						onChange={(e) => setUsername(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="email">Email *</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="email">
+						Email *
+					</label>
 					<input
+						className="signup-form-input"
 						required
 						type="email"
 						name="email"
@@ -104,9 +114,12 @@ const SignupForm = () => {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="password">Password *</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="password">
+						Password *
+					</label>
 					<input
+						className="signup-form-input"
 						required
 						type="password"
 						name="password"
@@ -114,9 +127,12 @@ const SignupForm = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="confirmPassword">Confirm Password *</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="confirmPassword">
+						Confirm Password *
+					</label>
 					<input
+						className="signup-form-input"
 						required
 						type="password"
 						name="confirmPassword"
@@ -124,23 +140,29 @@ const SignupForm = () => {
 						onChange={(e) => setConfirmPassword(e.target.value)}
 					/>
 					{confirmPassword && password !== confirmPassword ? (
-						<p>Warning: Passwords do not match</p>
+						<p className="password-warning">Passwords do not match</p>
 					) : (
-						<></>
+						<p></p>
 					)}
 				</div>
-				<div>
-					<label htmlFor="bio">Bio</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="bio">
+						Bio
+					</label>
 					<textarea
+						className="form-textarea"
 						name="bio"
 						placeholder="Tell us about yourself, or your products!"
 						value={bio}
 						onChange={(e) => setBio(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="money">Money (fake, but free!)</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="money">
+						Money (fake, but free!)
+					</label>
 					<input
+						className="signup-form-input"
 						type="number"
 						step="any"
 						value={money}
@@ -170,7 +192,10 @@ const SignupForm = () => {
 					<input type="file" name="bannerPic" onChange={handleBanner} />
 				</div>
 				<div>
-					<button type="submit">Sign me up!</button>
+					<button className="login-button" type="submit">
+						Sign up<span className="login-spacer"></span>
+						<i class="fas fa-arrow-circle-right"></i>
+					</button>
 				</div>
 			</form>
 		</>
