@@ -1,0 +1,13 @@
+.cart-item {
+	margin: 10px;
+	border: 1px solid black;
+}
+
+.cart-image-container {
+	height: 150px;
+}
+
+.cart-image {
+	height: 100%;
+	width: auto;
+}

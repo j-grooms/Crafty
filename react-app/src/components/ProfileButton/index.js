@@ -57,9 +57,9 @@ const ProfileButton = () => {
 					>
 						Delete Profile
 					</button>
-					<Link className="profile-dropdown-links" onClick={logout}>
+					<button className="profile-dropdown-links" onClick={logout}>
 						Log Out
-					</Link>
+					</button>
 				</div>
 			)}
 			<Modal open={deleting} onClose={() => setDeleting(false)}>
