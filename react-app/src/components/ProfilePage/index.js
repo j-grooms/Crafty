@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getSeller } from "../../store/seller";
 import { fetchAllProductsBySeller } from "../../store/product";
 import { getFavorites } from "../../store/favorite";
+import Modal from "../Modal";
+import UserEditForm from "../UserEditForm";
 import FollowButton from "../FollowButton";
 import ProductPreview from "../ProductPreview";
 import "./ProfilePage.css";
@@ -13,6 +15,7 @@ const ProfilePage = () => {
 	const seller = useSelector((state) => state.seller.seller);
 	const products = useSelector((state) => state.products.products);
 	const favorites = useSelector((state) => state.favorites.favorites);
+	const [editing, setEditing] = useState(false)
 	const isSeller = currentUser.id === seller.id;
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
@@ -26,7 +29,7 @@ const ProfilePage = () => {
 			await dispatch(getSeller(id));
 			return setLoaded(true);
 		})();
-	}, [id, currentUser.id, dispatch]);
+	}, [id, currentUser, currentUser.id, dispatch]);
 
 	return (
 		loaded && (
@@ -51,7 +54,10 @@ const ProfilePage = () => {
 							<p className="profile-username">{seller.username}</p>
 							{isSeller ? (
 								<>
-									<Link to={`/user/edit/${currentUser.id}`}>Edit Info</Link>
+									<button onClick={() => setEditing(true)}>Edit Info</button>
+									<Modal open={editing} onClose={() => setEditing(false)}>
+										<UserEditForm />
+									</Modal>
 								</>
 							) : (
 								<FollowButton seller={seller.id} />

@@ -141,3 +141,7 @@ input[type="file"] {
 	height: 100%;
 	width: auto;
 }
+
+.user-edit-instruction {
+	font-size: 10pt;
+}

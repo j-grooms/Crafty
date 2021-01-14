@@ -38,9 +38,6 @@ function App() {
 					<ProtectedRoute exact={true} path="/user/:id">
 						<ProfilePage />
 					</ProtectedRoute>
-					<ProtectedRoute exact={true} path="/user/edit/:id">
-						<UserEditForm />
-					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/delete/:id">
 						<UserDeleteForm />
 					</ProtectedRoute>

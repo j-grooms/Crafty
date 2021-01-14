@@ -104,7 +104,7 @@ const UserEditForm = () => {
 						onChange={(e) => setMoney(e.target.value)}
 					/>
 				</div>
-				<p>To keep your current photos, just leave these fields blank</p>
+				<p className="user-edit-instruction">To keep your current photos, just leave these fields blank</p>
 				<div className="form-upload-div">
 					<p>{profile}</p>
 					<label htmlFor="profilePic" className="upload-choice">

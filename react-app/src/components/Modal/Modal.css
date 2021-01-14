@@ -1,5 +1,5 @@
 .modal-blur {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
     position: fixed;
     top: 0;
@@ -19,5 +19,5 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    color: white;
 }
-
