@@ -9,15 +9,21 @@ const CheckoutForm = () => {
 	const cart = useSelector((state) => state.cart.cart);
 	const products = useSelector((state) => state.checkout.products);
 	const [loaded, setLoaded] = useState(false);
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    const generateOptions = (int) => {
-        const options = []
-        for (let i = 1; i <= int; i++) {
-            options.push(<option value={i}>{i}</option>)
-        };
-        return options
-    }
+	const generateOptions = (int) => {
+		const options = [];
+		for (let i = 1; i <= int; i++) {
+			options.push(<option value={i}>{i}</option>);
+		}
+		return options;
+	};
+
+	let details = {};
+
+	const quantityUpdate = (e) => {
+		console.log(e.target.value);
+	};
 
 	useEffect(() => {
 		(async () => {
@@ -35,22 +41,31 @@ const CheckoutForm = () => {
 	return (
 		loaded && (
 			<>
-				{products.map((product, i) => (
-					<div key={i} className="cart-item">
-						<div className="cart-image-container">
-							<img
-								className="cart-image"
-								src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
-							/>
+				{products.map((product, i) => {
+					details[product.id] = 1;
+					return (
+						<div key={i} className="cart-item">
+							<div className="cart-image-container">
+								<img
+									className="cart-image"
+									src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
+								/>
+							</div>
+							<div className="cart-quantity">
+								<label htmlFor="quantity">Quantity</label>
+								<select
+									onChange={(e) => {
+										details[product.id] = parseInt(e.target.value);
+									}}
+									name="quantity"
+								>
+									{generateOptions(product.quantity).map((option) => option)}
+								</select>
+							</div>
 						</div>
-						<div className="cart-quantity">
-							<label htmlFor="quantity">Quantity</label>
-                            <select name="quantity">
-                                {generateOptions(product.quantity).map(option => option)}
-                            </select>
-						</div>
-					</div>
-				))}
+					);
+				})}
+				<button onClick={() => console.log(details)}>Test</button>
 			</>
 		)
 	);
