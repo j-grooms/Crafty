@@ -11,7 +11,9 @@ const SignupForm = () => {
 	const [bio, setBio] = useState("");
 	const [email, setEmail] = useState("");
 	const [profilePic, setProfilePic] = useState("");
+	const [profileName, setProfileName] = useState("Profile Picture");
 	const [profileUrl, setProfileUrl] = useState("");
+	const [bannerName, setBannerName] = useState("Banner Picture")
 	const [bannerPic, setBannerPic] = useState("");
 	const [bannerUrl, setBannerUrl] = useState("");
 	const [money, setMoney] = useState(0.0);
@@ -21,6 +23,7 @@ const SignupForm = () => {
 
 	const handleBanner = (e) => {
 		const file = e.target.files[0];
+		setBannerName(file.name)
 		const fileReader = new FileReader();
 		setBannerPic(file);
 		if (file) {
@@ -33,6 +36,8 @@ const SignupForm = () => {
 
 	const handleProfile = (e) => {
 		const file = e.target.files[0];
+		console.log(file.name)
+		setProfileName(file.name)
 		const fileReader = new FileReader();
 		setProfilePic(file);
 		if (file) {
@@ -177,7 +182,7 @@ const SignupForm = () => {
 					)}
 				</div> */}
 				<div className="form-upload-div">
-					<p>Profile Picture</p>
+					<p>{profileName}</p>
 					<label htmlFor="upload" className="upload-choice">
 						Select<span className="login-spacer"></span><i class="far fa-folder-open"></i>
 					</label>
@@ -196,14 +201,14 @@ const SignupForm = () => {
 					)}
 				</div> */}
 				<div className="form-upload-div">
-					<p>Banner Picture</p>
-					<label htmlFor="upload" className="upload-choice">
+					<p>{bannerName}</p>
+					<label htmlFor="bannerPic" className="upload-choice">
 						Select<span className="login-spacer"></span><i class="far fa-folder-open"></i>
 					</label>
 					<input
-						id="upload"
+						// id="upload"
 						type="file"
-						name="bannerPic"
+						id="bannerPic"
 						onChange={handleBanner}
 					/>
 				</div>
