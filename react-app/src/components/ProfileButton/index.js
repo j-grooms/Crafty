@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
-import "./ProfileButton.css"
+import Modal from "../Modal";
+import UserDeleteForm from "../UserDeleteForm";
+import "./ProfileButton.css";
 
 const ProfileButton = () => {
-    const dispatch = useDispatch();
-    const currentUser = useSelector((state) => state.session.user);
-    const [showMenu, setShowMenu] = useState(false);
+	const dispatch = useDispatch();
+	const currentUser = useSelector((state) => state.session.user);
+	const [showMenu, setShowMenu] = useState(false);
+	const [deleting, setDeleting] = useState(false);
 
 	const openMenu = () => {
 		if (showMenu) return;
@@ -30,20 +33,38 @@ const ProfileButton = () => {
 
 	return (
 		<div className="nav-holder">
-			<div
-				className="nav-user-icon"
-				onClick={openMenu}
-			>
-				<img className="nav-user-image" src={`https://crafty-app.s3.us-east-2.amazonaws.com/${currentUser.profile_pic}`} alt="profile" />
+			<div className="nav-user-icon" onClick={openMenu}>
+				<img
+					className="nav-user-image"
+					src={`https://crafty-app.s3.us-east-2.amazonaws.com/${currentUser.profile_pic}`}
+					alt="profile"
+				/>
 			</div>
 			{showMenu && (
 				<div className="profile-button-dropdown">
-					<Link className="profile-dropdown-links" to="/create-product">List a Product</Link>
-					<Link className="profile-dropdown-links" to={`/user/${currentUser.id}`}>Your Profile</Link>
-					<Link className="profile-dropdown-links" to={`/user/delete/${currentUser.id}`}>Delete Profile</Link>
-					<Link className="profile-dropdown-links" onClick={logout}>Log Out</Link>
+					<Link className="profile-dropdown-links" to="/create-product">
+						List a Product
+					</Link>
+					<Link
+						className="profile-dropdown-links"
+						to={`/user/${currentUser.id}`}
+					>
+						Your Profile
+					</Link>
+					<button
+						className="profile-dropdown-links"
+						onClick={() => setDeleting(true)}
+					>
+						Delete Profile
+					</button>
+					<Link className="profile-dropdown-links" onClick={logout}>
+						Log Out
+					</Link>
 				</div>
 			)}
+			<Modal open={deleting} onClose={() => setDeleting(false)}>
+				<UserDeleteForm />
+			</Modal>
 		</div>
 	);
 };

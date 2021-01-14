@@ -22,7 +22,7 @@ const UserDeleteForm = () => {
 			<div className="warning-div">
 				<p className="warning-header">WARNING</p>
 				<p className="warning-text">
-					This will delete your account, as well as all product listings and
+					This will delete your account, all product listings, and
 					reviews
 				</p>
 			</div>

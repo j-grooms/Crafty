@@ -5,8 +5,6 @@ import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CheckoutForm from "./components/CheckoutForm";
 import SplashPage from "./components/SplashPage";
-import UserEditForm from "./components/UserEditForm";
-import UserDeleteForm from "./components/UserDeleteForm";
 import Navbar from "./components/Navbar";
 import Feed from "./components/Feed";
 import ProductForm from "./components/ProductForm";
@@ -37,9 +35,6 @@ function App() {
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/:id">
 						<ProfilePage />
-					</ProtectedRoute>
-					<ProtectedRoute exact={true} path="/user/delete/:id">
-						<UserDeleteForm />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/product/delete/:id">
 						<ProductDeleteForm />
