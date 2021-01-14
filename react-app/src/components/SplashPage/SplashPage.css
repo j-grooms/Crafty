@@ -1,0 +1,19 @@
+.forms-holder {
+    background-color: red;
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px auto;
+}
+
+.login-splash-div {
+    text-align: center;
+}
+
+.signup-splash-div {
+    text-align: center;
+}
+
+.splash-background {
+    background-color: rgba(0, 0, 0, 0.1)
+}

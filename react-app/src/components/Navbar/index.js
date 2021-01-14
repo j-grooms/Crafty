@@ -22,9 +22,8 @@ const Navbar = () => {
 						</div>
 					</div>
 				) : (
-					<div className="nav-link-container">
-						<NavLink to="/login">Login</NavLink>
-						<NavLink to="/signup">Sign Up</NavLink>
+					<div className="navbar-widgets">
+						<p className="navbar-logo">Crafty</p>
 					</div>
 				)}
 			</div>
@@ -37,7 +36,7 @@ const Navbar = () => {
 					</div>
 				</div>
 			) : (
-				<></>
+				<div className="navbar-category-container"></div>
 			)}
 		</>
 	);
