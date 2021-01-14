@@ -15,5 +15,11 @@
 }
 
 .splash-background {
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.1)
+}
+
+.splash-option {
+    font-size: 25px;
 }
