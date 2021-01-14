@@ -24,6 +24,17 @@
 	background-color: #fff9f3;
 }
 
+.deletion-form {
+	margin: 10px;
+	width: 400px;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid black;
+}
+
 .form-label {
 	position: relative;
 	top: 2px;
@@ -144,4 +155,52 @@ input[type="file"] {
 
 .user-edit-instruction {
 	font-size: 10pt;
+}
+
+.warning-header {
+	color: red;
+	text-align: center;
+}
+
+.warning-text {
+	color: red;
+	font-size: 12px;
+}
+
+.warning-div {
+	background-color: #FFDFDF;
+	width: 400px;
+	padding-top: 10px;
+}
+
+
+.warning-input {
+	background-color: white;
+	width: 370px;
+	padding: 3px;
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 2px solid #fe2020;
+}
+
+.warning-input:focus {
+	background-color: #FFDFDF;
+}
+
+.warning-button {
+	background-color: #FE8080;
+	width: 120px;
+	height: 30px;
+	font-size: 11pt;
+	margin-bottom: 10px;
+	text-align: center;
+	border-radius: 10px;
+	border: 1px solid black;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.warning-button:hover {
+	background-color: #fe2020;
+	transform: translateY(-1px);
 }
