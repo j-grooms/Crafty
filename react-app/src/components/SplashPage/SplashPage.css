@@ -17,9 +17,35 @@
 .splash-background {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1)
 }
 
-.splash-option {
-    font-size: 25px;
+.splash-icons {
+    margin-top: 80px;
+    width: 800px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 80px;
+}
+
+.splash-title {
+    font-size: 36pt;
+    margin-bottom: 50px;
+    margin-top: 75px;
+}
+
+.splash-blurbs {
+    font-size: 24pt;
+    text-align: center;
+}
+
+.splash-about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.blurb {
+    padding: 20px;
 }

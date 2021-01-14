@@ -1,11 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import LoginForm from "../LoginForm";
+import SignupForm from "../SignupForm";
+import Modal from "../Modal";
 import ProfileButton from "../ProfileButton";
 import Searchbar from "../Searchbar";
 import "./Navbar.css";
 
 const Navbar = () => {
 	const currentUser = useSelector((state) => state.session.user);
+	const [login, setLogin] = useState(false);
+	const [signup, setSignup] = useState(false);
 
 	return (
 		<>
@@ -36,7 +42,24 @@ const Navbar = () => {
 					</div>
 				</div>
 			) : (
-				<div className="navbar-category-container"></div>
+				<>
+					<div className="navbar-category-container">
+						<div className="navbar-categories">
+							<button onClick={() => setLogin(true)}>
+								Have an Account?
+							</button>
+							<button onClick={() => setSignup(true)}>
+								New User?
+							</button>
+						</div>
+					</div>
+					<Modal open={login} onClose={() => setLogin(false)}>
+						<LoginForm />
+					</Modal>
+					<Modal open={signup} onClose={() => setSignup(false)}>
+						<SignupForm />
+					</Modal>
+				</>
 			)}
 		</>
 	);
