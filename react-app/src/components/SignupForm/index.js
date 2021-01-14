@@ -169,27 +169,43 @@ const SignupForm = () => {
 						onChange={(e) => setMoney(e.target.value)}
 					/>
 				</div>
-				<div>
+				{/* <div className="form-image-holder">
 					{profilePic ? (
-						<img className="user-image" src={profileUrl} alt="userPhoto" />
+						<img className="form-image-preview" src={profileUrl} alt="userPhoto" />
 					) : (
-						<></>
+						<div></div>
 					)}
+				</div> */}
+				<div className="form-upload-div">
+					<p>Profile Picture</p>
+					<label htmlFor="upload" className="upload-choice">
+						Select<span className="login-spacer"></span><i class="far fa-folder-open"></i>
+					</label>
+					<input
+						id="upload"
+						type="file"
+						name="profilePic"
+						onChange={handleProfile}
+					/>
 				</div>
-				<div>
-					<label htmlFor="profilePic">Profile Picture</label>
-					<input type="file" name="profilePic" onChange={handleProfile} />
-				</div>
-				<div>
+				{/* <div className="form-image-holder">
 					{bannerPic ? (
-						<img className="user-image" src={bannerUrl} alt="userPhoto" />
+						<img className="form-image-preview" src={bannerUrl} alt="userPhoto" />
 					) : (
-						<></>
+						<div></div>
 					)}
-				</div>
-				<div>
-					<label htmlFor="bannerPic">Profile Banner</label>
-					<input type="file" name="bannerPic" onChange={handleBanner} />
+				</div> */}
+				<div className="form-upload-div">
+					<p>Banner Picture</p>
+					<label htmlFor="upload" className="upload-choice">
+						Select<span className="login-spacer"></span><i class="far fa-folder-open"></i>
+					</label>
+					<input
+						id="upload"
+						type="file"
+						name="bannerPic"
+						onChange={handleBanner}
+					/>
 				</div>
 				<div>
 					<button className="login-button" type="submit">

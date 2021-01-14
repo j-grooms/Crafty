@@ -19,6 +19,7 @@
 	align-items: center;
 	width: 400px;
 	height: 600px;
+	/* max-height: 800px; */
 	border: 1px solid black;
 	background-color: #fff9f3;
 }
@@ -35,10 +36,10 @@
 }
 
 .form-textarea {
-    width: 380px;
-    height: 100px;
-    resize: none;
-    background-color: white;
+	width: 380px;
+	height: 100px;
+	resize: none;
+	background-color: white;
 	border: 2px solid #4af99b;
 }
 
@@ -54,8 +55,8 @@
 }
 
 .signup-form-input {
-    background-color: white;
-    width: 380px;
+	background-color: white;
+	width: 380px;
 	padding: 3px;
 	border-radius: 5px;
 	border: 2px solid #4af99b;
@@ -89,11 +90,54 @@
 
 .login-spacer {
 	display: inline-block;
-	width: 8px;
+	width: 10px;
 }
 
 .password-warning {
-    text-align: center;
-    font-size: 9pt;
-    color: red;
+	text-align: center;
+	font-size: 9pt;
+	color: red;
+}
+
+.upload-choice {
+	display: flex;
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 100px;
+	height: 30px;
+	background-color: #8efbc1;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease-in-out;
+}
+
+.upload-choice:hover {
+	background-color: #4af99b;
+	transform: translateY(-1px);
+}
+
+input[type="file"] {
+	position: absolute;
+	z-index: -1;
+	top: 6px;
+	left: 0;
+	font-size: 15px;
+	color: rgb(153, 153, 153);
+}
+
+.form-upload-div {
+	width: 400px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.form-image-holder {
+	height: 200px;
+}
+
+.form-image-preview {
+	height: 100%;
+	width: auto;
 }
