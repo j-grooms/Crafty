@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import LoginForm from "../LoginForm";
@@ -24,7 +24,9 @@ const Navbar = () => {
 						<Searchbar />
 						<div className="nav-control-buttons">
 							<ProfileButton />
-							<i className="fas fa-shopping-cart cart-icon"></i>
+							<Link to="/checkout">
+								<i className="fas fa-shopping-cart cart-icon"></i>
+							</Link>
 						</div>
 					</div>
 				) : (
@@ -45,12 +47,8 @@ const Navbar = () => {
 				<>
 					<div className="navbar-category-container">
 						<div className="navbar-categories">
-							<button onClick={() => setLogin(true)}>
-								Have an Account?
-							</button>
-							<button onClick={() => setSignup(true)}>
-								New User?
-							</button>
+							<button onClick={() => setLogin(true)}>Have an Account?</button>
+							<button onClick={() => setSignup(true)}>New User?</button>
 						</div>
 					</div>
 					<Modal open={login} onClose={() => setLogin(false)}>

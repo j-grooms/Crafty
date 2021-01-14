@@ -12,10 +12,8 @@ const SignupForm = () => {
 	const [email, setEmail] = useState("");
 	const [profilePic, setProfilePic] = useState("");
 	const [profileName, setProfileName] = useState("Profile Picture");
-	const [profileUrl, setProfileUrl] = useState("");
 	const [bannerName, setBannerName] = useState("Banner Picture")
 	const [bannerPic, setBannerPic] = useState("");
-	const [bannerUrl, setBannerUrl] = useState("");
 	const [money, setMoney] = useState(0.0);
 	const dispatch = useDispatch();
 
@@ -24,28 +22,14 @@ const SignupForm = () => {
 	const handleBanner = (e) => {
 		const file = e.target.files[0];
 		setBannerName(file.name)
-		const fileReader = new FileReader();
 		setBannerPic(file);
-		if (file) {
-			fileReader.readAsDataURL(file);
-			fileReader.onloadend = () => {
-				setBannerUrl(fileReader.result);
-			};
-		}
 	};
 
 	const handleProfile = (e) => {
 		const file = e.target.files[0];
 		console.log(file.name)
 		setProfileName(file.name)
-		const fileReader = new FileReader();
 		setProfilePic(file);
-		if (file) {
-			fileReader.readAsDataURL(file);
-			fileReader.onloadend = () => {
-				setProfileUrl(fileReader.result);
-			};
-		}
 	};
 
 	const handleSubmit = async (event) => {

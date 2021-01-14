@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CheckoutForm from "./components/CheckoutForm";
 import SplashPage from "./components/SplashPage";
 import UserEditForm from "./components/UserEditForm";
 import UserDeleteForm from "./components/UserDeleteForm";
@@ -61,9 +62,9 @@ function App() {
 					<Route path="/" exact={true}>
 						<SplashPage />
 					</Route>
-					{/* <Route path="/signup" exact={true}>
-						<SignupForm />
-					</Route> */}
+					<ProtectedRoute path="/checkout" exact={true}>
+						<CheckoutForm />
+					</ProtectedRoute>
 					<Route path="/404" exact={true}>
 						<p>404</p>
 					</Route>

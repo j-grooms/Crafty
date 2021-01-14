@@ -9,34 +9,22 @@ const UserEditForm = () => {
 	const [bio, setBio] = useState(currentUser.bio);
 	const [money, setMoney] = useState(currentUser.money);
 	const [profilePic, setProfilePic] = useState("");
-	const [profileUrl, setProfileUrl] = useState("");
+	const [profile, setProfile] = useState("Profile Picture");
 	const [bannerPic, setBannerPic] = useState("");
-	const [bannerUrl, setBannerUrl] = useState("");
+	const [banner, setBanner] = useState("Banner Picture");
     const dispatch = useDispatch();
     const history = useHistory();
 
 	const handleBanner = (e) => {
 		const file = e.target.files[0];
-		const fileReader = new FileReader();
 		setBannerPic(file);
-		if (file) {
-			fileReader.readAsDataURL(file);
-			fileReader.onloadend = () => {
-				setBannerUrl(fileReader.result);
-			};
-		}
+		setBanner(file.name)
 	};
 
 	const handleProfile = (e) => {
 		const file = e.target.files[0];
-		const fileReader = new FileReader();
 		setProfilePic(file);
-		if (file) {
-			fileReader.readAsDataURL(file);
-			fileReader.onloadend = () => {
-				setProfileUrl(fileReader.result);
-			};
-		}
+		setProfile(file.name)
 	};
 
 	const handleSubmit = async (event) => {
@@ -78,56 +66,66 @@ const UserEditForm = () => {
 
 	return (
 		<>
-			<form encType="multipart/form-data" onSubmit={handleSubmit}>
-                <div>
-                    <p>For security, enter your CURRENT password below:</p>
-                    <label htmlFor="password">Password *</label>
-                    <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-				<div>
-					<label htmlFor="bio">Bio</label>
+			<form className="signup-form" encType="multipart/form-data" onSubmit={handleSubmit}>
+				<div className="field-holder">
+					<label htmlFor="password" className="form-label">
+						Password *
+					</label>
+					<input
+						className="signup-form-input"
+						type="password"
+						name="password"
+						placeholder="Current password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+					/>
+				</div>
+				<div className="field-holder">
+					<label htmlFor="bio" className="form-label">
+						Bio
+					</label>
 					<textarea
+						className="form-textarea"
 						name="bio"
 						placeholder="Tell us about yourself, or your products!"
 						value={bio}
 						onChange={(e) => setBio(e.target.value)}
 					/>
 				</div>
-                <p>Add some funds!</p>
-				<div>
-					<label htmlFor="money">Money</label>
+				<div className="field-holder">
+					<label htmlFor="money" className="form-label">
+						Money (always free)
+					</label>
 					<input
+						className="signup-form-input"
 						type="number"
 						step="any"
 						value={money}
 						onChange={(e) => setMoney(e.target.value)}
 					/>
 				</div>
-				<div>
-					{profilePic ? (
-						<img className="user-image" src={profileUrl} alt="userPhoto" />
-					) : (
-						<></>
-					)}
+				<p>To keep your current photos, just leave these fields blank</p>
+				<div className="form-upload-div">
+					<p>{profile}</p>
+					<label htmlFor="profilePic" className="upload-choice">
+						Select<span className="login-spacer"></span>
+						<i class="far fa-folder-open"></i>
+					</label>
+					<input type="file" id="profilePic" onChange={handleProfile} />
 				</div>
-                <p>To keep your current photos, just leave these fields blank</p>
-				<div>
-					<label htmlFor="profilePic">Profile Picture</label>
-					<input type="file" name="profilePic" onChange={handleProfile} />
-				</div>
-				<div>
-					{bannerPic ? (
-						<img className="user-image" src={bannerUrl} alt="userPhoto" />
-					) : (
-						<></>
-					)}
+				<div className="form-upload-div">
+					<p>{banner}</p>
+					<label htmlFor="bannerPic" className="upload-choice">
+						Select <span className="login-spacer"></span>
+						<i class="far fa-folder-open"></i>
+					</label>
+					<input type="file" id="bannerPic" onChange={handleBanner} />
 				</div>
 				<div>
-					<label htmlFor="bannerPic">Profile Banner</label>
-					<input type="file" name="bannerPic" onChange={handleBanner} />
-				</div>
-				<div>
-					<button type="submit">Save Changes</button>
+					<button className="login-button" type="submit">
+						Save <span className="login-spacer"></span>
+						<i class="fas fa-arrow-circle-right"></i>
+					</button>
 				</div>
 			</form>
 		</>
