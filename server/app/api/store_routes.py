@@ -1,8 +1,9 @@
-from flask import Blueprint, request
-from werkzeug.utils import secure_filename
 import boto3
 import uuid
 import os
+from flask import Blueprint, request
+from werkzeug.utils import secure_filename
+from app.models import Product
 
 
 store = Blueprint('store', __name__)
@@ -17,10 +18,6 @@ s3 = boto3.resource('s3',
 def allowed_file(filename):
     return "." in filename and \
         filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
-
-# @store.route('/')
-# def test():
-#     return "Test"
 
 
 # CREATE
@@ -37,26 +34,19 @@ def rate_product():
 
 
 # READ
-@store.route('/cart/items')
+@store.route('/cart/items', methods=["POST"])
 def get_cart_items():
-    # id's from cookie
-    # empty the cart
-    pass
+    products = []
+    body = request.get_json()
+    cart = body.get("cart")
+    for item in cart:
+        product = Product.query.get(item)
+        products.append(product.to_dict())
+    print(products)
+    return {"products": products}
 
 
 # UPDATE
-@store.route('/cart/add/<id>', methods=["POST"])
-def add_to_cart():
-    # modify cookie
-    pass
-
-
-@store.route('/cart/remove/<id>', methods=["POST"])
-def remove_from_cart():
-    # modify cookie
-    pass
-
-
 @store.route('/<product_id>/rate', methods=["PUT"])
 def update_product_rating():
     pass
