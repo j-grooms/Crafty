@@ -27,7 +27,6 @@ const SignupForm = () => {
 
 	const handleProfile = (e) => {
 		const file = e.target.files[0];
-		console.log(file.name)
 		setProfileName(file.name)
 		setProfilePic(file);
 	};

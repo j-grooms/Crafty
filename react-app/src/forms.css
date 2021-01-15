@@ -24,6 +24,20 @@
 	background-color: #fff9f3;
 }
 
+.product-form {
+	margin: 5px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	width: 400px;
+	height: 800px;
+	max-height: 800px;
+	border: 1px solid black;
+	background-color: #fff9f3;
+}
+
 .deletion-form {
 	margin: 10px;
 	width: 400px;
@@ -206,4 +220,16 @@ input[type="file"] {
 .warning-button:hover {
 	background-color: #fe2020;
 	transform: translateY(-1px);
+}
+
+.product-form-select {
+	background-color: white;
+	width: 390px;
+	height: 33px;
+	border-radius: 5px;
+	border: 2px solid #4af99b;
+}
+
+.product-form-select:focus {
+	background-color: #d2fde6;
 }

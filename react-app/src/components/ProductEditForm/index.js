@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { editProduct } from "../../store/product";
 import { getProductById } from "../../store/product";
 
 const ProductEditForm = () => {
-    const [loaded, setLoaded] = useState(false);
-    const { id } = useParams();
-    const currentUser = useSelector((state) => state.session.user);
-    const seller = useSelector((state) => state.session.user.id);
-    const product = useSelector((state) => state.products.product)
-    const dimensions = product.dimensions.split(" x ")
+	const [loaded, setLoaded] = useState(false);
+	const { id } = useParams();
+	const currentUser = useSelector((state) => state.session.user);
+	const seller = useSelector((state) => state.session.user.id);
+	const product = useSelector((state) => state.products.product);
+	const dimensions = product.dimensions.split(" x ");
 
 	const [name, setName] = useState(product.name);
 	const [price, setPrice] = useState(product.price);
@@ -28,28 +28,24 @@ const ProductEditForm = () => {
 	const [quantity, setQuantity] = useState(product.quantity);
 	const [tagString, setTagString] = useState(product.tags.join(", "));
 	const [image, setImage] = useState("");
-	const [imageurl, setImageurl] = useState("");
-    const dispatch = useDispatch();
+	const [filename, setFilename] = useState("Product Image");
+	const dispatch = useDispatch();
 
-    useEffect(() => {
-        (async () => {
-            await dispatch(getProductById(id))
-            return setLoaded(true);
-        })()
-    }, [dispatch, id])
+	useEffect(() => {
+		(async () => {
+			await dispatch(getProductById(id));
+			return setLoaded(true);
+		})();
+	}, [dispatch, id]);
 
-    if (currentUser.id !== product.user.id) { return <Redirect to='/shop' />}
+	if (currentUser.id !== product.user.id) {
+		return <Redirect to="/shop" />;
+	}
 
 	const handleChange = (e) => {
 		const file = e.target.files[0];
-		const fileReader = new FileReader();
 		setImage(file);
-		if (file) {
-			fileReader.readAsDataURL(file);
-			fileReader.onloadend = () => {
-				setImageurl(fileReader.result);
-			};
-		}
+		setFilename(file.name);
 	};
 
 	const handleSubmit = async (event) => {
@@ -60,7 +56,7 @@ const ProductEditForm = () => {
 		const tagArray = tagString.split(", ");
 
 		const formData = {
-            id: product.id,
+			id: product.id,
 			sold_by: seller,
 			name,
 			price,
@@ -85,16 +81,19 @@ const ProductEditForm = () => {
 		}
 
 		await dispatch(editProduct(formData, product.id));
-        return <Redirect to="/shop" />;
+		return <Redirect to="/shop" />;
 	};
 
 	return (
 		loaded && (
 			<>
-				<form onSubmit={handleSubmit}>
-					<div>
-						<label htmlFor="name">Name</label>
+				<form className="product-form" onSubmit={handleSubmit}>
+					<div className="field-holder">
+						<label className="form-label" htmlFor="name">
+							Name
+						</label>
 						<input
+							className="signup-form-input"
 							required
 							type="text"
 							name="name"
@@ -102,9 +101,12 @@ const ProductEditForm = () => {
 							onChange={(e) => setName(e.target.value)}
 						/>
 					</div>
-					<div>
-						<label htmlFor="price">Price</label>
+					<div className="field-holder">
+						<label className="form-label" htmlFor="price">
+							Price
+						</label>
 						<input
+							className="signup-form-input"
 							required
 							type="number"
 							step="any"
@@ -113,9 +115,12 @@ const ProductEditForm = () => {
 							onChange={(e) => setPrice(e.target.value)}
 						/>
 					</div>
-					<div>
-						<label htmlFor="category">Category</label>
+					<div className="field-holder">
+						<label className="form-label" htmlFor="category">
+							Category
+						</label>
 						<select
+							className="product-form-select"
 							required
 							value={category}
 							onChange={(e) => setCategory(e.target.value)}
@@ -125,113 +130,127 @@ const ProductEditForm = () => {
 							<option value="Home">Home</option>
 						</select>
 					</div>
-					<div>
-						<label htmlFor="description">Description</label>
+					<div className="field-holder">
+						<label className="form-label" htmlFor="description">
+							Description
+						</label>
 						<textarea
+							className="form-textarea"
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
 						/>
 					</div>
-					<div>
+					<div className="field-holder">
 						<label htmlFor="width">Width</label>
-						<input
-							type="number"
-							step="any"
-							value={width}
-							onChange={(e) => setWidth(e.target.value)}
-						/>
-						<select
-							value={widthUnits}
-							onChange={(e) => setWidthUnits(e.target.value)}
-						>
-							<option value="in">Inches</option>
-							<option value="ft">Feet</option>
-							<option value="cm">Centimeters</option>
-						</select>
+						<div className="select-div">
+							<input
+								type="number"
+								step="any"
+								value={width}
+								onChange={(e) => setWidth(e.target.value)}
+							/>
+							<select
+								value={widthUnits}
+								onChange={(e) => setWidthUnits(e.target.value)}
+							>
+								<option value="in">Inches</option>
+								<option value="ft">Feet</option>
+								<option value="cm">Centimeters</option>
+							</select>
+						</div>
 					</div>
-					<div>
+					<div className="field-holder">
 						<label htmlFor="length">Length</label>
-						<input
-							type="number"
-							step="any"
-							value={length}
-							onChange={(e) => setLength(e.target.value)}
-						/>
-						<select
-							value={lengthUnits}
-							onChange={(e) => setLengthUnits(e.target.value)}
-						>
-							<option value="in">Inches</option>
-							<option value="ft">Feet</option>
-							<option value="cm">Centimeters</option>
-						</select>
+						<div className="select-div">
+							<input
+								type="number"
+								step="any"
+								value={length}
+								onChange={(e) => setLength(e.target.value)}
+							/>
+							<select
+								value={lengthUnits}
+								onChange={(e) => setLengthUnits(e.target.value)}
+							>
+								<option value="in">Inches</option>
+								<option value="ft">Feet</option>
+								<option value="cm">Centimeters</option>
+							</select>
+						</div>
 					</div>
-					<div>
+					<div className="field-holder">
 						<label htmlFor="height">Height</label>
-						<input
-							type="number"
-							step="any"
-							value={height}
-							onChange={(e) => setHeight(e.target.value)}
-						/>
-						<select
-							value={heightUnits}
-							onChange={(e) => setHeightUnits(e.target.value)}
-						>
-							<option value="in">Inches</option>
-							<option value="ft">Feet</option>
-							<option value="cm">Centimeters</option>
-						</select>
+						<div className="select-div">
+							<input
+								type="number"
+								step="any"
+								value={height}
+								onChange={(e) => setHeight(e.target.value)}
+							/>
+							<select
+								value={heightUnits}
+								onChange={(e) => setHeightUnits(e.target.value)}
+							>
+								<option value="in">Inches</option>
+								<option value="ft">Feet</option>
+								<option value="cm">Centimeters</option>
+							</select>
+						</div>
 					</div>
-					<div>
+					<div className="field-holder">
 						<label htmlFor="weight">Weight</label>
-						<input
-							type="number"
-							step="any"
-							value={weight}
-							onChange={(e) => setWeight(e.target.value)}
-						/>
-						<select
-							value={weightUnits}
-							onChange={(e) => setWeightUnits(e.target.value)}
-						>
-							<option value="lbs">Pounds</option>
-							<option value="oz">Ounces</option>
-							<option value="kg">Kilograms</option>
-						</select>
+						<div className="select-div">
+							<input
+								type="number"
+								step="any"
+								value={weight}
+								onChange={(e) => setWeight(e.target.value)}
+							/>
+							<select
+								value={weightUnits}
+								onChange={(e) => setWeightUnits(e.target.value)}
+							>
+								<option value="lbs">Pounds</option>
+								<option value="oz">Ounces</option>
+								<option value="kg">Kilograms</option>
+							</select>
+						</div>
 					</div>
-					<div>
-						<label htmlFor="quantity">Quantity</label>
+					<div className="field-holder">
+						<label className="form-label" htmlFor="quantity">
+							Quantity
+						</label>
 						<input
+							className="signup-form-input"
 							type="number"
 							value={quantity}
 							onChange={(e) => setQuantity(e.target.value)}
 						/>
 					</div>
-					<div>
-						<label htmlFor="tags">Tags</label>
+					<div className="field-holder">
+						<label className="form-label" htmlFor="tags">
+							Tags
+						</label>
 						<input
+							className="signup-form-input"
 							type="text"
 							value={tagString}
 							onChange={(e) => setTagString(e.target.value)}
 							placeholder="e.g. Ring, Soccer, etc"
 						/>
 					</div>
-					<div>
-						{image ? (
-							<img className="user-image" src={imageurl} alt="userPhoto" />
-						) : (
-							<img
-								className="user-image"
-								src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
-								alt="userPhoto"
-							/>
-						)}
-						<label htmlFor="image">Image</label>
-						<input type="file" onChange={handleChange} />
+					<div className="form-upload-div">
+						<p>{filename}</p>
+						<label className="upload-choice" htmlFor="image">
+							Select<span className="login-spacer"></span>
+							<i className="far fa-folder-open"></i>
+						</label>
+						<input id="image" type="file" onChange={handleChange} />
 					</div>
 					<div>
-						<button type="submit">Clicky Clicky</button>
+						<button className="login-button" type="submit">
+							Clicky Clicky
+						</button>
 					</div>
 				</form>
 			</>
