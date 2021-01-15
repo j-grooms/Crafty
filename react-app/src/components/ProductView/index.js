@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { getFavorites } from "../../store/favorite";
+import ProductReview from "../ProductReview";
 import FavoriteButton from "../FavoriteButton";
 import FollowButton from "../FollowButton";
 import CartButton from "../CartButton";
@@ -54,30 +55,39 @@ const ProductView = () => {
 					/>
 				</div>
 				<div className="product-view-details">
-					<p>{product.name}</p>
-					<p>Description: {product.description}</p>
+					<p className="product-view-name">{product.name}</p>
 					<p>
-						Sold by:{" "}
+						<span className="product-detail-header">Description: </span>{" "}
+						{product.description}
+					</p>
+					<p>
+						<span className="product-detail-header">Sold by: </span>
 						<Link to={`/user/${product.user.id}`}>{product.user.username}</Link>
 					</p>
-					<p>Category: {product.category}</p>
+					<p>
+						<span className="product-detail-header">Category: </span>
+						{product.category}
+					</p>
 					{product.quantity <= 0 ? (
-						<p>Out of Stock</p>
+						<p className="product-detail-header">Out of Stock</p>
 					) : (
-						<p>Number in stock: {product.quantity}</p>
+						<p>
+							<span className="product-detail-header">Number in Stock: </span>
+							{product.quantity}
+						</p>
 					)}
-					<p>Dimensions: {product.dimensions}</p>
-					<p>Weight: {product.weight}</p>
+					<p>
+						<span className="product-detail-header">Dimensions: </span>
+						{product.dimensions}
+					</p>
+					<p>
+						<span className="product-detail-header">Weight: </span>
+						{product.weight}
+					</p>
 				</div>
 				<div className="product-view-ratings">
 					{product.rating.map((rating, i) => (
-						<div key={i}>
-							<p>
-								{rating.rating} stars
-							</p>
-							<p>{rating.user.username}</p>
-							<p>{rating.comment}</p>
-						</div>
+						<ProductReview key={i} rating={rating} />
 					))}
 				</div>
 			</>

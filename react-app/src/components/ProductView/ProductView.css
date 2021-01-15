@@ -7,14 +7,42 @@
 
 .product-view-details {
     width: 350px;
+    height: 400px;
     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    font-size: 11pt;
 }
 
 .product-view-image-container {
     width: 600px;
+    border: 1px solid black;
 }
 
 .product-view-image {
     width: 100%;
     height: auto;
+}
+
+.product-view-name {
+    font-size: 18pt;
+    text-decoration: underline;
+}
+
+.product-detail-header {
+    font-weight: 700;
+}
+
+.product-view-ratings {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-review {
+    width: 250px;
+    padding: 10px;
 }
