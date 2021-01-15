@@ -19,7 +19,11 @@ export const getCartItems = (items) => async (dispatch) => {
 };
 
 export const checkout = (body) => async (dispatch) => {
-    const response = await fetch(`/api/store/checkout`);
+    const response = await fetch(`/api/store/checkout`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(body)
+    });
     const resJSON = await response.json();
     console.log(resJSON);
 };

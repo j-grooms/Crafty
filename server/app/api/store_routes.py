@@ -3,7 +3,8 @@ import uuid
 import os
 from flask import Blueprint, request
 from werkzeug.utils import secure_filename
-from app.models import Product, User
+from app.models import db, Product, User, Purchase
+from decimal import Decimal
 
 
 store = Blueprint('store', __name__)
@@ -25,14 +26,20 @@ def allowed_file(filename):
 def checkout():
     body = request.get_json()
     quantities = body.get('quantities')
-    grand_total = body.get('grandTotal')
-    user = body.get('user')
+    grand_total = Decimal(body.get('grandTotal'))
+    user_id = body.get('user')
     for k, v in quantities.items():
         product = Product.query.get(k)
         product.quantity = product.quantity - v
+        purchase = Purchase(user_id=user_id, product_id=k)
         db.session.add(product)
+        db.session.add(purchase)
         db.session.commit()
-        
+    user = User.query.get(user_id)
+    user.money = user.money - grand_total
+    db.session.add(user)
+    db.session.commit()
+    return {"user": user.to_dict()}
     pass
 
 

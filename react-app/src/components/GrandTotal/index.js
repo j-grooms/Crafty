@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { checkout } from "../../store/checkout";
 
 const GrandTotal = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const quantities = useSelector((state) => state.quantities);
 	const products = useSelector((state) => state.checkout.products);
+	const dispatch = useDispatch();
 	const [enoughMoney, setEnoughMoney] = useState(false);
 
 	const [grandTotal, setGrandTotal] = useState(0);
@@ -39,6 +41,7 @@ const GrandTotal = () => {
 		event.preventDefault();
 		console.log("quantities: ", quantities, "grandTotal: ", grandTotal);
 		const body = { quantities, grandTotal, user: currentUser.id }
+		return dispatch(checkout(body))
 	};
 
 	if (!enoughMoney) {
