@@ -3,7 +3,7 @@ import uuid
 import os
 from flask import Blueprint, request
 from werkzeug.utils import secure_filename
-from app.models import Product
+from app.models import Product, User
 
 
 store = Blueprint('store', __name__)
@@ -23,8 +23,16 @@ def allowed_file(filename):
 # CREATE
 @store.route('/checkout', methods=["POST"])
 def checkout():
-    # create purchase entry in db per item
-    # empty_cart()
+    body = request.get_json()
+    quantities = body.get('quantities')
+    grand_total = body.get('grandTotal')
+    user = body.get('user')
+    for k, v in quantities.items():
+        product = Product.query.get(k)
+        product.quantity = product.quantity - v
+        db.session.add(product)
+        db.session.commit()
+        
     pass
 
 

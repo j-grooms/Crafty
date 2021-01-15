@@ -62,8 +62,7 @@ const CheckoutForm = () => {
 						</div>
 					);
 				})}
-                <p>Total: <GrandTotal/></p>
-				<button>Test</button>
+                <GrandTotal/>
 			</>
 		)
 	);

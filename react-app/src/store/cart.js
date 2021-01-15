@@ -30,7 +30,13 @@ export const removeFromCart = (id) => async (dispatch) => {
     const newCart = cart.filter(item => item !== id);
     localStorage.setItem("cart", JSON.stringify(newCart));
     dispatch(setCart(newCart));
-}
+};
+
+export const emptyCart = () => async (dispatch) => {
+    const newCart = [];
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    dispatch(setCart(newCart));
+};
 
 const initialState = {cart: []}
 

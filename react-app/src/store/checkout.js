@@ -18,6 +18,12 @@ export const getCartItems = (items) => async (dispatch) => {
     return response;
 };
 
+export const checkout = (body) => async (dispatch) => {
+    const response = await fetch(`/api/store/checkout`);
+    const resJSON = await response.json();
+    console.log(resJSON);
+};
+
 const initialState = { products: [] };
 
 const checkoutReducer = (state = initialState, action) => {
