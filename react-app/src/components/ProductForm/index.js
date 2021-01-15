@@ -20,19 +20,13 @@ const ProductForm = () => {
 	const [quantity, setQuantity] = useState("");
 	const [tagString, setTagString] = useState("");
 	const [image, setImage] = useState("");
-	const [imageurl, setImageurl] = useState("");
+	const [filename, setFilename] = useState("Product Image");
 	const dispatch = useDispatch();
 
 	const handleChange = (e) => {
 		const file = e.target.files[0];
-		const fileReader = new FileReader();
 		setImage(file);
-		if (file) {
-			fileReader.readAsDataURL(file);
-			fileReader.onloadend = () => {
-				setImageurl(fileReader.result);
-			};
-		}
+		setFilename(file.name);
 	};
 
 	const handleSubmit = async (event) => {
@@ -72,10 +66,13 @@ const ProductForm = () => {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="name">Name</label>
+			<form className="product-form" onSubmit={handleSubmit}>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="name">
+						Name
+					</label>
 					<input
+						className="signup-form-input"
 						required
 						type="text"
 						name="name"
@@ -83,9 +80,12 @@ const ProductForm = () => {
 						onChange={(e) => setName(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="price">Price</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="price">
+						Price
+					</label>
 					<input
+						className="signup-form-input"
 						required
 						type="number"
 						step="any"
@@ -94,9 +94,12 @@ const ProductForm = () => {
 						onChange={(e) => setPrice(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="category">Category</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="category">
+						Category
+					</label>
 					<select
+						className="product-form-select"
 						required
 						value={category}
 						onChange={(e) => setCategory(e.target.value)}
@@ -106,109 +109,144 @@ const ProductForm = () => {
 						<option value="Home">Home</option>
 					</select>
 				</div>
-				<div>
-					<label htmlFor="description">Description</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="description">
+						Description
+					</label>
 					<textarea
+						className="form-textarea"
 						value={description}
 						onChange={(e) => setDescription(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="width">Width</label>
-					<input
-						type="number"
-						step="any"
-						value={width}
-						onChange={(e) => setWidth(e.target.value)}
-					/>
-					<select
-						value={widthUnits}
-						onChange={(e) => setWidthUnits(e.target.value)}
-					>
-						<option value="in">Inches</option>
-						<option value="ft">Feet</option>
-						<option value="cm">Centimeters</option>
-					</select>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="width">
+						Width
+					</label>
+					<div className="select-div">
+						<input
+							className="product-select-input"
+							type="number"
+							step="any"
+							value={width}
+							onChange={(e) => setWidth(e.target.value)}
+						/>
+						<select
+							className="product-unit-select"
+							value={widthUnits}
+							onChange={(e) => setWidthUnits(e.target.value)}
+						>
+							<option value="in">Inches</option>
+							<option value="ft">Feet</option>
+							<option value="cm">Centimeters</option>
+						</select>
+					</div>
 				</div>
 				<div>
-					<label htmlFor="length">Length</label>
-					<input
-						type="number"
-						step="any"
-						value={length}
-						onChange={(e) => setLength(e.target.value)}
-					/>
-					<select
-						value={lengthUnits}
-						onChange={(e) => setLengthUnits(e.target.value)}
-					>
-						<option value="in">Inches</option>
-						<option value="ft">Feet</option>
-						<option value="cm">Centimeters</option>
-					</select>
+					<label className="form-label" htmlFor="length">
+						Length
+					</label>
+					<div className="select-div">
+						<input
+							className="product-select-input"
+							type="number"
+							step="any"
+							value={length}
+							onChange={(e) => setLength(e.target.value)}
+						/>
+						<select
+							className="product-unit-select"
+							value={lengthUnits}
+							onChange={(e) => setLengthUnits(e.target.value)}
+						>
+							<option value="in">Inches</option>
+							<option value="ft">Feet</option>
+							<option value="cm">Centimeters</option>
+						</select>
+					</div>
 				</div>
 				<div>
-					<label htmlFor="height">Height</label>
-					<input
-						type="number"
-						step="any"
-						value={height}
-						onChange={(e) => setHeight(e.target.value)}
-					/>
-					<select
-						value={heightUnits}
-						onChange={(e) => setHeightUnits(e.target.value)}
-					>
-						<option value="in">Inches</option>
-						<option value="ft">Feet</option>
-						<option value="cm">Centimeters</option>
-					</select>
+					<label className="form-label" htmlFor="height">
+						Height
+					</label>
+					<div className="select-div">
+						<input
+							className="product-select-input"
+							type="number"
+							step="any"
+							value={height}
+							onChange={(e) => setHeight(e.target.value)}
+						/>
+						<select
+							className="product-unit-select"
+							value={heightUnits}
+							onChange={(e) => setHeightUnits(e.target.value)}
+						>
+							<option value="in">Inches</option>
+							<option value="ft">Feet</option>
+							<option value="cm">Centimeters</option>
+						</select>
+					</div>
 				</div>
 				<div>
-					<label htmlFor="weight">Weight</label>
-					<input
-						type="number"
-						step="any"
-						value={weight}
-						onChange={(e) => setWeight(e.target.value)}
-					/>
-					<select
-						value={weightUnits}
-						onChange={(e) => setWeightUnits(e.target.value)}
-					>
-						<option value="lbs">Pounds</option>
-						<option value="oz">Ounces</option>
-						<option value="kg">Kilograms</option>
-					</select>
+					<label className="form-label" htmlFor="weight">
+						Weight
+					</label>
+					<div className="select-div">
+						<input
+							className="product-select-input"
+							type="number"
+							step="any"
+							value={weight}
+							onChange={(e) => setWeight(e.target.value)}
+						/>
+						<select
+							className="product-unit-select"
+							value={weightUnits}
+							onChange={(e) => setWeightUnits(e.target.value)}
+						>
+							<option value="lbs">Pounds</option>
+							<option value="oz">Ounces</option>
+							<option value="kg">Kilograms</option>
+						</select>
+					</div>
 				</div>
-				<div>
-					<label htmlFor="quantity">Quantity</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="quantity">
+						Quantity
+					</label>
 					<input
+						className="signup-form-input"
 						type="number"
 						value={quantity}
 						onChange={(e) => setQuantity(e.target.value)}
 					/>
 				</div>
-				<div>
-					<label htmlFor="tags">Tags</label>
+				<div className="field-holder">
+					<label className="form-label" htmlFor="tags">
+						Tags
+					</label>
 					<input
+						className="signup-form-input"
 						type="text"
 						value={tagString}
 						onChange={(e) => setTagString(e.target.value)}
 						placeholder="e.g. Ring, Soccer, etc"
 					/>
 				</div>
-				<div>
-					{image ? (
-						<img className="user-image" src={imageurl} alt="userPhoto" />
-					) : (
-						<></>
-					)}
-					<label htmlFor="image">Image</label>
-					<input type="file" onChange={handleChange} />
+				<div className="form-upload-div">
+					<p>{filename}</p>
+					<label className="upload-choice" htmlFor="image">
+						Select<span className="login-spacer"></span>
+						<i className="far fa-folder-open"></i>
+					</label>
+					<input id="image" type="file" onChange={handleChange} />
 				</div>
 				<div>
-					<button type="submit">Clicky Clicky</button>
+					<button className="login-button" type="submit">
+						Submit<span className="login-spacer"></span>
+						<i class="fas fa-arrow-circle-right"></i>
+					</button>
 				</div>
 			</form>
 		</>

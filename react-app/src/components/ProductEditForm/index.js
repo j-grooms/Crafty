@@ -265,7 +265,7 @@ const ProductEditForm = () => {
 					</div>
 					<div>
 						<button className="login-button" type="submit">
-							Clicky Clicky
+							Save Changes
 						</button>
 					</div>
 				</form>

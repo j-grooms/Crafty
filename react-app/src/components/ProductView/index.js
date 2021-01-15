@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { getFavorites } from "../../store/favorite";
+import Modal from "../Modal";
+import ProductEditForm from "../ProductEditForm";
 import ProductReview from "../ProductReview";
 import FavoriteButton from "../FavoriteButton";
 import FollowButton from "../FollowButton";
@@ -13,6 +15,7 @@ const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
 	const product = useSelector((state) => state.products.product);
 	const currentUser = useSelector((state) => state.session.user);
+	const [editing, setEditing] = useState(false);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -25,7 +28,7 @@ const ProductView = () => {
 		})();
 	}, [dispatch, id, currentUser]);
 
-	const editProduct = () => history.push(`/product/edit/${id}`);
+	const editProduct = () => setEditing(true);
 	const deleteProduct = () => history.push(`/product/delete/${id}`);
 
 	return (
@@ -94,6 +97,9 @@ const ProductView = () => {
 						<ProductReview key={i} rating={rating} />
 					))}
 				</div>
+				<Modal open={editing} onClose={() => setEditing(false)}>
+					<ProductEditForm />
+				</Modal>
 			</div>
 		)
 	);
