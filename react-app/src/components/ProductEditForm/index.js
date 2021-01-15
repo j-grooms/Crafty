@@ -141,15 +141,19 @@ const ProductEditForm = () => {
 						/>
 					</div>
 					<div className="field-holder">
-						<label htmlFor="width">Width</label>
+						<label className="form-label" htmlFor="width">
+							Width
+						</label>
 						<div className="select-div">
 							<input
+								className="product-select-input"
 								type="number"
 								step="any"
 								value={width}
 								onChange={(e) => setWidth(e.target.value)}
 							/>
 							<select
+								className="product-unit-select"
 								value={widthUnits}
 								onChange={(e) => setWidthUnits(e.target.value)}
 							>
@@ -160,15 +164,19 @@ const ProductEditForm = () => {
 						</div>
 					</div>
 					<div className="field-holder">
-						<label htmlFor="length">Length</label>
+						<label className="form-label" htmlFor="length">
+							Length
+						</label>
 						<div className="select-div">
 							<input
+								className="product-select-input"
 								type="number"
 								step="any"
 								value={length}
 								onChange={(e) => setLength(e.target.value)}
 							/>
 							<select
+								className="product-unit-select"
 								value={lengthUnits}
 								onChange={(e) => setLengthUnits(e.target.value)}
 							>
@@ -179,15 +187,19 @@ const ProductEditForm = () => {
 						</div>
 					</div>
 					<div className="field-holder">
-						<label htmlFor="height">Height</label>
+						<label className="form-label" htmlFor="height">
+							Height
+						</label>
 						<div className="select-div">
 							<input
+								className="product-select-input"
 								type="number"
 								step="any"
 								value={height}
 								onChange={(e) => setHeight(e.target.value)}
 							/>
 							<select
+								className="product-unit-select"
 								value={heightUnits}
 								onChange={(e) => setHeightUnits(e.target.value)}
 							>
@@ -198,15 +210,19 @@ const ProductEditForm = () => {
 						</div>
 					</div>
 					<div className="field-holder">
-						<label htmlFor="weight">Weight</label>
+						<label className="form-label" htmlFor="weight">
+							Weight
+						</label>
 						<div className="select-div">
 							<input
+								className="product-select-input"
 								type="number"
 								step="any"
 								value={weight}
 								onChange={(e) => setWeight(e.target.value)}
 							/>
 							<select
+								className="product-unit-select"
 								value={weightUnits}
 								onChange={(e) => setWeightUnits(e.target.value)}
 							>

@@ -233,3 +233,34 @@ input[type="file"] {
 .product-form-select:focus {
 	background-color: #d2fde6;
 }
+
+.select-div {
+	width: 390px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.product-select-input {
+	width: 200px;
+	background-color: white;
+	padding: 3px;
+	border-radius: 5px;
+	border: 2px solid #4af99b;
+}
+
+.product-select-input:focus {
+	background-color: #d2fde6;
+}
+
+.product-unit-select {
+	background-color: white;
+	width: 120px;
+	height: 33px;
+	border-radius: 5px;
+	border: 2px solid #4af99b;
+}
+
+.product-unit-select:focus {
+	background-color: #d2fde6;
+}
