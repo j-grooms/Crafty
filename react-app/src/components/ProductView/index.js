@@ -4,6 +4,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { getFavorites } from "../../store/favorite";
 import Modal from "../Modal";
+import ProductDeleteForm from "../ProductDeleteForm";
 import ProductEditForm from "../ProductEditForm";
 import ProductReview from "../ProductReview";
 import FavoriteButton from "../FavoriteButton";
@@ -16,6 +17,7 @@ const ProductView = () => {
 	const product = useSelector((state) => state.products.product);
 	const currentUser = useSelector((state) => state.session.user);
 	const [editing, setEditing] = useState(false);
+	const [deleting, setDeleting] = useState(false);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -29,7 +31,7 @@ const ProductView = () => {
 	}, [dispatch, id, currentUser]);
 
 	const editProduct = () => setEditing(true);
-	const deleteProduct = () => history.push(`/product/delete/${id}`);
+	const deleteProduct = () => setDeleting(true);
 
 	return (
 		loaded && (
@@ -99,6 +101,9 @@ const ProductView = () => {
 				</div>
 				<Modal open={editing} onClose={() => setEditing(false)}>
 					<ProductEditForm />
+				</Modal>
+				<Modal open={deleting} onClose={() => setDeleting(false)}>
+					<ProductDeleteForm />
 				</Modal>
 			</div>
 		)
