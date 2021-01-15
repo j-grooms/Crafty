@@ -46,12 +46,39 @@ const ProductView = () => {
 						)}
 					</div>
 				)}
+				<div className="product-view-image-container">
+					<img
+						className="product-view-image"
+						src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
+						alt="product"
+					/>
+				</div>
 				<div className="product-view-details">
 					<p>{product.name}</p>
+					<p>Description: {product.description}</p>
 					<p>
 						Sold by:{" "}
 						<Link to={`/user/${product.user.id}`}>{product.user.username}</Link>
 					</p>
+					<p>Category: {product.category}</p>
+					{product.quantity <= 0 ? (
+						<p>Out of Stock</p>
+					) : (
+						<p>Number in stock: {product.quantity}</p>
+					)}
+					<p>Dimensions: {product.dimensions}</p>
+					<p>Weight: {product.weight}</p>
+				</div>
+				<div className="product-view-ratings">
+					{product.rating.map((rating, i) => (
+						<div key={i}>
+							<p>
+								{rating.rating} stars
+							</p>
+							<p>{rating.user.username}</p>
+							<p>{rating.comment}</p>
+						</div>
+					))}
 				</div>
 			</>
 		)

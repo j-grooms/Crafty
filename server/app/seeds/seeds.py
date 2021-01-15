@@ -107,7 +107,7 @@ def seed_all():
 
     rating = Rating(user_id=3, product_id=2, rating=5.0,
                     comment="Great for sports!")
-    rating2 = Rating(user_id=2, product_id=2, rating=3.5,
+    rating2 = Rating(user_id=2, product_id=2, rating=3.0,
                      comment="Not as durable as I'd hoped!")
     rating3 = Rating(user_id=1, product_id=6, rating=5.0,
                      comment="Keeps my kids safe. 5 stars")

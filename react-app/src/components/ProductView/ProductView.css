@@ -4,3 +4,17 @@
     display: flex;
     justify-content: space-between;
 }
+
+.product-view-details {
+    width: 350px;
+    border: 1px solid black;
+}
+
+.product-view-image-container {
+    width: 600px;
+}
+
+.product-view-image {
+    width: 100%;
+    height: auto;
+}
