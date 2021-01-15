@@ -1,21 +1,28 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getCartItems } from "../../store/checkout";
-import { getCart } from "../../store/cart";
-import{ updateQuantity } from "../../store/quantities";
-import GrandTotal from "../GrandTotal"
+import { getCart, removeFromCart } from "../../store/cart";
+import { updateQuantity } from "../../store/quantities";
+import GrandTotal from "../GrandTotal";
+
 import "./CheckoutForm.css";
 
 const CheckoutForm = () => {
 	const cart = useSelector((state) => state.cart.cart);
-    const products = useSelector((state) => state.checkout.products);
+	const products = useSelector((state) => state.checkout.products);
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const generateOptions = (int) => {
 		const options = [];
 		for (let i = 1; i <= int; i++) {
-			options.push(<option key={i} value={i}>{i}</option>);
+			options.push(
+				<option key={i} value={i}>
+					{i}
+				</option>
+			);
 		}
 		return options;
 	};
@@ -33,13 +40,21 @@ const CheckoutForm = () => {
 		})();
 	}, [dispatch, cart]);
 
-	if (!products.length) return <p>No products are currently in your cart!</p>
+	if (!products.length)
+		return (
+			<div className="empty-cart-div">
+				<p className="cart-empty-text">
+					No products are currently in your cart!
+				</p>
+				<button className="login-button" onClick={() => history.push('/shop')}>Back to Shop</button>
+			</div>
+		);
 
 	return (
 		loaded && (
 			<>
 				{products.map((product, i) => {
-                    dispatch(updateQuantity(product.id, 1))
+					dispatch(updateQuantity(product.id, 1));
 					return (
 						<div key={i} className="cart-item">
 							<div className="cart-image-container">
@@ -64,10 +79,17 @@ const CheckoutForm = () => {
 								</select>
 							</div>
 							<div className="cart-item-price">{product.price}</div>
+							<button
+								onClick={() => {
+									dispatch(removeFromCart(product.id));
+								}}
+							>
+								Remove from cart
+							</button>
 						</div>
 					);
 				})}
-                <GrandTotal/>
+				<GrandTotal />
 			</>
 		)
 	);
