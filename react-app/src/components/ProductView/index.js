@@ -30,7 +30,14 @@ const ProductView = () => {
 
 	return (
 		loaded && (
-			<>
+			<div className="product-view-grid">
+				<div className="product-view-image-container">
+					<img
+						className="product-view-image"
+						src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
+						alt="product"
+					/>
+				</div>
 				{currentUser.id === product.user.id ? (
 					<div className="product-view-controls">
 						<button onClick={editProduct}>EDIT</button>
@@ -47,13 +54,6 @@ const ProductView = () => {
 						)}
 					</div>
 				)}
-				<div className="product-view-image-container">
-					<img
-						className="product-view-image"
-						src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
-						alt="product"
-					/>
-				</div>
 				<div className="product-view-details">
 					<p className="product-view-name">{product.name}</p>
 					<p>
@@ -62,7 +62,9 @@ const ProductView = () => {
 					</p>
 					<p>
 						<span className="product-detail-header">Sold by: </span>
-						<Link to={`/user/${product.user.id}`}>{product.user.username}</Link>
+						<Link to={`/user/${product.user.id}`}>
+							{product.user.username} <i className="fas fa-arrow-circle-right"></i>
+						</Link>
 					</p>
 					<p>
 						<span className="product-detail-header">Category: </span>
@@ -86,11 +88,13 @@ const ProductView = () => {
 					</p>
 				</div>
 				<div className="product-view-ratings">
+					<p className="product-view-ratings-header">Ratings</p>
+					{product.rating.length === 0 ? <p>No reviews yet</p> : <></>}
 					{product.rating.map((rating, i) => (
 						<ProductReview key={i} rating={rating} />
 					))}
 				</div>
-			</>
+			</div>
 		)
 	);
 };

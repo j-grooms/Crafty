@@ -16,8 +16,8 @@ const ProfilePage = () => {
 	const products = useSelector((state) => state.products.products);
 	const favorites = useSelector((state) => state.favorites.favorites);
 	const [editing, setEditing] = useState(false)
-	const isSeller = currentUser.id === seller.id;
 	const [loaded, setLoaded] = useState(false);
+	const isSeller = currentUser.id === seller.id;
 	const dispatch = useDispatch();
 
 	const { id } = useParams();
