@@ -7,7 +7,6 @@ import CheckoutForm from "./components/CheckoutForm";
 import SplashPage from "./components/SplashPage";
 import Navbar from "./components/Navbar";
 import Feed from "./components/Feed";
-import ProductForm from "./components/ProductForm";
 import ProductView from "./components/ProductView";
 import ProductEditForm from "./components/ProductEditForm";
 import ProductDeleteForm from "./components/ProductDeleteForm";
@@ -41,9 +40,6 @@ function App() {
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/product/:id">
 						<ProductView />
-					</ProtectedRoute>
-					<ProtectedRoute path="/create-product" exact={true}>
-						<ProductForm />
 					</ProtectedRoute>
 					<ProtectedRoute path="/search/:term" exact={true}>
 						<SearchResults />

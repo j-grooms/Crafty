@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 import Modal from "../Modal";
 import UserDeleteForm from "../UserDeleteForm";
+import ProductForm from "../ProductForm";
 import "./ProfileButton.css";
 
 const ProfileButton = () => {
@@ -11,6 +12,7 @@ const ProfileButton = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [showMenu, setShowMenu] = useState(false);
 	const [deleting, setDeleting] = useState(false);
+	const [createProduct, setCreateProduct] = useState(false);
 
 	const openMenu = () => {
 		if (showMenu) return;
@@ -42,9 +44,9 @@ const ProfileButton = () => {
 			</div>
 			{showMenu && (
 				<div className="profile-button-dropdown">
-					<Link className="profile-dropdown-links" to="/create-product">
+					<button className="profile-dropdown-links" onClick={() => setCreateProduct(true)}>
 						List a Product
-					</Link>
+					</button>
 					<Link
 						className="profile-dropdown-links"
 						to={`/user/${currentUser.id}`}
@@ -64,6 +66,9 @@ const ProfileButton = () => {
 			)}
 			<Modal open={deleting} onClose={() => setDeleting(false)}>
 				<UserDeleteForm />
+			</Modal>
+			<Modal open={createProduct} onClose={() => setCreateProduct(false)}>
+				<ProductForm />
 			</Modal>
 		</div>
 	);

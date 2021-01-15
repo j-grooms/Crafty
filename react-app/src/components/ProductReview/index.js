@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react"
-
 const ProductReview = ({ rating }) => {
 
     const generateStars = (int) => {
