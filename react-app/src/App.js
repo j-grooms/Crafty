@@ -8,8 +8,6 @@ import SplashPage from "./components/SplashPage";
 import Navbar from "./components/Navbar";
 import Feed from "./components/Feed";
 import ProductView from "./components/ProductView";
-import ProductEditForm from "./components/ProductEditForm";
-import ProductDeleteForm from "./components/ProductDeleteForm";
 import ProfilePage from "./components/ProfilePage";
 import SearchResults from "./components/SearchResults";
 
@@ -29,14 +27,8 @@ function App() {
 			<BrowserRouter>
 				<Navbar />
 				<Switch>
-					<ProtectedRoute exact={true} path="/product/edit/:id">
-						<ProductEditForm />
-					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/user/:id">
 						<ProfilePage />
-					</ProtectedRoute>
-					<ProtectedRoute exact={true} path="/product/delete/:id">
-						<ProductDeleteForm />
 					</ProtectedRoute>
 					<ProtectedRoute exact={true} path="/product/:id">
 						<ProductView />

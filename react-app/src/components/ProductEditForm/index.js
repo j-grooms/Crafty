@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { editProduct } from "../../store/product";
 import { getProductById } from "../../store/product";
 
@@ -12,6 +12,7 @@ const ProductEditForm = () => {
 	const seller = useSelector((state) => state.session.user.id);
 	const product = useSelector((state) => state.products.product);
 	const dimensions = product.dimensions.split(" x ");
+	const history = useHistory();
 
 	const [name, setName] = useState(product.name);
 	const [price, setPrice] = useState(product.price);
@@ -37,10 +38,6 @@ const ProductEditForm = () => {
 			return setLoaded(true);
 		})();
 	}, [dispatch, id]);
-
-	if (currentUser.id !== product.user.id) {
-		return <Redirect to="/shop" />;
-	}
 
 	const handleChange = (e) => {
 		const file = e.target.files[0];
@@ -81,7 +78,7 @@ const ProductEditForm = () => {
 		}
 
 		await dispatch(editProduct(formData, product.id));
-		return <Redirect to="/shop" />;
+		return history.push(`/product/${id}`);
 	};
 
 	return (

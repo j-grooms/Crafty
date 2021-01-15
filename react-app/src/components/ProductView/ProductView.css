@@ -1,9 +1,9 @@
 .product-view-controls {
-	width: 300px;
+	width: 400px;
 	/* margin: 20px auto; */
 	display: flex;
-	justify-content: space-between;
-	border: 1px solid black;
+	justify-content: space-around;
+	/* border: 1px solid black; */
 	grid-area: controls;
 	margin: 0 auto auto auto;
 }

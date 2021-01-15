@@ -45,8 +45,8 @@ const ProductView = () => {
 				</div>
 				{currentUser.id === product.user.id ? (
 					<div className="product-view-controls">
-						<button onClick={editProduct}>EDIT</button>
-						<button onClick={deleteProduct}>DELETE</button>
+						<button className="login-button" onClick={editProduct}>Edit Product</button>
+						<button className="warning-button" onClick={deleteProduct}>Delete Product</button>
 					</div>
 				) : (
 					<div className="product-view-controls">

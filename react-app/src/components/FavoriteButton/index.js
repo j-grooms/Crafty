@@ -37,9 +37,9 @@ const FavoriteButton = () => {
 		loaded && (
 			<>
 				{isFavorite ? (
-					<button onClick={handleFavorite}>remove favorite</button>
+					<button className="warning-button" onClick={handleFavorite}>Unfavorite</button>
 				) : (
-					<button onClick={handleFavorite}>add favorite</button>
+					<button className="login-button"onClick={handleFavorite}>Favorite</button>
 				)}
 			</>
 		)

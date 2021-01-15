@@ -34,9 +34,9 @@ const CartButton = () => {
 		loaded && (
 			<>
 				{inCart ? (
-					<button onClick={handleCart}>Remove from cart</button>
+					<button className="warning-button" onClick={handleCart}>Remove Item</button>
 				) : (
-					<button onClick={handleCart}>Add to cart</button>
+					<button className="login-button" onClick={handleCart}>Add to Cart</button>
 				)}
 			</>
 		)

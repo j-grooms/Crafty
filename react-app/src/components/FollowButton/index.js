@@ -39,9 +39,9 @@ const FollowButton = (props) => {
 		loaded && (
 			<>
 				{isFollowing ? (
-					<button onClick={handleFollow}>Unfollow</button>
+					<button className="warning-button" onClick={handleFollow}>Unfollow</button>
 				) : (
-					<button onClick={handleFollow}>Follow</button>
+					<button className="login-button" onClick={handleFollow}>Follow</button>
 				)}
 			</>
 		)
