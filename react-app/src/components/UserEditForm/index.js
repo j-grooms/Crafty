@@ -72,6 +72,7 @@ const UserEditForm = () => {
 						Password *
 					</label>
 					<input
+						required
 						className="signup-form-input"
 						type="password"
 						name="password"

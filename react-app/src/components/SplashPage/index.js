@@ -18,10 +18,10 @@ const SplashPage = () => {
 					<p className="blurb">Ship Anywhere</p>
 				</div>
 				<div className="splash-icons">
-					<i class="fas fa-gift"></i>
-					<i class="fas fa-wallet"></i>
-					<i class="fas fa-truck-moving"></i>
-					<i class="fas fa-store"></i>
+					<i className="fas fa-gift"></i>
+					<i className="fas fa-wallet"></i>
+					<i className="fas fa-truck-moving"></i>
+					<i className="fas fa-store"></i>
 				</div>
 			</div>
 		</div>

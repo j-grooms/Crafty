@@ -9,7 +9,7 @@ const Modal = ({ open, children, onClose }) => {
 			<div className="modal-content">
 				<div className="modal-button-holder">
 					<button className="modal-close-button" onClick={onClose}>
-						<i class="fas fa-window-close"></i>
+						<i className="fas fa-window-close"></i>
 					</button>
 				</div>
 				{children}
