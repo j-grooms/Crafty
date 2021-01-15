@@ -81,7 +81,7 @@ const ProfilePage = () => {
 						{isSeller ? (
 							<>
 								<p className="profile-products-header">Your Favorites</p>
-								<div className="profile-favorites-container">
+								<div className="profile-products-container">
 									{favorites.map((favorite, i) => (
 										<ProductPreview
 											key={favorite.product.name.concat(i)}

@@ -6,6 +6,7 @@ import { getFavorites } from "../../store/favorite";
 import FavoriteButton from "../FavoriteButton";
 import FollowButton from "../FollowButton";
 import CartButton from "../CartButton";
+import "./ProductView.css";
 
 const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
@@ -30,22 +31,28 @@ const ProductView = () => {
 		loaded && (
 			<>
 				{currentUser.id === product.user.id ? (
-					<>
+					<div className="product-view-controls">
 						<button onClick={editProduct}>EDIT</button>
 						<button onClick={deleteProduct}>DELETE</button>
-					</>
+					</div>
 				) : (
-					<>
+					<div className="product-view-controls">
 						<FavoriteButton />
 						<FollowButton seller={product.user.id} />
-						<CartButton />
-					</>
+						{product.quantity <= 0 ? (
+							<p className="warning-header">SOLD OUT</p>
+						) : (
+							<CartButton />
+						)}
+					</div>
 				)}
-				<p>Product #{product.id}</p>
-				<p>{product.name}</p>
-				<p>
-					Sold by: <Link to={`/user/${product.user.id}`}>{product.user.username}</Link>
-				</p>
+				<div className="product-view-details">
+					<p>{product.name}</p>
+					<p>
+						Sold by:{" "}
+						<Link to={`/user/${product.user.id}`}>{product.user.username}</Link>
+					</p>
+				</div>
 			</>
 		)
 	);
