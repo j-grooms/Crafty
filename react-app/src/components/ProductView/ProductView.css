@@ -12,6 +12,7 @@
     width: 350px;
     height: 400px;
     border: 1px solid black;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -49,7 +50,7 @@
     align-items: center;
     border: 1px solid black;
     grid-area: ratings;
-    margin: 10px auto auto auto;
+    margin: 0 auto 100px auto;
 }
 
 .product-review {
@@ -60,9 +61,10 @@
 .product-view-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 800px 50px 1fr;
     grid-template-areas: "details photo"
-                         "ratings controls";
+                         "details controls"
+                         "details ratings";
 }
 
 .product-view-ratings-header {
