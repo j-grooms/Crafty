@@ -33,32 +33,37 @@ const CheckoutForm = () => {
 		})();
 	}, [dispatch, cart]);
 
+	if (!products.length) return <p>No products are currently in your cart!</p>
+
 	return (
 		loaded && (
 			<>
 				{products.map((product, i) => {
                     dispatch(updateQuantity(product.id, 1))
 					return (
-                        <div key={i} className="cart-item">
+						<div key={i} className="cart-item">
 							<div className="cart-image-container">
 								<img
 									className="cart-image"
-                                    src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
-                                    alt="checkout"
+									src={`https://crafty-app.s3.us-east-2.amazonaws.com/${product.image}`}
+									alt="checkout"
 								/>
 							</div>
 							<div className="cart-quantity">
 								<label htmlFor="quantity">Quantity</label>
+								<span className="login-spacer"></span>
 								<select
 									onChange={async (e) => {
-                                        dispatch(updateQuantity(product.id, parseInt(e.target.value)))
+										dispatch(
+											updateQuantity(product.id, parseInt(e.target.value))
+										);
 									}}
 									name="quantity"
 								>
 									{generateOptions(product.quantity).map((option) => option)}
 								</select>
 							</div>
-                            <div className="cart-item-price">{product.price}</div>
+							<div className="cart-item-price">{product.price}</div>
 						</div>
 					);
 				})}

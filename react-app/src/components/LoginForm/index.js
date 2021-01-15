@@ -61,7 +61,7 @@ const LoginForm = () => {
 				<div>
 					<button onClick={demoLogin} className="login-button">
 						Demo User<span className="login-spacer"></span>
-						<i class="fas fa-arrow-circle-right"></i>
+						<i className="fas fa-arrow-circle-right"></i>
 					</button>
 				</div>
 			</form>
