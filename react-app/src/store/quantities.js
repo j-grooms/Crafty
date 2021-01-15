@@ -1,4 +1,5 @@
 const SET_QUANTITY = "setQuantities"
+const RESET = "resetQuantities"
 
 const setQuantity = (item, quantity) => {
     return {
@@ -7,9 +8,17 @@ const setQuantity = (item, quantity) => {
     };
 };
 
+const reset = () => {
+    return {type: RESET}
+}
+
 export const updateQuantity = (item, quantity) => async (dispatch) => {
     dispatch(setQuantity(item, quantity))
 };
+
+export const resetQuantity = () => async (dispatch) => {
+    dispatch(reset())
+}
 
 const initialState = {}
 
@@ -20,6 +29,8 @@ const quantityReducer = (state = initialState, action) => {
             newState = Object.assign({}, state);
             newState[action.payload.item] = action.payload.quantity;
             return newState;
+        case RESET:
+            return initialState;
         default:
             return state;
     };

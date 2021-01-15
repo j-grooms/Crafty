@@ -86,8 +86,4 @@ def upload_photo():
         s3.Bucket('crafty-app').put_object(Key=file.filename, Body=file)
         print(file.filename)
         return {"filename": file.filename}
-        # For saving a local copy
-        # target = os.path.join(APP_ROOT, 'uploads')
-        # destination = "/".join([target, filename])
-        # file.save(destination)
     return "Upload Error"

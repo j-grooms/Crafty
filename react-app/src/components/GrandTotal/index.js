@@ -1,15 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { checkout } from "../../store/checkout";
+import { emptyCart } from "../../store/cart";
+import { resetQuantity } from "../../store/quantities"
 
 const GrandTotal = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const quantities = useSelector((state) => state.quantities);
 	const products = useSelector((state) => state.checkout.products);
-	const dispatch = useDispatch();
 	const [enoughMoney, setEnoughMoney] = useState(false);
-
 	const [grandTotal, setGrandTotal] = useState(0);
+	const dispatch = useDispatch();
+	const history = useHistory();
 
 	useEffect(() => {
 		(async () => {
@@ -37,11 +40,13 @@ const GrandTotal = () => {
 		})();
 	}, [grandTotal, currentUser.money, quantities]);
 
-	const handleCheckout = (event) => {
+	const handleCheckout = async (event) => {
 		event.preventDefault();
-		console.log("quantities: ", quantities, "grandTotal: ", grandTotal);
-		const body = { quantities, grandTotal, user: currentUser.id }
-		return dispatch(checkout(body))
+		const body = { quantities, grandTotal, user: currentUser.id };
+		await dispatch(checkout(body));
+		await dispatch(emptyCart());
+		await dispatch(resetQuantity())
+		return history.push('/shop');
 	};
 
 	if (!enoughMoney) {
