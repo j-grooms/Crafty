@@ -8,6 +8,7 @@ import sellerReducer from "./seller";
 import searchReducer from "./search";
 import checkoutReducer from "./checkout";
 import quantityReducer from "./quantities";
+import historyReducer from "./history"
 
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
 	search: searchReducer,
 	checkout: checkoutReducer,
 	quantities: quantityReducer,
+	history: historyReducer,
 });
 
 let enhancer;
