@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, User, Favorite, Purchase
+from app.models import db, User, Favorite, Purchase, Rating
 from app.forms import LoginForm
 from flask_login import logout_user
 
@@ -36,6 +36,12 @@ def get_user_by_id(id):
 def get_all_users():
     users = db.session.query(User).all()
     return {"users": [user.to_dict() for user in users]}
+
+
+@users.route('/<id>/ratings')
+def get_ratings_by_user(id):
+    ratings = Rating.query.filter(Rating.user_id == id).all()
+    return {"ratings": [rating.to_product_dict() for rating in ratings]}
 
 
 @users.route('/<id>/favorites')

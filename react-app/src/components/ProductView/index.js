@@ -17,7 +17,7 @@ const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
 	const product = useSelector((state) => state.products.product);
 	const currentUser = useSelector((state) => state.session.user);
-	const ratings = useSelector((state) => state.session.user.ratings)
+	const ratings = useSelector((state) => state.ratings.reviews)
 	const purchaseHistory = useSelector((state) => state.history.history);
 	const [editing, setEditing] = useState(false);
 	const [deleting, setDeleting] = useState(false);
@@ -37,7 +37,7 @@ const ProductView = () => {
 				}
 			}
 			console.log("not purchased");
-			for (let i = 0; i < currentUser.ratings.length; i++) {
+			for (let i = 0; i < ratings.length; i++) {
 				if (currentUser.ratings[i].product_id === parseInt(id)) {
 					await setHasReviewed(true);
 					break;
@@ -47,7 +47,7 @@ const ProductView = () => {
 			await dispatch(getProductById(id));
 			return setLoaded(true);
 		})();
-	}, [dispatch, id, currentUser, purchaseHistory, currentUser.ratings, ratings]);
+	}, [dispatch, id, currentUser, purchaseHistory, ratings]);
 
 	const reviewButtonLogic = () => {
 		if (hasReviewed && hasPurchased) {
