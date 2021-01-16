@@ -168,7 +168,7 @@ const SignupForm = ({ onClose }) => {
 				<div className="form-upload-div">
 					<p>{profileName}</p>
 					<label htmlFor="upload" className="upload-choice">
-						Select<span className="login-spacer"></span><i class="far fa-folder-open"></i>
+						Select<span className="login-spacer"></span><i className="far fa-folder-open"></i>
 					</label>
 					<input
 						id="upload"
@@ -187,7 +187,7 @@ const SignupForm = ({ onClose }) => {
 				<div className="form-upload-div">
 					<p>{bannerName}</p>
 					<label htmlFor="bannerPic" className="upload-choice">
-						Select<span className="login-spacer"></span><i class="far fa-folder-open"></i>
+						Select<span className="login-spacer"></span><i className="far fa-folder-open"></i>
 					</label>
 					<input
 						// id="upload"
@@ -199,7 +199,7 @@ const SignupForm = ({ onClose }) => {
 				<div>
 					<button className="login-button" type="submit">
 						Sign up<span className="login-spacer"></span>
-						<i class="fas fa-arrow-circle-right"></i>
+						<i className="fas fa-arrow-circle-right"></i>
 					</button>
 				</div>
 			</form>

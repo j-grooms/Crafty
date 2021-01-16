@@ -245,7 +245,7 @@ const ProductForm = () => {
 				<div>
 					<button className="login-button" type="submit">
 						Submit<span className="login-spacer"></span>
-						<i class="fas fa-arrow-circle-right"></i>
+						<i className="fas fa-arrow-circle-right"></i>
 					</button>
 				</div>
 			</form>

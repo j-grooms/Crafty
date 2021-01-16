@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { rateProduct } from "../../store/product"
+import { getHistory } from "../../store/history";
 
-const ReviewForm = () => {
+const ReviewForm = ({ onClose }) => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [stars, setStars] = useState("");
     const [comment, setComment] = useState("");
     const { id } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -18,7 +21,11 @@ const ReviewForm = () => {
             comment,
         };
         console.log(stars)
-        return dispatch(rateProduct(id, formData));
+        await dispatch(rateProduct(id, formData));
+        await dispatch(getHistory(currentUser.id));
+        history.push("/shop")
+        history.push(`/product/${id}`)
+        onClose();
     }
 
 	return (

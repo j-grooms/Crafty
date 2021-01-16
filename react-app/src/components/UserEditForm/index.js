@@ -110,7 +110,7 @@ const UserEditForm = () => {
 					<p>{profile}</p>
 					<label htmlFor="profilePic" className="upload-choice">
 						Select<span className="login-spacer"></span>
-						<i class="far fa-folder-open"></i>
+						<i className="far fa-folder-open"></i>
 					</label>
 					<input type="file" id="profilePic" onChange={handleProfile} />
 				</div>
@@ -118,14 +118,14 @@ const UserEditForm = () => {
 					<p>{banner}</p>
 					<label htmlFor="bannerPic" className="upload-choice">
 						Select <span className="login-spacer"></span>
-						<i class="far fa-folder-open"></i>
+						<i className="far fa-folder-open"></i>
 					</label>
 					<input type="file" id="bannerPic" onChange={handleBanner} />
 				</div>
 				<div>
 					<button className="login-button" type="submit">
 						Save <span className="login-spacer"></span>
-						<i class="fas fa-arrow-circle-right"></i>
+						<i className="fas fa-arrow-circle-right"></i>
 					</button>
 				</div>
 			</form>

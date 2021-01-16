@@ -57,7 +57,7 @@ const LoginForm = ({ onClose }) => {
 				<div className="login-button-container">
 					<button className="login-button" type="submit">
 						Login<span className="login-spacer"></span>
-						<i class="fas fa-arrow-circle-right"></i>
+						<i className="fas fa-arrow-circle-right"></i>
 					</button>
 				</div>
 				<div>

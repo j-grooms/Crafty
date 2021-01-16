@@ -10,15 +10,18 @@ import ProductReview from "../ProductReview";
 import FavoriteButton from "../FavoriteButton";
 import FollowButton from "../FollowButton";
 import CartButton from "../CartButton";
+import ReviewForm from "../ReviewForm";
 import "./ProductView.css";
 
 const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
 	const product = useSelector((state) => state.products.product);
 	const currentUser = useSelector((state) => state.session.user);
+	const ratings = useSelector((state) => state.session.user.ratings)
 	const purchaseHistory = useSelector((state) => state.history.history);
 	const [editing, setEditing] = useState(false);
 	const [deleting, setDeleting] = useState(false);
+	const [reviewing, setReviewing] = useState(false);
 	const [hasPurchased, setHasPurchased] = useState(false);
 	const [hasReviewed, setHasReviewed] = useState(false);
 	const { id } = useParams();
@@ -26,14 +29,14 @@ const ProductView = () => {
 
 	useEffect(() => {
 		(async () => {
-			console.log("ID", id)
+			console.log("ID", id);
 			for (let i = 0; i < purchaseHistory.length; i++) {
 				if (purchaseHistory[i].product.id === parseInt(id)) {
 					await setHasPurchased(true);
 					break;
-				};
-			};
-			console.log("not purchased")
+				}
+			}
+			console.log("not purchased");
 			for (let i = 0; i < currentUser.ratings.length; i++) {
 				if (currentUser.ratings[i].product_id === parseInt(id)) {
 					await setHasReviewed(true);
@@ -44,15 +47,19 @@ const ProductView = () => {
 			await dispatch(getProductById(id));
 			return setLoaded(true);
 		})();
-	}, [dispatch, id, currentUser, purchaseHistory]);
+	}, [dispatch, id, currentUser, purchaseHistory, currentUser.ratings, ratings]);
 
 	const reviewButtonLogic = () => {
 		if (hasReviewed && hasPurchased) {
-			return <p>Reviewed</p>
+			return <p>Reviewed</p>;
 		} else if (hasPurchased) {
-			return <p>Write a review</p>
+			return (
+				<button className="login-button" onClick={() => setReviewing(true)}>
+					Review Product
+				</button>
+			);
 		} else {
-			return <p>Purchase to review</p>
+			return <p>Purchase to review</p>;
 		}
 	};
 
@@ -71,8 +78,12 @@ const ProductView = () => {
 				</div>
 				{currentUser.id === product.user.id ? (
 					<div className="product-view-controls">
-						<button className="login-button" onClick={editProduct}>Edit Product</button>
-						<button className="warning-button" onClick={deleteProduct}>Delete Product</button>
+						<button className="login-button" onClick={editProduct}>
+							Edit Product
+						</button>
+						<button className="warning-button" onClick={deleteProduct}>
+							Delete Product
+						</button>
 					</div>
 				) : (
 					<div className="product-view-controls">
@@ -94,7 +105,8 @@ const ProductView = () => {
 					<p>
 						<span className="product-detail-header">Sold by: </span>
 						<Link to={`/user/${product.user.id}`}>
-							{product.user.username} <i className="fas fa-arrow-circle-right"></i>
+							{product.user.username}{" "}
+							<i className="fas fa-arrow-circle-right"></i>
 						</Link>
 					</p>
 					<p>
@@ -126,8 +138,11 @@ const ProductView = () => {
 						<ProductReview key={i} rating={rating} />
 					))}
 				</div>
+				<Modal open={reviewing} onClose={() => setReviewing(false)}>
+					<ReviewForm onClose={() => setReviewing(false)} />
+				</Modal>
 				<Modal open={editing} onClose={() => setEditing(false)}>
-					<ProductEditForm onClose={() => setEditing(false)}/>
+					<ProductEditForm onClose={() => setEditing(false)} />
 				</Modal>
 				<Modal open={deleting} onClose={() => setDeleting(false)}>
 					<ProductDeleteForm />
