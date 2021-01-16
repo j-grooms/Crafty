@@ -19,16 +19,42 @@ const ProductView = () => {
 	const purchaseHistory = useSelector((state) => state.history.history);
 	const [editing, setEditing] = useState(false);
 	const [deleting, setDeleting] = useState(false);
+	const [hasPurchased, setHasPurchased] = useState(false);
+	const [hasReviewed, setHasReviewed] = useState(false);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		(async () => {
+			console.log("ID", id)
+			for (let i = 0; i < purchaseHistory.length; i++) {
+				if (purchaseHistory[i].product.id === parseInt(id)) {
+					await setHasPurchased(true);
+					break;
+				};
+			};
+			console.log("not purchased")
+			for (let i = 0; i < currentUser.ratings.length; i++) {
+				if (currentUser.ratings[i].product_id === parseInt(id)) {
+					await setHasReviewed(true);
+					break;
+				}
+			}
 			await dispatch(getFavorites(currentUser.id));
 			await dispatch(getProductById(id));
 			return setLoaded(true);
 		})();
-	}, [dispatch, id, currentUser]);
+	}, [dispatch, id, currentUser, purchaseHistory]);
+
+	const reviewButtonLogic = () => {
+		if (hasReviewed && hasPurchased) {
+			return <p>Reviewed</p>
+		} else if (hasPurchased) {
+			return <p>Write a review</p>
+		} else {
+			return <p>Purchase to review</p>
+		}
+	};
 
 	const editProduct = () => setEditing(true);
 	const deleteProduct = () => setDeleting(true);
@@ -94,6 +120,7 @@ const ProductView = () => {
 				</div>
 				<div className="product-view-ratings">
 					<p className="product-view-ratings-header">Ratings</p>
+					{reviewButtonLogic()}
 					{product.rating.length === 0 ? <p>No reviews yet</p> : <></>}
 					{product.rating.map((rating, i) => (
 						<ProductReview key={i} rating={rating} />
