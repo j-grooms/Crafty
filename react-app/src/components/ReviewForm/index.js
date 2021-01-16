@@ -12,7 +12,6 @@ const ReviewForm = ({ onClose }) => {
     const [comment, setComment] = useState("");
     const { id } = useParams();
     const dispatch = useDispatch();
-    // const history = useHistory();
 
     const handleSubmit = async (event) => {
         event.preventDefault();

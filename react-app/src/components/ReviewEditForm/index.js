@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { rateProduct } from "../../store/product";
 
-const ReviewForm = ({ onClose }) => {
+const ReviewEditForm = ({ onClose }) => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [stars, setStars] = useState("");
 	const [comment, setComment] = useState("");
@@ -59,4 +59,4 @@ const ReviewForm = ({ onClose }) => {
 	);
 };
 
-export default ReviewForm;
+export default ReviewEditForm;

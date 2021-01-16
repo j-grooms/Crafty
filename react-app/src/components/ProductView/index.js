@@ -49,6 +49,10 @@ const ProductView = () => {
 		})();
 	}, [dispatch, id, currentUser, purchaseHistory, ratings]);
 
+	useEffect(() => {
+		// Find the existing review in reviews, mark it for the edit form to prepopulate with props
+	}, [hasReviewed])
+
 	const reviewButtonLogic = () => {
 		if (hasReviewed && hasPurchased) {
 			return <p>Reviewed</p>;
