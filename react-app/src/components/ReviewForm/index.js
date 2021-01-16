@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const ReviewForm = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [stars, setStars] = useState("");
-	const [comment, setComment] = useState("");
+    const [comment, setComment] = useState("");
+    const { id } = useParams();
 	const dispatch = useDispatch();
 
 	return (
@@ -36,6 +38,7 @@ const ReviewForm = () => {
                     onChange={(e) => setComment(e.target.value)}
                 />
 			</div>
+            <button className="login-button">Publish<span className="login-spacer"></span><i className="fas fa-pencil-alt"></i></button>
 		</form>
 	);
 };
