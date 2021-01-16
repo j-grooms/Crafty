@@ -17,9 +17,8 @@ const ReviewForm = () => {
             rating: stars,
             comment,
         };
-        const productId = 1;
         console.log(stars)
-        return dispatch(rateProduct(productId, formData));
+        return dispatch(rateProduct(id, formData));
     }
 
 	return (

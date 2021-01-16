@@ -16,6 +16,7 @@ const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
 	const product = useSelector((state) => state.products.product);
 	const currentUser = useSelector((state) => state.session.user);
+	const purchaseHistory = useSelector((state) => state.history.history);
 	const [editing, setEditing] = useState(false);
 	const [deleting, setDeleting] = useState(false);
 	const { id } = useParams();

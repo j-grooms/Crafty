@@ -19,7 +19,7 @@ const Feed = () => {
 			await dispatch(getHistory(currentUser.id))
 			return setLoaded(true);
 		})();
-	}, [dispatch]);
+	}, [dispatch, currentUser.id]);
 
 	return (
 		loaded && (

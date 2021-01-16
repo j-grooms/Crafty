@@ -10,7 +10,6 @@ import Feed from "./components/Feed";
 import ProductView from "./components/ProductView";
 import ProfilePage from "./components/ProfilePage";
 import SearchResults from "./components/SearchResults";
-import ReviewForm from "./components/ReviewForm";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -46,9 +45,6 @@ function App() {
 					<ProtectedRoute path="/checkout" exact={true}>
 						<CheckoutForm />
 					</ProtectedRoute>
-					<Route path="/test">
-						<ReviewForm />
-					</Route>
 					<Route path="/404" exact={true}>
 						<p>404</p>
 					</Route>

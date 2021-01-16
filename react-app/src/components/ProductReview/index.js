@@ -3,7 +3,7 @@ const ProductReview = ({ rating }) => {
     const generateStars = (int) => {
         const stars = [];
         for (let i = 0; i < rating.rating; i++) {
-            stars.push(<i className="fas fa-star"></i>);
+            stars.push(<i key={i} className="fas fa-star"></i>);
         };
         return stars;
     }
