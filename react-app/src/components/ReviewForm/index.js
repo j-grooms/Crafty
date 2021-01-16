@@ -1,16 +1,29 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { rateProduct } from "../../store/product"
 
 const ReviewForm = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [stars, setStars] = useState("");
     const [comment, setComment] = useState("");
     const { id } = useParams();
-	const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = {
+            user_id: currentUser.id,
+            rating: stars,
+            comment,
+        };
+        const productId = 1;
+        console.log(stars)
+        return dispatch(rateProduct(productId, formData));
+    }
 
 	return (
-		<form className="review-form">
+		<form onSubmit={handleSubmit} className="review-form">
 			<div className="field-holder">
 				<label className="form-label" htmlFor="stars">
 					Stars *
@@ -23,7 +36,7 @@ const ReviewForm = () => {
 					max="5"
                     placeholder="Out of 5 stars"
                     value={stars}
-                    onChange={(e) => setStars(parseInt(e.target.value))}
+                    onChange={(e) => setStars(e.target.value)}
 				/>
 			</div>
 			<div className="field-holder">

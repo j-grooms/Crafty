@@ -70,7 +70,7 @@ export const deleteProduct = (formData, productId) => async (dispatch) => {
 };
 
 export const rateProduct = (productId ,formData) => async (dispatch) => {
-    const response = await fetch(`/api/products/${productId}/rate`, {
+    const response = await fetch(`/api/store/${productId}/rate`, {
         method: 'POST',
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(formData),

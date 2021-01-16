@@ -3,7 +3,7 @@ import uuid
 import os
 from flask import Blueprint, request
 from werkzeug.utils import secure_filename
-from app.models import db, Product, User, Purchase
+from app.models import db, Product, User, Purchase, Rating
 from decimal import Decimal
 
 
@@ -48,8 +48,17 @@ def checkout():
 
 
 @store.route('/<product_id>/rate', methods=["POST"])
-def rate_product():
-    pass
+def rate_product(product_id):
+    body = request.get_json()
+    stars = body.get('rating')
+    comment = body.get('comment')
+    user_id = body.get('user_id')
+    rating = Rating(user_id=user_id, product_id=product_id,
+                    rating=stars, comment=comment)
+    db.session.add(rating)
+    db.session.commit()
+    product = Product.query.get(product_id)
+    return {"product": product.to_dict()}
 
 
 # READ
