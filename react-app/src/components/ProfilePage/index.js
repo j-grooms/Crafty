@@ -54,7 +54,7 @@ const ProfilePage = () => {
 							<p className="profile-username">{seller.username}</p>
 							{isSeller ? (
 								<>
-									<button onClick={() => setEditing(true)}>Edit Info</button>
+									<button className="login-button" onClick={() => setEditing(true)}>Edit Info</button>
 									<Modal open={editing} onClose={() => setEditing(false)}>
 										<UserEditForm />
 									</Modal>

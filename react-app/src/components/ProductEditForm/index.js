@@ -8,7 +8,6 @@ import { getProductById } from "../../store/product";
 const ProductEditForm = () => {
 	const [loaded, setLoaded] = useState(false);
 	const { id } = useParams();
-	const currentUser = useSelector((state) => state.session.user);
 	const seller = useSelector((state) => state.session.user.id);
 	const product = useSelector((state) => state.products.product);
 	const dimensions = product.dimensions.split(" x ");

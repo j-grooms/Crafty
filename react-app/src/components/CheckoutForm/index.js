@@ -46,7 +46,9 @@ const CheckoutForm = () => {
 				<p className="cart-empty-text">
 					No products are currently in your cart!
 				</p>
-				<button className="login-button" onClick={() => history.push('/shop')}>Back to Shop</button>
+				<button className="login-button" onClick={() => history.push("/shop")}>
+					Back to Shop
+				</button>
 			</div>
 		);
 
@@ -80,11 +82,12 @@ const CheckoutForm = () => {
 							</div>
 							<div className="cart-item-price">{product.price}</div>
 							<button
+								className="cart-remove-button"
 								onClick={() => {
 									dispatch(removeFromCart(product.id));
 								}}
 							>
-								Remove from cart
+								<i className="fas fa-window-close"></i>
 							</button>
 						</div>
 					);

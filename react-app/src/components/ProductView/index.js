@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { getFavorites } from "../../store/favorite";
 import Modal from "../Modal";
@@ -20,7 +20,6 @@ const ProductView = () => {
 	const [deleting, setDeleting] = useState(false);
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 	useEffect(() => {
 		(async () => {
