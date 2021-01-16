@@ -31,9 +31,13 @@ def checkout():
     for k, v in quantities.items():
         product = Product.query.get(k)
         product.quantity = product.quantity - v
-        purchase = Purchase(user_id=user_id, product_id=k)
+        previous_purchase = Purchase.query.filter(
+            Purchase.user_id == user_id).filter(Purchase.product_id == k
+                                                ).first()
+        if not previous_purchase:
+            purchase = Purchase(user_id=user_id, product_id=k)
+            db.session.add(purchase)
         db.session.add(product)
-        db.session.add(purchase)
         db.session.commit()
     user = User.query.get(user_id)
     user.money = user.money - grand_total
