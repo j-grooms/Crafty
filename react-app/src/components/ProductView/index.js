@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { getFavorites } from "../../store/favorite";
+
 import Modal from "../Modal";
 import ProductDeleteForm from "../ProductDeleteForm";
 import ProductEditForm from "../ProductEditForm";
@@ -29,7 +30,6 @@ const ProductView = () => {
 
 	useEffect(() => {
 		(async () => {
-			console.log("ID", id);
 			for (let i = 0; i < purchaseHistory.length; i++) {
 				if (purchaseHistory[i].product.id === parseInt(id)) {
 					await setHasPurchased(true);
@@ -38,7 +38,7 @@ const ProductView = () => {
 			}
 			console.log("not purchased");
 			for (let i = 0; i < ratings.length; i++) {
-				if (currentUser.ratings[i].product_id === parseInt(id)) {
+				if (ratings[i].product_id === parseInt(id)) {
 					await setHasReviewed(true);
 					break;
 				}

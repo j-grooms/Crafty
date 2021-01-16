@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { rateProduct } from "../../store/product"
 import { getHistory } from "../../store/history";
+import { getRatings } from "../../store/ratings";
 
 const ReviewForm = ({ onClose }) => {
 	const currentUser = useSelector((state) => state.session.user);
@@ -23,6 +24,7 @@ const ReviewForm = ({ onClose }) => {
         console.log(stars)
         await dispatch(rateProduct(id, formData));
         await dispatch(getHistory(currentUser.id));
+        await dispatch(getRatings(currentUser.id))
         history.push("/shop")
         history.push(`/product/${id}`)
         onClose();

@@ -11,7 +11,7 @@ const ProductReview = ({ rating }) => {
 	return (
 		<div className="product-review">
 			<p>{generateStars(rating.rating).map(star => star)}</p>
-			<p className="review-user">By {rating.user.username}</p>
+			<p className="review-user">By {rating.username}</p>
 			<p>{rating.comment}</p>
 		</div>
 	);

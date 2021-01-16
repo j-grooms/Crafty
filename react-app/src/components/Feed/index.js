@@ -2,7 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../store/product";
 import { getCart } from "../../store/cart"
-import { getHistory } from "../../store/history"
+import { getHistory } from "../../store/history";
+import { getRatings } from "../../store/ratings";
 import ProductPreview from "../ProductPreview";
 import './Feed.css'
 
@@ -14,6 +15,7 @@ const Feed = () => {
 
 	useEffect(() => {
 		(async () => {
+			await dispatch(getRatings(currentUser.id));
 			await dispatch(getCart());
 			await dispatch(fetchAllProducts());
 			await dispatch(getHistory(currentUser.id))
