@@ -54,6 +54,7 @@ class User(db.Model, UserMixin):
             "banner": self.banner,
             "bio": self.bio,
             "money": float(self.money),
+            "ratings": [rating.to_dict() for rating in self.ratings],
             "favorites": [favorite.to_dict() for favorite in self.favorites],
             "followers": [
                 follower.to_product_dict() for follower in self.followers],
