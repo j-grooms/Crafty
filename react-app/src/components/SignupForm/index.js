@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../store/session";
 
-const SignupForm = () => {
+const SignupForm = ({ onClose }) => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -66,7 +66,8 @@ const SignupForm = () => {
 			formData["banner"] = resJSON.filename;
 		}
 
-		return dispatch(signup(formData));
+		await dispatch(signup(formData));
+		return onClose();
 	};
 
 	return (

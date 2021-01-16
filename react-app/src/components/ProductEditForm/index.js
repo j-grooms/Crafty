@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { editProduct } from "../../store/product";
 import { getProductById } from "../../store/product";
 
-const ProductEditForm = () => {
+const ProductEditForm = ({onClose}) => {
 	const [loaded, setLoaded] = useState(false);
 	const { id } = useParams();
 	const seller = useSelector((state) => state.session.user.id);
@@ -77,6 +77,7 @@ const ProductEditForm = () => {
 		}
 
 		await dispatch(editProduct(formData, product.id));
+		onClose();
 		return history.push(`/product/${id}`);
 	};
 

@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
 
-const LoginForm = () => {
+const LoginForm = ({ onClose }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const currentUser = useSelector((state) => state.session.user);
@@ -16,13 +16,15 @@ const LoginForm = () => {
 		event.preventDefault();
 		const body = { username, password };
 		await dispatch(sessionActions.login(body));
+		return onClose();
 	};
 
 	if (currentUser) return <Redirect to="/shop" />;
 
 	const demoLogin = (event) => {
 		event.preventDefault();
-		dispatch(sessionActions.login({username: "Demo User", password: "password"}))
+		dispatch(sessionActions.login({username: "Demo User", password: "password"}));
+		return onClose();
 	}
 
 	return (

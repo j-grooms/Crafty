@@ -99,7 +99,7 @@ const ProductView = () => {
 					))}
 				</div>
 				<Modal open={editing} onClose={() => setEditing(false)}>
-					<ProductEditForm />
+					<ProductEditForm onClose={() => setEditing(false)}/>
 				</Modal>
 				<Modal open={deleting} onClose={() => setDeleting(false)}>
 					<ProductDeleteForm />

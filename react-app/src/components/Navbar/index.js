@@ -52,10 +52,10 @@ const Navbar = () => {
 						</div>
 					</div>
 					<Modal open={login} onClose={() => setLogin(false)}>
-						<LoginForm />
+						<LoginForm onClose={() => setLogin(false)}/>
 					</Modal>
 					<Modal open={signup} onClose={() => setSignup(false)}>
-						<SignupForm />
+						<SignupForm onClose={() => setLogin(false)}/>
 					</Modal>
 				</>
 			)}
