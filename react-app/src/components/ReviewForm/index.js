@@ -12,7 +12,7 @@ const ReviewForm = ({ onClose }) => {
     const [comment, setComment] = useState("");
     const { id } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -25,8 +25,6 @@ const ReviewForm = ({ onClose }) => {
         await dispatch(rateProduct(id, formData));
         await dispatch(getHistory(currentUser.id));
         await dispatch(getRatings(currentUser.id))
-        history.push("/shop")
-        history.push(`/product/${id}`)
         onClose();
     }
 
