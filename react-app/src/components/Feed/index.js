@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../store/product";
 import { getCart } from "../../store/cart"
-import { getHistory } from "../../store/history";
 import { getRatings } from "../../store/ratings";
 import ProductPreview from "../ProductPreview";
 import './Feed.css'

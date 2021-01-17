@@ -16,9 +16,11 @@ const Navbar = () => {
 	const [signup, setSignup] = useState(false);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(getHistory(currentUser.id));
-		dispatch(getRatings(currentUser.id));
-	}, [dispatch, currentUser.id]);
+		if (currentUser) {
+			dispatch(getHistory(currentUser.id));
+			dispatch(getRatings(currentUser.id));
+		}
+	}, [dispatch, currentUser]);
 
 	return (
 		<>

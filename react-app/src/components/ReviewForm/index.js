@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { rateProduct } from "../../store/product"
 import { getHistory } from "../../store/history";
