@@ -23,6 +23,7 @@ class Rating(db.Model):
 
     def to_product_dict(self):
         return {
+            "id": self.id,
             "product_id": self.product_id,
             "userId": self.user.id,
             "username": self.user.username,

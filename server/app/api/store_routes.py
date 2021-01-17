@@ -76,8 +76,18 @@ def get_cart_items():
 
 # UPDATE
 @store.route('/<product_id>/rate', methods=["PUT"])
-def update_product_rating():
-    pass
+def update_product_rating(product_id):
+    body = request.get_json()
+    id = body.get('id')
+    rating = Rating.query.get(id)
+    if rating:
+        rating.rating = body.get('rating')
+        rating.comment = body.get('comment')
+        db.session.add(rating)
+        db.session.commit()
+    product = Product.query.get(product_id)
+    return {"product": product.to_dict()}
+
 
 
 @store.route('/upload', methods=["POST"])
