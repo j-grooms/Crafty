@@ -1,6 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { getHistory } from "../../store/history";
+import { getRatings } from "../../store/ratings";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
 import Modal from "../Modal";
@@ -12,6 +14,11 @@ const Navbar = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [login, setLogin] = useState(false);
 	const [signup, setSignup] = useState(false);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getHistory(currentUser.id));
+		dispatch(getRatings(currentUser.id));
+	}, [dispatch, currentUser.id]);
 
 	return (
 		<>
@@ -52,10 +59,10 @@ const Navbar = () => {
 						</div>
 					</div>
 					<Modal open={login} onClose={() => setLogin(false)}>
-						<LoginForm onClose={() => setLogin(false)}/>
+						<LoginForm onClose={() => setLogin(false)} />
 					</Modal>
 					<Modal open={signup} onClose={() => setSignup(false)}>
-						<SignupForm onClose={() => setLogin(false)}/>
+						<SignupForm onClose={() => setLogin(false)} />
 					</Modal>
 				</>
 			)}

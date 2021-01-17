@@ -18,7 +18,6 @@ const Feed = () => {
 			await dispatch(getRatings(currentUser.id));
 			await dispatch(getCart());
 			await dispatch(fetchAllProducts());
-			await dispatch(getHistory(currentUser.id))
 			return setLoaded(true);
 		})();
 	}, [dispatch, currentUser.id]);

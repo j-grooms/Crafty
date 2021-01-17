@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProductById } from "../../store/product";
 import { getFavorites } from "../../store/favorite";
-
 import Modal from "../Modal";
 import ProductDeleteForm from "../ProductDeleteForm";
 import ProductEditForm from "../ProductEditForm";
@@ -30,6 +29,7 @@ const ProductView = () => {
 
 	useEffect(() => {
 		(async () => {
+			// await dispatch(getHistory(currentUser.id))
 			for (let i = 0; i < purchaseHistory.length; i++) {
 				if (purchaseHistory[i].product.id === parseInt(id)) {
 					await setHasPurchased(true);
@@ -55,7 +55,7 @@ const ProductView = () => {
 
 	const reviewButtonLogic = () => {
 		if (hasReviewed && hasPurchased) {
-			return <p>Reviewed</p>;
+			return <p className="rating-thank-you">Thanks for your review! You may edit it below</p>;
 		} else if (hasPurchased) {
 			return (
 				<button className="login-button" onClick={() => setReviewing(true)}>

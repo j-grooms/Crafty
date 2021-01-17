@@ -26,6 +26,7 @@
 .product-view-image-container {
 	height: 500px;
 	border: 1px solid black;
+	border-radius: 3px;
 	grid-area: photo;
 	margin: 100px auto 0 auto;
 	background-color: #fff9f3;
@@ -46,13 +47,14 @@
 }
 
 .product-view-ratings {
-	width: 300px;
+	width: 350px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border: 1px solid black;
+	border-radius: 3px;
 	grid-area: ratings;
-	margin: 100px auto 100px auto;
+	margin: 0 auto 100px auto;
 	background-color: #fff9f3;
 }
 
@@ -69,8 +71,8 @@
 	grid-template-rows: 605px 50px 1fr;
 	grid-template-areas:
 		"details photo"
-		"details controls"
-		"details ratings";
+		"ratings controls"
+		"ratings controls";
 }
 
 .product-view-ratings-header {
@@ -80,4 +82,9 @@
 
 .review-user {
 	font-size: 10pt;
+}
+
+.rating-thank-you {
+	font-size: 12px;
+	padding: 20px;
 }
