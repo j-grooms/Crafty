@@ -1,9 +1,9 @@
 .product-view-controls {
 	width: 400px;
-	/* margin: 20px auto; */
+	height: 100px;
 	display: flex;
 	justify-content: space-around;
-	/* border: 1px solid black; */
+	align-items: center;
 	grid-area: controls;
 	margin: 0 auto auto auto;
 }
@@ -66,6 +66,7 @@
 .review-edit-button {
 	width: 20px;
 	height: 20px;
+	cursor: pointer;
 }
 
 .review-container {
@@ -79,7 +80,7 @@
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr 2fr;
-	grid-template-rows: 605px 50px 1fr;
+	grid-template-rows: 605px 100px 1fr;
 	grid-template-areas:
 		"details photo"
 		"ratings controls"
@@ -117,4 +118,8 @@
 	margin-bottom: 10px;
 	display: flex;
 	justify-content: center;
+}
+
+.fa-pencil-alt{
+	cursor: pointer;
 }

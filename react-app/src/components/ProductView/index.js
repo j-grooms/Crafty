@@ -99,7 +99,7 @@ const ProductView = () => {
 						<FavoriteButton />
 						<FollowButton seller={product.user.id} />
 						{product.quantity <= 0 ? (
-							<p className="warning-header">SOLD OUT</p>
+							<p className="warning-header sold-out">SOLD OUT</p>
 						) : (
 							<CartButton />
 						)}

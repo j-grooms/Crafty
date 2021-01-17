@@ -279,3 +279,7 @@ input[type="file"] {
 .product-unit-select:focus {
 	background-color: #d2fde6;
 }
+
+/* .sold-out {
+	margin-bottom: 15px;
+} */
