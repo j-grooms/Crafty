@@ -104,3 +104,8 @@
 	margin-bottom: 10px;
 	border-bottom: 1px solid black;
 }
+
+.no-reviews {
+	padding-bottom: 20px;
+	font-weight: 700;
+}
