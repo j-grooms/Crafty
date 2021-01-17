@@ -29,7 +29,6 @@ const ProductView = () => {
 
 	useEffect(() => {
 		(async () => {
-			// await dispatch(getHistory(currentUser.id))
 			for (let i = 0; i < purchaseHistory.length; i++) {
 				if (purchaseHistory[i].product.id === parseInt(id)) {
 					await setHasPurchased(true);
@@ -48,10 +47,6 @@ const ProductView = () => {
 			return setLoaded(true);
 		})();
 	}, [dispatch, id, currentUser, purchaseHistory, ratings]);
-
-	useEffect(() => {
-		// Find the existing review in reviews, mark it for the edit form to prepopulate with props
-	}, [hasReviewed])
 
 	const reviewButtonLogic = () => {
 		if (hasReviewed && hasPurchased) {

@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import { updateRating } from "../../store/product";
 
 const ReviewEditForm = ({ onClose, rating }) => {
 	const currentUser = useSelector((state) => state.session.user);
 	const [stars, setStars] = useState(rating.rating);
 	const [comment, setComment] = useState(rating.comment);
-	const { id } = useParams();
 	const dispatch = useDispatch();
 	const productId = rating.product_id
 

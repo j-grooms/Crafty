@@ -89,7 +89,6 @@ def update_product_rating(product_id):
     return {"product": product.to_dict()}
 
 
-
 @store.route('/upload', methods=["POST"])
 def upload_photo():
     if request.method == 'POST':
