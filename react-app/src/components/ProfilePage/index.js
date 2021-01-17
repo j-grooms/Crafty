@@ -56,7 +56,7 @@ const ProfilePage = () => {
 								<>
 									<button className="login-button" onClick={() => setEditing(true)}>Edit Info</button>
 									<Modal open={editing} onClose={() => setEditing(false)}>
-										<UserEditForm />
+										<UserEditForm onClose={() => setEditing(false)}/>
 									</Modal>
 								</>
 							) : (

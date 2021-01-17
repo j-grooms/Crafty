@@ -22,7 +22,7 @@ const ReviewForm = ({ onClose }) => {
         console.log(stars)
         await dispatch(rateProduct(id, formData));
         await dispatch(getHistory(currentUser.id));
-        await dispatch(getRatings(currentUser.id))
+        await dispatch(getRatings(currentUser.id));
         onClose();
     }
 

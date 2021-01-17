@@ -109,3 +109,12 @@
 	padding-bottom: 20px;
 	font-weight: 700;
 }
+
+.product-view-review-button {
+	padding-bottom: 10px;
+	border-bottom: 1px solid black;
+	width: 300px;
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: center;
+}

@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../store/session";
 
-const UserEditForm = () => {
+const UserEditForm = ({ onClose }) => {
     const currentUser = useSelector((state) => state.session.user);
     const [password, setPassword] = useState("");
 	const [bio, setBio] = useState(currentUser.bio);
@@ -13,7 +12,6 @@ const UserEditForm = () => {
 	const [bannerPic, setBannerPic] = useState("");
 	const [banner, setBanner] = useState("Banner Picture");
     const dispatch = useDispatch();
-    const history = useHistory();
 
 	const handleBanner = (e) => {
 		const file = e.target.files[0];
@@ -61,7 +59,8 @@ const UserEditForm = () => {
 		}
 
         await dispatch(updateUser(formData, currentUser.id));
-        return history.push(`/user/${currentUser.id}`)
+		onClose();
+		return
 	};
 
 	return (

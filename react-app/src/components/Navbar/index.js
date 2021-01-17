@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getHistory } from "../../store/history";
 import { getRatings } from "../../store/ratings";
+import { getCart } from "../../store/cart";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
 import Modal from "../Modal";
@@ -19,6 +20,7 @@ const Navbar = () => {
 		if (currentUser) {
 			dispatch(getHistory(currentUser.id));
 			dispatch(getRatings(currentUser.id));
+			dispatch(getCart())
 		}
 	}, [dispatch, currentUser]);
 

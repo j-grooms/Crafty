@@ -17,7 +17,7 @@ const ProductView = () => {
 	const [loaded, setLoaded] = useState(false);
 	const product = useSelector((state) => state.products.product);
 	const currentUser = useSelector((state) => state.session.user);
-	const ratings = useSelector((state) => state.ratings.reviews)
+	const ratings = useSelector((state) => state.ratings.reviews);
 	const purchaseHistory = useSelector((state) => state.history.history);
 	const [editing, setEditing] = useState(false);
 	const [deleting, setDeleting] = useState(false);
@@ -50,15 +50,25 @@ const ProductView = () => {
 
 	const reviewButtonLogic = () => {
 		if (hasReviewed && hasPurchased) {
-			return <p className="rating-thank-you">Thanks for your review! You may edit it below</p>;
+			return (
+				<p className="rating-thank-you">
+					Thanks for your review! You may edit it below
+				</p>
+			);
 		} else if (hasPurchased) {
 			return (
-				<button className="login-button" onClick={() => setReviewing(true)}>
-					Review Product
-				</button>
+				<div className="product-view-review-button">
+					<button className="login-button" onClick={() => setReviewing(true)}>
+						Review Product
+					</button>
+				</div>
 			);
 		} else {
-			return <p className="rating-thank-you">Purchase this product and check out the review system!</p>;
+			return (
+				<p className="rating-thank-you">
+					Purchase this product and check out the review system!
+				</p>
+			);
 		}
 	};
 
@@ -132,7 +142,11 @@ const ProductView = () => {
 				<div className="product-view-ratings">
 					<p className="product-view-ratings-header">Ratings</p>
 					{reviewButtonLogic()}
-					{product.rating.length === 0 ? <p className="no-reviews">Be the first review!</p> : <></>}
+					{product.rating.length === 0 ? (
+						<p className="no-reviews">Be the first review!</p>
+					) : (
+						<></>
+					)}
 					{product.rating.map((rating, i) => (
 						<ProductReview key={i} currentUser={currentUser} rating={rating} />
 					))}

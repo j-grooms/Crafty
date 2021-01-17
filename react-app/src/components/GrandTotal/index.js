@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { checkout } from "../../store/checkout";
 import { emptyCart } from "../../store/cart";
-import { resetQuantity } from "../../store/quantities"
+import { resetQuantity } from "../../store/quantities";
+import { getHistory } from "../../store/history";
+import { getRatings } from "../../store/ratings";
 
 const GrandTotal = () => {
 	const currentUser = useSelector((state) => state.session.user);
@@ -45,15 +47,19 @@ const GrandTotal = () => {
 		const body = { quantities, grandTotal, user: currentUser.id };
 		await dispatch(checkout(body));
 		await dispatch(emptyCart());
-		await dispatch(resetQuantity())
-		return history.push('/shop');
+		await dispatch(resetQuantity());
+		await dispatch(getHistory(currentUser.id));
+		await dispatch(getRatings(currentUser.id));
+		return history.push("/shop");
 	};
 
 	if (!enoughMoney) {
 		return (
 			<div className="checkout-container">
 				<p>Grand Total: {grandTotal}</p>
-				<p className="warning-header">Add more funds to complete the transaction</p>
+				<p className="warning-header">
+					Add more funds to complete the transaction
+				</p>
 			</div>
 		);
 	}
