@@ -63,6 +63,17 @@
 	padding: 10px;
 }
 
+.review-edit-button {
+	width: 20px;
+	height: 20px;
+}
+
+.review-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
 .product-view-grid {
 	width: 1500px;
 	margin: 0 auto;

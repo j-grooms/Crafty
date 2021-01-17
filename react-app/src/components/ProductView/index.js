@@ -139,7 +139,7 @@ const ProductView = () => {
 					{reviewButtonLogic()}
 					{product.rating.length === 0 ? <p>No reviews yet</p> : <></>}
 					{product.rating.map((rating, i) => (
-						<ProductReview key={i} rating={rating} />
+						<ProductReview key={i} currentUser={currentUser} rating={rating} />
 					))}
 				</div>
 				<Modal open={reviewing} onClose={() => setReviewing(false)}>
