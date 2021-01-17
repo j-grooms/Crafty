@@ -1,4 +1,10 @@
+import { useState } from "react";
+import ReviewEditForm from "../ReviewEditForm";
+import Modal from "../Modal";
+
 const ProductReview = ({ rating, currentUser }) => {
+    const [editing, setEditing] = useState(false);
+
 	const generateStars = (int) => {
 		const stars = [];
 		for (let i = 0; i < rating.rating; i++) {
@@ -17,7 +23,7 @@ const ProductReview = ({ rating, currentUser }) => {
 				</div>
 				<div className="review-edit-button">
 					{currentUser.id === rating.userId ? (
-						<button>
+						<button onClick={() => setEditing(true)}>
 							<i className="fas fa-pencil-alt"></i>
 						</button>
 					) : (
@@ -25,6 +31,9 @@ const ProductReview = ({ rating, currentUser }) => {
 					)}
 				</div>
 			</div>
+            <Modal open={editing} onClose={() => setEditing(false)}>
+                <ReviewEditForm rating={rating} onClose={() => setEditing(false)} />
+            </Modal>
 		</>
 	);
 };

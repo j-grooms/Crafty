@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { rateProduct } from "../../store/product";
+// import { rateProduct } from "../../store/product";
 
-const ReviewEditForm = ({ onClose }) => {
+const ReviewEditForm = ({ onClose, rating }) => {
 	const currentUser = useSelector((state) => state.session.user);
-	const [stars, setStars] = useState("");
-	const [comment, setComment] = useState("");
+	const [stars, setStars] = useState(rating.rating);
+	const [comment, setComment] = useState(rating.comment);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 
@@ -17,8 +17,8 @@ const ReviewEditForm = ({ onClose }) => {
 			rating: stars,
 			comment,
 		};
-		console.log(stars);
-		dispatch(rateProduct(id, formData));
+		console.log(formData);
+		// dispatch(rateProduct(id, formData));
 		onClose();
 	};
 
