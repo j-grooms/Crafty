@@ -11,6 +11,7 @@ import Feed from "./components/Feed";
 import ProductView from "./components/ProductView";
 import ProfilePage from "./components/ProfilePage";
 import SearchResults from "./components/SearchResults";
+import Footer from "./components/Footer";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -56,6 +57,7 @@ function App() {
 						<Redirect to="/404" />
 					</Route>
 				</Switch>
+				<Footer />
 			</BrowserRouter>
 		)
 	);

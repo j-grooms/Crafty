@@ -23,7 +23,7 @@ def seed_all():
                  money=50.00,
                  bio="I sell unique and custom printed clothing. I often go to the thrift store for inspiration and fabrics"
                  )
-    demo3 = User(username='Demo User 3',
+    demo3 = User(username='Paul',
                  email='paul@paul.com',
                  password='GA45FG13',
                  profile_pic='demo_user3.jpg',
@@ -38,7 +38,7 @@ def seed_all():
                       category='Jewelry',
                       description="A bracelet made from January's birthstone, Garnet. Elastic band, one size fits all ",
                       dimensions="6 in x 6 in x 5 cm",
-                      weight="5 ounces",
+                      weight="5 oz",
                       quantity=12,
                       image='garnet_bracelet.jpg')
     product2 = Product(sold_by=1,
@@ -47,7 +47,7 @@ def seed_all():
                        category='Jewelry',
                        description='An eye-catching necklace made from green stones and copper',
                        dimensions="1 ft x 1 ft x 8 cm",
-                       weight="1 pounds",
+                       weight="1 lbs",
                        quantity=4,
                        image='green_necklace.jpg')
     product3 = Product(sold_by=1,
@@ -56,7 +56,7 @@ def seed_all():
                        category='Jewelry',
                        description='Labradorite in a beautiful Sterling Silver setting.',
                        dimensions="4 cm x 4 cm x 10 cm",
-                       weight="2 ounces",
+                       weight="2 oz",
                        quantity=6,
                        image='labradorite_earrings.jpg')
     product4 = Product(sold_by=1,
@@ -65,7 +65,7 @@ def seed_all():
                        category='Jewelry',
                        description='A bracelet made from Moonstone and Quartz',
                        dimensions="6 in x 6 in x 10 cm",
-                       weight="8 ounces",
+                       weight="8 oz",
                        quantity=12,
                        image='moonstone_bracelet.jpg')
     product5 = Product(sold_by=1,
@@ -74,7 +74,7 @@ def seed_all():
                        category='Jewelry',
                        description='Beautiful pink pearls! Silver fasteners.',
                        dimensions="1 in x 1 in x 4 in",
-                       weight="6 ounces",
+                       weight="6 oz",
                        quantity=2,
                        image='pearl_earrings.jpg')
     product6 = Product(sold_by=1,
@@ -83,7 +83,7 @@ def seed_all():
                        category='Jewelry',
                        description='Authentic Lightning Ridge Black Opal from Australia. One of a kind!',
                        dimensions="14 cm x 2 cm x 6 cm",
-                       weight="3 ounces",
+                       weight="3 oz",
                        quantity=1,
                        image='opal_necklace.jpg')
     product7 = Product(sold_by=2,
@@ -92,7 +92,7 @@ def seed_all():
                        category='Clothing',
                        description="Screen Printed shirts with almost any design you can think of!",
                        dimensions="2 ft x 4 ft x 5 cm",
-                       weight="5 ounces",
+                       weight="5 oz",
                        quantity=99,
                        image='custom_shirt.jpg')
     product8 = Product(sold_by=2,
@@ -101,7 +101,7 @@ def seed_all():
                        category='Clothing',
                        description='Screen printed hoodies with almost any design you can think of!',
                        dimensions="2 ft x 4 ft x 15 cm",
-                       weight="1 pounds",
+                       weight="1 lbs",
                        quantity=52,
                        image='custom_hoodie.jpg')
     product9 = Product(sold_by=2,
@@ -110,7 +110,7 @@ def seed_all():
                        category='Clothing',
                        description='Hand tooled leather belt',
                        dimensions="4 ft x 4 in x 10 cm",
-                       weight="1 pounds",
+                       weight="1 lbs",
                        quantity=5,
                        image='leather_belt.jpg')
     product10 = Product(sold_by=2,
@@ -119,7 +119,7 @@ def seed_all():
                         category='Clothing',
                         description='Hand-made mens leather jacket, size large',
                         dimensions="3 ft x 4 ft x 20 cm",
-                        weight="2 pounds",
+                        weight="2 lbs",
                         quantity=4,
                         image='leather_jacket.jpg')
     product11 = Product(sold_by=2,
@@ -128,7 +128,7 @@ def seed_all():
                         category='Clothing',
                         description='Oversized wool beanie, perfect for colder months.',
                         dimensions="8 in x 8 in x 12 in",
-                        weight="6 ounces",
+                        weight="6 oz",
                         quantity=2,
                         image='slouch_beanie.jpg')
     product12 = Product(sold_by=2,
@@ -137,7 +137,7 @@ def seed_all():
                         category='Clothing',
                         description='Unisex non-slip wool slippers, size 10',
                         dimensions="1 ft x 6 in x 6 in",
-                        weight="1 pounds",
+                        weight="1 lbs",
                         quantity=12,
                         image='slippers.jpg')
     product13 = Product(sold_by=3,
@@ -146,7 +146,7 @@ def seed_all():
                         category='Home',
                         description='Hand-dipped beeswax candles, no scent.',
                         dimensions="1 in x 1 in x 12 in",
-                        weight="6 ounces",
+                        weight="6 oz",
                         quantity=12,
                         image='candles.jpg')
     product14 = Product(sold_by=3,
@@ -155,7 +155,7 @@ def seed_all():
                         category='Home',
                         description='Beautiful, multi-layered centerpiece candle',
                         dimensions="4 in x 4 in x 1 ft",
-                        weight="1 pounds",
+                        weight="1 lbs",
                         quantity=4,
                         image='unique_candle.jpg')
     product15 = Product(sold_by=3,
@@ -164,7 +164,7 @@ def seed_all():
                         category='Home',
                         description='Set of 2 knitted potholders.',
                         dimensions="8 in x 8 in x 6 cm",
-                        weight="6 ounces",
+                        weight="6 oz",
                         quantity=16,
                         image='potholders.jpg')
     product16 = Product(sold_by=3,
@@ -173,7 +173,7 @@ def seed_all():
                         category='Home',
                         description='Unique quilt! One of a kind.',
                         dimensions="4 ft x 6 ft x 6 cm",
-                        weight="3 pounds",
+                        weight="3 lbs",
                         quantity=1,
                         image='quilt.jpg')
     product17 = Product(sold_by=3,
@@ -182,7 +182,7 @@ def seed_all():
                         category='Home',
                         description='Fall-themed throw pillows, perfect compliment to any room.',
                         dimensions="2 ft x 2 ft x 1 ft",
-                        weight="1 pounds",
+                        weight="1 lbs",
                         quantity=5,
                         image='throw_pillow.jpg')
     product18 = Product(sold_by=3,
@@ -191,7 +191,7 @@ def seed_all():
                         category='Home',
                         description='Great for any musician! Note: parts are pulled from salvaged amps and may not match what is pictured',
                         dimensions="1 ft x 6 in x 6 in",
-                        weight="2 pounds",
+                        weight="2 lbs",
                         quantity=8,
                         image='key_holder.jpg')
 

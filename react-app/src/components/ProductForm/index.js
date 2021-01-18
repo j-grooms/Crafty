@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom"
 import { createProduct } from "../../store/product";
 
-const ProductForm = () => {
+const ProductForm = ({ onClose }) => {
 	const seller = useSelector((state) => state.session.user.id);
 	const [name, setName] = useState("");
 	const [price, setPrice] = useState(0.0);
-	const [category, setCategory] = useState("Sports");
+	const [category, setCategory] = useState("Clothing");
 	const [description, setDescription] = useState("");
 	const [height, setHeight] = useState("");
 	const [width, setWidth] = useState("");
@@ -22,6 +22,7 @@ const ProductForm = () => {
 	const [image, setImage] = useState("");
 	const [filename, setFilename] = useState("Product Image");
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const handleChange = (e) => {
 		const file = e.target.files[0];
@@ -61,7 +62,8 @@ const ProductForm = () => {
 		}
 
 		await dispatch(createProduct(formData));
-		return <Redirect to="/" />;
+		onClose();
+		return history.push('/shop');
 	};
 
 	return (
@@ -104,7 +106,7 @@ const ProductForm = () => {
 						value={category}
 						onChange={(e) => setCategory(e.target.value)}
 					>
-						<option value="Sports">Sports</option>
+						<option value="Clothing">Clothing</option>
 						<option value="Jewelry">Jewelry</option>
 						<option value="Home">Home</option>
 					</select>

@@ -68,7 +68,7 @@ const ProfileButton = () => {
 				<UserDeleteForm />
 			</Modal>
 			<Modal open={createProduct} onClose={() => setCreateProduct(false)}>
-				<ProductForm />
+				<ProductForm onClose={() => setCreateProduct(false)}/>
 			</Modal>
 		</div>
 	);

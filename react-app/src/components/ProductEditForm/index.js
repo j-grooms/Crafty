@@ -122,7 +122,7 @@ const ProductEditForm = ({onClose}) => {
 							value={category}
 							onChange={(e) => setCategory(e.target.value)}
 						>
-							<option value="Sports">Sports</option>
+							<option value="Clothing">Clothing</option>
 							<option value="Jewelry">Jewelry</option>
 							<option value="Home">Home</option>
 						</select>

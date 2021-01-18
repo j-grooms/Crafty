@@ -1,0 +1,20 @@
+.footer-div {
+    margin-top: 50px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid black;
+}
+
+.footer-name {
+    padding: 50px;
+}
+
+.footer-links {
+    width: 300px;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
