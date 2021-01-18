@@ -66,6 +66,12 @@ def get_products_by_user(user_id):
     return {"products": [product.to_dict() for product in products]}
 
 
+@products.route('/by_category/<category>')
+def get_products_by_category(category):
+    products = Product.query.filter(Product.category == category).all()
+    return {"products": [product.to_dict() for product in products]}
+
+
 # UPDATE
 @products.route('/edit/<id>', methods=["PUT"])
 def update_product(id):

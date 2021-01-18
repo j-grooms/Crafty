@@ -48,6 +48,13 @@ export const fetchAllProductsBySeller = (id) => async (dispatch) => {
 	return response;
 };
 
+export const getProductsByCategory = (category) => async (dispatch) => {
+	const response = await fetch(`/api/products/by_category/${category}`)
+	const resJSON = await response.json();
+	dispatch(setProducts(resJSON.products));
+	return response;
+};
+
 export const editProduct = (product, productId) => async (dispatch) => {
 	const response = await fetch(`/api/products/edit/${productId}`, {
 		method: "PUT",
