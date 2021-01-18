@@ -49,9 +49,9 @@ const Navbar = () => {
 			{currentUser ? (
 				<div className="navbar-category-container">
 					<div className="navbar-categories">
-						<NavLink to="">Clothing</NavLink>
-						<NavLink to="">Jewelry</NavLink>
-						<NavLink to="">Home & Bath</NavLink>
+						<NavLink to="/category/Clothing">Clothing</NavLink>
+						<NavLink to="/category/Jewelry">Jewelry</NavLink>
+						<NavLink to="/category/Home">Home & Bath</NavLink>
 					</div>
 				</div>
 			) : (

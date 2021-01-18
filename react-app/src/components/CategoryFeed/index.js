@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart } from "../../store/cart";
 import { getProductsByCategory } from "../../store/product";
+import ProductPreview from "../ProductPreview";
 
 const CategoryFeed = () => {
 	const [loaded, setLoaded] = useState(false);
