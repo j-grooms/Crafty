@@ -29,7 +29,8 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.2)
+    background: linear-gradient(#ffe1bf, #fff0df);
+    border-bottom: 1px solid black;
 }
 
 .product-preview-name {
@@ -44,7 +45,6 @@
 .product-preview-rating {
     width: 380px;
     display: flex;
-    /* font-size: 15px; */
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
@@ -52,14 +52,12 @@
     bottom: 18px;
     padding-left: 14px;
     padding-right: 6px;
-    /* -webkit-text-stroke: 1px black; */
 }
 
 .product-preview-star {
     padding-top: 2px;
     padding-left: 5px;
     font-size: 12px;
-    /* padding-bottom: 3px; */
 }
 
 .preview-rating {
