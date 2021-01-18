@@ -140,6 +140,60 @@ def seed_all():
                         weight="1 pounds",
                         quantity=12,
                         image='slippers.jpg')
+    product13 = Product(sold_by=3,
+                        name='Hand-Dipped Candles',
+                        price=3.99,
+                        category='Home',
+                        description='Hand-dipped beeswax candles, no scent.',
+                        dimensions="1 in x 1 in x 12 in",
+                        weight="6 ounces",
+                        quantity=12,
+                        image='candles.jpg')
+    product14 = Product(sold_by=3,
+                        name='Decorative Candle',
+                        price=29.99,
+                        category='Home',
+                        description='Beautiful, multi-layered centerpiece candle',
+                        dimensions="4 in x 4 in x 1 ft",
+                        weight="1 pounds",
+                        quantity=4,
+                        image='unique_candle.jpg')
+    product15 = Product(sold_by=3,
+                        name='Potholders',
+                        price=8.99,
+                        category='Home',
+                        description='Set of 2 knitted potholders.',
+                        dimensions="8 in x 8 in x 6 cm",
+                        weight="6 ounces",
+                        quantity=16,
+                        image='potholders.jpg')
+    product16 = Product(sold_by=3,
+                        name='Quilt',
+                        price=49.99,
+                        category='Home',
+                        description='Unique quilt! One of a kind.',
+                        dimensions="4 ft x 6 ft x 6 cm",
+                        weight="3 pounds",
+                        quantity=1,
+                        image='quilt.jpg')
+    product17 = Product(sold_by=3,
+                        name='Fall Throw Pillow',
+                        price=23.99,
+                        category='Home',
+                        description='Fall-themed throw pillows, perfect compliment to any room.',
+                        dimensions="2 ft x 2 ft x 1 ft",
+                        weight="1 pounds",
+                        quantity=5,
+                        image='throw_pillow.jpg')
+    product18 = Product(sold_by=3,
+                        name='Amp Key Holder',
+                        price=39.99,
+                        category='Home',
+                        description='Great for any musician! Note: parts are pulled from salvaged amps and may not match what is pictured',
+                        dimensions="1 ft x 6 in x 6 in",
+                        weight="2 pounds",
+                        quantity=8,
+                        image='key_holder.jpg')
 
     tag = Tag(product_id=1, tag="Garnet")
     tag2 = Tag(product_id=1, tag="Bracelet")
@@ -165,22 +219,37 @@ def seed_all():
     tag22 = Tag(product_id=11, tag="Beanie")
     tag23 = Tag(product_id=12, tag="Slipper")
     tag24 = Tag(product_id=12, tag="Wool")
+    tag25 = Tag(product_id=13, tag="Beeswax")
+    tag26 = Tag(product_id=13, tag="Candle")
+    tag27 = Tag(product_id=14, tag="Candle")
+    tag28 = Tag(product_id=14, tag="Sculpted")
+    tag29 = Tag(product_id=15, tag="Wool")
+    tag30 = Tag(product_id=15, tag="Knit")
+    tag31 = Tag(product_id=16, tag="Blanket")
+    tag32 = Tag(product_id=16, tag="Quilt")
+    tag33 = Tag(product_id=17, tag="Pillow")
+    tag34 = Tag(product_id=17, tag="Decorative")
+    tag35 = Tag(product_id=18, tag="Guitar")
+    tag36 = Tag(product_id=18, tag="Amp")
 
     favorite = Favorite(user_id=3, product_id=1)
     favorite2 = Favorite(user_id=3, product_id=5)
-    favorite3 = Favorite(user_id=1, product_id=6)
-    favorite4 = Favorite(user_id=2, product_id=2)
+    favorite3 = Favorite(user_id=1, product_id=7)
+    favorite4 = Favorite(user_id=1, product_id=10)
 
     purchase = Purchase(user_id=3, product_id=2)
     purchase2 = Purchase(user_id=2, product_id=2)
-    purchase3 = Purchase(user_id=1, product_id=6)
+    purchase3 = Purchase(user_id=1, product_id=7)
+    purchase3 = Purchase(user_id=1, product_id=18)
 
-    rating = Rating(user_id=3, product_id=2, rating=5.0,
-                    comment="Great for sports!")
-    rating2 = Rating(user_id=2, product_id=2, rating=3.0,
+    rating = Rating(user_id=2, product_id=2, rating=5.0,
+                    comment="I wear it every day!")
+    rating2 = Rating(user_id=3, product_id=2, rating=3.0,
                      comment="Not as durable as I'd hoped!")
-    rating3 = Rating(user_id=1, product_id=6, rating=5.0,
-                     comment="Keeps my kids safe. 5 stars")
+    rating3 = Rating(user_id=1, product_id=7, rating=5.0,
+                     comment="We ordered 12 of these for our hockey team. Holding up great")
+    rating4 = Rating(user_id=3, product_id=5, rating=5.0,
+                     comment="My wife loved these for our anniversary")
 
     db.session.add(demo)
     db.session.add(demo2)
@@ -202,6 +271,12 @@ def seed_all():
     db.session.add(product10)
     db.session.add(product11)
     db.session.add(product12)
+    db.session.add(product13)
+    db.session.add(product14)
+    db.session.add(product15)
+    db.session.add(product16)
+    db.session.add(product17)
+    db.session.add(product18)
 
     db.session.commit()
 
@@ -229,6 +304,18 @@ def seed_all():
     db.session.add(tag22)
     db.session.add(tag23)
     db.session.add(tag24)
+    db.session.add(tag25)
+    db.session.add(tag26)
+    db.session.add(tag27)
+    db.session.add(tag28)
+    db.session.add(tag29)
+    db.session.add(tag30)
+    db.session.add(tag31)
+    db.session.add(tag32)
+    db.session.add(tag33)
+    db.session.add(tag34)
+    db.session.add(tag35)
+    db.session.add(tag36)
 
     db.session.add(favorite)
     db.session.add(favorite2)
@@ -242,6 +329,7 @@ def seed_all():
     db.session.add(rating)
     db.session.add(rating2)
     db.session.add(rating3)
+    db.session.add(rating4)
 
     db.session.commit()
 
