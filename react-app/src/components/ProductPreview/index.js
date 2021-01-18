@@ -1,4 +1,3 @@
-// import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ProductPreview.css";
@@ -6,6 +5,14 @@ import "./ProductPreview.css";
 const ProductPreview = (props) => {
 	const product = props.product;
 	const [rating, setRating] = useState("");
+
+	const lowStock = (quantity) => {
+		if (quantity === 0) {
+			return <p>Sold out!</p>
+		} else if (quantity <= 5 && quantity > 0) {
+			return <p>Only {quantity} left!</p>
+		}
+	}
 
 	useEffect(() => {
 		(async() => {
@@ -38,8 +45,9 @@ const ProductPreview = (props) => {
 				</div>
 			</Link>
 			<div className="product-preview-rating">
+				{product.quantity < 5 ? lowStock(product.quantity) : <p></p>}
 				{rating
-					? <>{rating} <i className="far fa-star product-preview-star"></i></>
+					? <p className="preview-rating">{rating} <i className="far fa-star product-preview-star"></i></p>
 					: "No ratings yet"}
 			</div>
 		</div>
