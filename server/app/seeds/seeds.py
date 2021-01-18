@@ -10,91 +10,161 @@ def seed_all():
     demo = User(username='Demo User',
                 email='demo@aa.io',
                 password='password',
-                profile_pic='demoProfile.jpg',
+                profile_pic='demo_user.jpg',
                 banner='demoBanner.jpg',
                 money=75.00,
-                bio="I sell things"
+                bio="I sell handmade jewelry! Necklaces, bracelets, earrings"
                 )
-    demo2 = User(username='Demo User 2',
-                 email='demo2@aa.io',
-                 password='password',
-                 profile_pic='demoProfile.jpg',
-                 banner='demoBanner.jpg',
+    demo2 = User(username="Kate's Clothing",
+                 email='kate@kate.com',
+                 password='HT67OP89',
+                 profile_pic='demo_user2.jpg',
+                 banner='demo_banner2.jpg',
                  money=50.00,
-                 bio="I sell things"
+                 bio="I sell unique and custom printed clothing. I often go to the thrift store for inspiration and fabrics"
                  )
     demo3 = User(username='Demo User 3',
-                 email='demo3@aa.io',
-                 password='password',
-                 profile_pic='demoProfile.jpg',
-                 banner='demoBanner.jpg',
+                 email='paul@paul.com',
+                 password='GA45FG13',
+                 profile_pic='demo_user3.jpg',
+                 banner='demo_banner3.jpg',
                  money=100.00,
-                 bio="I buy things"
+                 bio="Find the next addition to your home in my store!"
                  )
 
     product = Product(sold_by=1,
-                      name='Product',
-                      price=10.99,
+                      name='Garnet Bracelet',
+                      price=18.99,
                       category='Jewelry',
-                      description='Product description',
-                      dimensions="3 ft x 3 ft x 3 ft",
-                      weight="1 pound",
-                      quantity=10,
-                      image='demoProduct.jpg')
+                      description="A bracelet made from January's birthstone, Garnet. Elastic band, one size fits all ",
+                      dimensions="6 in x 6 in x 5 cm",
+                      weight="5 ounces",
+                      quantity=12,
+                      image='garnet_bracelet.jpg')
     product2 = Product(sold_by=1,
-                       name='Product 2',
-                       price=18.99,
-                       category='Sports',
-                       description='Product description',
-                       dimensions="13 ft x 3 ft x 3 ft",
-                       weight="4 pounds",
+                       name='Stone Necklace',
+                       price=29.99,
+                       category='Jewelry',
+                       description='An eye-catching necklace made from green stones and copper',
+                       dimensions="1 ft x 1 ft x 8 cm",
+                       weight="1 pounds",
                        quantity=4,
-                       image='demoProduct.jpg')
+                       image='green_necklace.jpg')
     product3 = Product(sold_by=1,
-                       name='Product 3',
-                       price=13.99,
-                       category='Home',
-                       description='Product description',
-                       dimensions="1 ft x 1 ft x 1 ft",
-                       weight="1 pound",
-                       quantity=34,
-                       image='demoProduct.jpg')
-    product4 = Product(sold_by=2,
-                       name='Product 4',
-                       price=3.99,
-                       category='Home',
-                       description='Product description',
-                       dimensions="1 ft x 1 ft x 1 ft",
-                       weight="1 pound",
-                       quantity=2,
-                       image='demoProduct.jpg')
-    product5 = Product(sold_by=2,
-                       name='Product 5',
+                       name='Labradorite Earrings',
+                       price=14.99,
+                       category='Jewelry',
+                       description='Labradorite in a beautiful Sterling Silver setting.',
+                       dimensions="4 cm x 4 cm x 10 cm",
+                       weight="2 ounces",
+                       quantity=6,
+                       image='labradorite_earrings.jpg')
+    product4 = Product(sold_by=1,
+                       name='Moonstone Bracelet',
+                       price=34.99,
+                       category='Jewelry',
+                       description='A bracelet made from Moonstone and Quartz',
+                       dimensions="6 in x 6 in x 10 cm",
+                       weight="8 ounces",
+                       quantity=12,
+                       image='moonstone_bracelet.jpg')
+    product5 = Product(sold_by=1,
+                       name='Pearl Earrings',
                        price=53.99,
                        category='Jewelry',
-                       description='Product description',
-                       dimensions="1 ft x 1 ft x 1 ft",
-                       weight="1 pound",
+                       description='Beautiful pink pearls! Silver fasteners.',
+                       dimensions="1 in x 1 in x 4 in",
+                       weight="6 ounces",
+                       quantity=2,
+                       image='pearl_earrings.jpg')
+    product6 = Product(sold_by=1,
+                       name='Black Opal Pendant',
+                       price=99.99,
+                       category='Jewelry',
+                       description='Authentic Lightning Ridge Black Opal from Australia. One of a kind!',
+                       dimensions="14 cm x 2 cm x 6 cm",
+                       weight="3 ounces",
                        quantity=1,
-                       image='demoProduct.jpg')
-    product6 = Product(sold_by=2,
-                       name='Product 6',
-                       price=19.99,
-                       category='Sports',
-                       description='Product description',
-                       dimensions="1 ft x 1 ft x 1 ft",
-                       weight="1 pound",
-                       quantity=20,
-                       image='demoProduct.jpg')
+                       image='opal_necklace.jpg')
+    product7 = Product(sold_by=2,
+                       name='Custom Shirts',
+                       price=10.99,
+                       category='Clothing',
+                       description="Screen Printed shirts with almost any design you can think of!",
+                       dimensions="2 ft x 4 ft x 5 cm",
+                       weight="5 ounces",
+                       quantity=99,
+                       image='custom_shirt.jpg')
+    product8 = Product(sold_by=2,
+                       name='Custom Hoodies',
+                       price=29.99,
+                       category='Clothing',
+                       description='Screen printed hoodies with almost any design you can think of!',
+                       dimensions="2 ft x 4 ft x 15 cm",
+                       weight="1 pounds",
+                       quantity=52,
+                       image='custom_hoodie.jpg')
+    product9 = Product(sold_by=2,
+                       name='Leather Belt',
+                       price=24.99,
+                       category='Clothing',
+                       description='Hand tooled leather belt',
+                       dimensions="4 ft x 4 in x 10 cm",
+                       weight="1 pounds",
+                       quantity=5,
+                       image='leather_belt.jpg')
+    product10 = Product(sold_by=2,
+                        name='Leather Jacket',
+                        price=89.99,
+                        category='Clothing',
+                        description='Hand-made mens leather jacket, size large',
+                        dimensions="3 ft x 4 ft x 20 cm",
+                        weight="2 pounds",
+                        quantity=4,
+                        image='leather_jacket.jpg')
+    product11 = Product(sold_by=2,
+                        name='Slouch Beanie',
+                        price=23.99,
+                        category='Clothing',
+                        description='Oversized wool beanie, perfect for colder months.',
+                        dimensions="8 in x 8 in x 12 in",
+                        weight="6 ounces",
+                        quantity=2,
+                        image='slouch_beanie.jpg')
+    product12 = Product(sold_by=2,
+                        name='Slippers',
+                        price=19.99,
+                        category='Clothing',
+                        description='Unisex non-slip wool slippers, size 10',
+                        dimensions="1 ft x 6 in x 6 in",
+                        weight="1 pounds",
+                        quantity=12,
+                        image='slippers.jpg')
 
-    tag = Tag(product_id=1, tag="Ring")
-    tag2 = Tag(product_id=2, tag="Ball")
-    tag3 = Tag(product_id=3, tag="Kitchen")
-    tag4 = Tag(product_id=4, tag="Candle")
-    tag5 = Tag(product_id=5, tag="Necklace")
-    tag6 = Tag(product_id=6, tag="Padding")
-    tag7 = Tag(product_id=2, tag="Soccer")
-    tag8 = Tag(product_id=1, tag="Opal")
+    tag = Tag(product_id=1, tag="Garnet")
+    tag2 = Tag(product_id=1, tag="Bracelet")
+    tag3 = Tag(product_id=2, tag="Necklace")
+    tag4 = Tag(product_id=2, tag="Stone")
+    tag5 = Tag(product_id=3, tag="Earring")
+    tag6 = Tag(product_id=3, tag="Silver")
+    tag7 = Tag(product_id=4, tag="Bracelet")
+    tag8 = Tag(product_id=4, tag="Moonstone")
+    tag9 = Tag(product_id=5, tag="Pearl")
+    tag10 = Tag(product_id=5, tag="Earring")
+    tag11 = Tag(product_id=6, tag="Opal")
+    tag12 = Tag(product_id=6, tag="Necklace")
+    tag13 = Tag(product_id=7, tag="Print")
+    tag14 = Tag(product_id=7, tag="Shirt")
+    tag15 = Tag(product_id=8, tag="Print")
+    tag16 = Tag(product_id=8, tag="Hoodie")
+    tag17 = Tag(product_id=9, tag="Leather")
+    tag18 = Tag(product_id=9, tag="Belt")
+    tag19 = Tag(product_id=10, tag="Jacket")
+    tag20 = Tag(product_id=10, tag="Leather")
+    tag21 = Tag(product_id=11, tag="Wool")
+    tag22 = Tag(product_id=11, tag="Beanie")
+    tag23 = Tag(product_id=12, tag="Slipper")
+    tag24 = Tag(product_id=12, tag="Wool")
 
     favorite = Favorite(user_id=3, product_id=1)
     favorite2 = Favorite(user_id=3, product_id=5)
@@ -126,6 +196,12 @@ def seed_all():
     db.session.add(product4)
     db.session.add(product5)
     db.session.add(product6)
+    db.session.add(product7)
+    db.session.add(product8)
+    db.session.add(product9)
+    db.session.add(product10)
+    db.session.add(product11)
+    db.session.add(product12)
 
     db.session.commit()
 
@@ -137,6 +213,22 @@ def seed_all():
     db.session.add(tag6)
     db.session.add(tag7)
     db.session.add(tag8)
+    db.session.add(tag9)
+    db.session.add(tag10)
+    db.session.add(tag11)
+    db.session.add(tag12)
+    db.session.add(tag13)
+    db.session.add(tag14)
+    db.session.add(tag15)
+    db.session.add(tag16)
+    db.session.add(tag17)
+    db.session.add(tag18)
+    db.session.add(tag19)
+    db.session.add(tag20)
+    db.session.add(tag21)
+    db.session.add(tag22)
+    db.session.add(tag23)
+    db.session.add(tag24)
 
     db.session.add(favorite)
     db.session.add(favorite2)
