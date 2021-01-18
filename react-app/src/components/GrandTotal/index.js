@@ -56,9 +56,10 @@ const GrandTotal = () => {
 	if (!enoughMoney) {
 		return (
 			<div className="checkout-container">
-				<p>Grand Total: {grandTotal}</p>
+				<p>Grand Total: ${grandTotal}</p>
+				<p>Your Money: ${currentUser.money}</p>
 				<p className="warning-header">
-					Add more funds to complete the transaction
+					Not Enough Funds
 				</p>
 			</div>
 		);
@@ -67,6 +68,7 @@ const GrandTotal = () => {
 	return (
 		<div className="checkout-container">
 			<p>Grand Total: ${grandTotal}</p>
+			<p>Your Money: ${currentUser.money}</p>
 			<button className="login-button" onClick={handleCheckout}>
 				Checkout<span className="login-spacer"></span>
 				<i className="fas fa-arrow-circle-right"></i>

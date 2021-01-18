@@ -65,6 +65,7 @@ const ProfilePage = () => {
 						</div>
 						<div className="profile-info-container">
 							<p className="profile-info-header">About this Seller</p>
+							{isSeller? <p className="profile-bio">Money in your wallet: ${seller.money}</p> : <></>}
 							<p className="profile-bio">{seller.bio}</p>
 						</div>
 					</div>
