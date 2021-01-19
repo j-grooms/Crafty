@@ -86,7 +86,7 @@ Of course, challenges occured in the back end as well as the front end. SQLAlche
                                 )
 ```
 
-A persistent but that I kept running into with the Redux turned out to not be a bug, but expected behavior. I did not realize that it did not check for deep equality, so I had to move a lot of state out of nested objects, and into their own slices of state. The store is still not perfect, but I did do some expanding and refactoring, making it by far the biggest redux store I have made.
+A persistent bug that I kept running into with the Redux turned out to not be a bug, but expected behavior. I did not realize that it did not check for deep equality, so I had to move a lot of state out of nested objects, and into their own slices of state. The store is still not perfect, but I did do some expanding and refactoring, making it by far the biggest redux store I have made.
 
 ## The Future of Crafty
 As always, no project ever truly feels complete. There is always code to refactor, and styling tweaks to be made. In the future, I plan to:
