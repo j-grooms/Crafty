@@ -8,6 +8,10 @@
 	margin: 0 auto auto auto;
 }
 
+.seller-controls>button{
+	margin-bottom: 15px;
+}
+
 .product-view-details {
 	width: 350px;
 	height: 400px;
