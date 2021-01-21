@@ -44,12 +44,12 @@ function App() {
 					<ProtectedRoute path="/shop" exact={true}>
 						<Feed />
 					</ProtectedRoute>
-					<Route path="/" exact={true}>
-						<SplashPage />
-					</Route>
 					<ProtectedRoute path="/checkout" exact={true}>
 						<CheckoutForm />
 					</ProtectedRoute>
+					<Route path="/" exact={true}>
+						<SplashPage />
+					</Route>
 					<Route path="/404" exact={true}>
 						<p>404</p>
 					</Route>
