@@ -65,6 +65,8 @@
 	text-decoration: underline;
 	text-decoration-color: #ffe1bf;
 	text-decoration-thickness: 3px;
+	margin-top: 50px;
+	margin-bottom: 25px;
 	font-size: 14pt;
     font-weight: 600;
 }
@@ -85,4 +87,23 @@
 
 .profile-products-grid-div {
 	grid-area: products;
+}
+
+.profile-following-link-container {
+	margin: 15px 0;
+}
+
+.profile-following-link {
+	width: 250px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.profile-following-link-icon {
+	padding-right: 30px;
+}
+
+.profile-username-container > button {
+	margin-bottom: 0px;
+
 }
