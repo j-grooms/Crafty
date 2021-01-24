@@ -10,6 +10,9 @@ const Footer = () => {
 				<a href="https://github.com/j-grooms/Crafty">
 					<i className="fab fa-github"></i>
 				</a>
+				<a href="mailto:grooms.jacob@gmail.com?subject=Re: Crafty">
+					<i className="fas fa-at"></i>
+				</a>
 				<a href="https://angel.co/u/jacob-grooms">
 					<i className="fab fa-angellist"></i>
 				</a>
