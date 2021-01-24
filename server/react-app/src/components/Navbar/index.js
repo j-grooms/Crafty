@@ -13,6 +13,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
 	const currentUser = useSelector((state) => state.session.user);
+	const cart = useSelector((state) => state.cart.cart);
 	const [login, setLogin] = useState(false);
 	const [signup, setSignup] = useState(false);
 	const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const Navbar = () => {
 						<div className="nav-control-buttons">
 							<ProfileButton />
 							<Link to="/checkout">
-								<i className="fas fa-shopping-cart cart-icon"></i>
+								<i className="fas fa-shopping-cart cart-icon"><p className="cart-items">{cart.length}</p></i>
 							</Link>
 						</div>
 					</div>

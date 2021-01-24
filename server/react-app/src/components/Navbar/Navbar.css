@@ -26,10 +26,19 @@
 
 .cart-icon {
 	font-size: 30px;
+	position: relative;
 }
 
 .cart-icon:hover {
 	cursor: pointer;
+}
+
+.cart-items {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	color: white;
+	font-size: 9pt;
 }
 
 .navbar-logo {
