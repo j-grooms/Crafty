@@ -12,6 +12,7 @@ import ProductView from "./components/ProductView";
 import ProfilePage from "./components/ProfilePage";
 import SearchResults from "./components/SearchResults";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -51,7 +52,7 @@ function App() {
 						<SplashPage />
 					</Route>
 					<Route path="/404" exact={true}>
-						<p>404</p>
+						<NotFound />
 					</Route>
 					<Route path="*">
 						<Redirect to="/404" />
