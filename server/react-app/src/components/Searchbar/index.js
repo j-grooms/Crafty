@@ -8,6 +8,7 @@ const Searchbar = () => {
 
 	const submitSearch = async(event) => {
 		event.preventDefault();
+		if (searchTerm === "") return history.push(`/search/all`)
 		return history.push(`/search/${searchTerm}`)
 	};
 
