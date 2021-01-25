@@ -35,7 +35,6 @@ const ProductView = () => {
 					break;
 				}
 			}
-			console.log("not purchased");
 			for (let i = 0; i < ratings.length; i++) {
 				if (ratings[i].product_id === parseInt(id)) {
 					await setHasReviewed(true);

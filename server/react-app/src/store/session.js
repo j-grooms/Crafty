@@ -18,7 +18,6 @@ export const authenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/");
 	const resJSON = await response.json();
 	if (Object.keys(resJSON).includes("errors")) {
-		console.log(resJSON)
 		return response;
 	}
 	dispatch(setUser(resJSON));
@@ -41,7 +40,6 @@ export const login = (user) => async (dispatch) => {
 
 	let userJson = await response.json();
 	if (Object.keys(userJson).includes("errors")){
-		console.log(userJson);
 		return response;}
 	dispatch(setUser(userJson));
 	return response;

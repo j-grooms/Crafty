@@ -5,6 +5,7 @@ import { getCartItems } from "../../store/checkout";
 import { getCart, removeFromCart } from "../../store/cart";
 import { updateQuantity } from "../../store/quantities";
 import GrandTotal from "../GrandTotal";
+import CheckoutQuantity from "../CheckoutQuantity";
 
 import "./CheckoutForm.css";
 
@@ -15,30 +16,20 @@ const CheckoutForm = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 
-	const generateOptions = (int) => {
-		const options = [];
-		for (let i = 1; i <= int; i++) {
-			options.push(
-				<option key={i} value={i}>
-					{i}
-				</option>
-			);
-		}
-		return options;
-	};
 
 	useEffect(() => {
 		(async () => {
 			await dispatch(getCart());
+			await setLoaded(true);
 		})();
 	}, [dispatch]);
 
 	useEffect(() => {
 		(async () => {
 			await dispatch(getCartItems({ cart }));
-			await setLoaded(true);
 		})();
 	}, [dispatch, cart]);
+
 
 	if (!products.length)
 		return (
@@ -66,20 +57,7 @@ const CheckoutForm = () => {
 									alt="checkout"
 								/>
 							</div>
-							<div className="cart-quantity">
-								<label htmlFor="quantity">Quantity</label>
-								<span className="login-spacer"></span>
-								<select
-									onChange={async (e) => {
-										dispatch(
-											updateQuantity(product.id, parseInt(e.target.value))
-										);
-									}}
-									name="quantity"
-								>
-									{generateOptions(product.quantity).map((option) => option)}
-								</select>
-							</div>
+							<CheckoutQuantity product={product} />
 							<div className="cart-item-price">{product.price}</div>
 							<button
 								className="cart-remove-button"

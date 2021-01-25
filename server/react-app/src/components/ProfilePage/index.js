@@ -35,10 +35,9 @@ const ProfilePage = () => {
 	const generateLinks = () => {
 		if (!following.length) return [<p>You are not following any users!</p>];
 		const links = following.map((user, index) => (
-			<div className="profile-following-link-container">
+			<div key={index} className="profile-following-link-container">
 				<Link
 					className="profile-following-link"
-					key={index}
 					to={`/user/${user.id}`}
 				>
 					<p>{user.username}</p>

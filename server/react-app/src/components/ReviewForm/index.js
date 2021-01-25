@@ -19,7 +19,6 @@ const ReviewForm = ({ onClose }) => {
             rating: stars,
             comment,
         };
-        console.log(stars)
         await dispatch(rateProduct(id, formData));
         await dispatch(getHistory(currentUser.id));
         await dispatch(getRatings(currentUser.id));
