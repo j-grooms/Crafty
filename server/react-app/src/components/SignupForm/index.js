@@ -158,13 +158,6 @@ const SignupForm = ({ onClose }) => {
 						onChange={(e) => setMoney(e.target.value)}
 					/>
 				</div>
-				{/* <div className="form-image-holder">
-					{profilePic ? (
-						<img className="form-image-preview" src={profileUrl} alt="userPhoto" />
-					) : (
-						<div></div>
-					)}
-				</div> */}
 				<div className="form-upload-div">
 					<p>{profileName}</p>
 					<label htmlFor="upload" className="upload-choice">
@@ -177,20 +170,12 @@ const SignupForm = ({ onClose }) => {
 						onChange={handleProfile}
 					/>
 				</div>
-				{/* <div className="form-image-holder">
-					{bannerPic ? (
-						<img className="form-image-preview" src={bannerUrl} alt="userPhoto" />
-					) : (
-						<div></div>
-					)}
-				</div> */}
 				<div className="form-upload-div">
 					<p>{bannerName}</p>
 					<label htmlFor="bannerPic" className="upload-choice">
 						Select<span className="login-spacer"></span><i className="far fa-folder-open"></i>
 					</label>
 					<input
-						// id="upload"
 						type="file"
 						id="bannerPic"
 						onChange={handleBanner}

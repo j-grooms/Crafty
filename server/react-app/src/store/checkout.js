@@ -24,7 +24,6 @@ export const checkout = (body) => async (dispatch) => {
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(body)
     });
-    // const resJSON = await response.json();
     return response;
 };
 
