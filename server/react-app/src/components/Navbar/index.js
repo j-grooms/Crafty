@@ -1,12 +1,9 @@
 import { NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { getHistory } from "../../store/history";
 import { getRatings } from "../../store/ratings";
 import { getCart } from "../../store/cart";
-import LoginForm from "../LoginForm";
-import SignupForm from "../SignupForm";
-import Modal from "../Modal";
 import ProfileButton from "../ProfileButton";
 import Searchbar from "../Searchbar";
 import "./Navbar.css";
@@ -14,8 +11,6 @@ import "./Navbar.css";
 const Navbar = () => {
 	const currentUser = useSelector((state) => state.session.user);
 	const cart = useSelector((state) => state.cart.cart);
-	const [login, setLogin] = useState(false);
-	const [signup, setSignup] = useState(false);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		if (currentUser) {
@@ -58,17 +53,7 @@ const Navbar = () => {
 			) : (
 				<>
 					<div className="navbar-category-container">
-						{/* <div className="navbar-categories">
-							<button onClick={() => setLogin(true)}>Have an Account?</button>
-							<button onClick={() => setSignup(true)}>New User?</button>
-						</div> */}
 					</div>
-					{/* <Modal open={login} onClose={() => setLogin(false)}>
-						<LoginForm onClose={() => setLogin(false)} />
-					</Modal>
-					<Modal open={signup} onClose={() => setSignup(false)}>
-						<SignupForm onClose={() => setLogin(false)} />
-					</Modal> */}
 				</>
 			)}
 		</>

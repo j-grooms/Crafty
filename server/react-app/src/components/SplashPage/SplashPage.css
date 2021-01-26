@@ -15,20 +15,22 @@
 }
 
 .splash-background {
+    padding-top: 25px;
 	width: 100vw;
-	height: 675px;
+	height: 500px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .splash-icons {
-	margin-top: 80px;
-	width: 800px;
-	display: flex;
+	width: 1200px;
+    display: flex;
+    padding-left: 10px;
+    margin: 40px auto auto auto;
 	justify-content: space-around;
-	font-size: 80px;
+	font-size: 60px;
 }
 
 .splash-title {
@@ -59,8 +61,8 @@
 }
 
 .splash-selections {
-    height: 250px;
-    padding-left: 30px;
+    height: 175px;
+    margin-top: 150px;
 	width: 500px;
 	display: flex;
 	flex-direction: column;
@@ -71,4 +73,8 @@
 .splash-selections > p {
     font-family: "Fraunces", "serif";
     padding-left: 50px;
+}
+
+.splash-container {
+    height: 650px;
 }
