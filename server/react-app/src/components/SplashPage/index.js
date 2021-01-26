@@ -1,10 +1,16 @@
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
+import LoginForm from "../LoginForm";
+import SignupForm from "../SignupForm";
+import Modal from "../Modal";
 
 import "./SplashPage.css";
 
 const SplashPage = () => {
 	const currentUser = useSelector((state) => state.session.user);
+	const [login, setLogin] = useState(false);
+	const [signup, setSignup] = useState(false);
 
 	if (currentUser) return <Redirect to="/shop" />;
 
@@ -24,6 +30,17 @@ const SplashPage = () => {
 					<i className="fas fa-store"></i>
 				</div>
 			</div>
+			<div className="splash-selections">
+				<button className="login-button" onClick={() => setLogin(true)}>Log In</button>
+				<p>OR</p>
+				<button className="login-button" onClick={() => setSignup(true)}>Sign Up</button>
+			</div>
+			<Modal open={login} onClose={() => setLogin(false)}>
+				<LoginForm onClose={() => setLogin(false)} />
+			</Modal>
+			<Modal open={signup} onClose={() => setSignup(false)}>
+				<SignupForm onClose={() => setSignup(false)} />
+			</Modal>
 		</div>
 	);
 };

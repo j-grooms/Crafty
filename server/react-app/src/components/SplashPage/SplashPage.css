@@ -1,51 +1,74 @@
 .forms-holder {
-    background-color: red;
-    width: 800px;
-    display: flex;
-    justify-content: space-between;
-    margin: 0px auto;
+	background-color: red;
+	width: 800px;
+	display: flex;
+	justify-content: space-between;
+	margin: 0px auto;
 }
 
 .login-splash-div {
-    text-align: center;
+	text-align: center;
 }
 
 .signup-splash-div {
-    text-align: center;
+	text-align: center;
 }
 
 .splash-background {
-    width: 100vw;
-    height: 675px;
+	width: 100vw;
+	height: 675px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
 }
 
 .splash-icons {
-    margin-top: 80px;
-    width: 800px;
-    display: flex;
-    justify-content: space-around;
-    font-size: 80px;
+	margin-top: 80px;
+	width: 800px;
+	display: flex;
+	justify-content: space-around;
+	font-size: 80px;
 }
 
 .splash-title {
-    font-size: 36pt;
-    margin-bottom: 50px;
-    margin-top: 75px;
+	font-size: 36pt;
+	margin-bottom: 50px;
+	font-family: "Fraunces", serif;
+	margin-top: 75px;
 }
 
 .splash-blurbs {
-    font-size: 24pt;
-    text-align: center;
+	font-size: 24pt;
+	text-align: center;
 }
 
 .splash-about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1000px;
-    margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 800px;
+    padding-bottom: 50px;
+    margin-left: 200px;
+    /* border: 1px solid black; */
 }
 
 .blurb {
-    padding: 20px;
+	padding: 20px;
+	font-family: "Fraunces", serif;
+}
+
+.splash-selections {
+    height: 250px;
+    padding-left: 30px;
+	width: 500px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.splash-selections > p {
+    font-family: "Fraunces", "serif";
+    padding-left: 50px;
 }

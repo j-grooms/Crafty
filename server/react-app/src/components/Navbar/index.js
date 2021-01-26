@@ -58,17 +58,17 @@ const Navbar = () => {
 			) : (
 				<>
 					<div className="navbar-category-container">
-						<div className="navbar-categories">
+						{/* <div className="navbar-categories">
 							<button onClick={() => setLogin(true)}>Have an Account?</button>
 							<button onClick={() => setSignup(true)}>New User?</button>
-						</div>
+						</div> */}
 					</div>
-					<Modal open={login} onClose={() => setLogin(false)}>
+					{/* <Modal open={login} onClose={() => setLogin(false)}>
 						<LoginForm onClose={() => setLogin(false)} />
 					</Modal>
 					<Modal open={signup} onClose={() => setSignup(false)}>
 						<SignupForm onClose={() => setLogin(false)} />
-					</Modal>
+					</Modal> */}
 				</>
 			)}
 		</>
