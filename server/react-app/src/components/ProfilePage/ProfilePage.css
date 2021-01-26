@@ -1,5 +1,7 @@
 .profile-banner-container {
 	max-height: 250px;
+	display: flex;
+	align-items: center;
     overflow: hidden;
 	border-bottom: 1px solid black;
 }
