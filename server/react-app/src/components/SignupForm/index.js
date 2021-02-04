@@ -17,7 +17,7 @@ const SignupForm = ({ onClose }) => {
 	const [money, setMoney] = useState(0.0);
 	const dispatch = useDispatch();
 
-	if (currentUser) return <Redirect to="/shop" />;
+	if (currentUser) return <Redirect to={`/user/${currentUser.id}`} />;
 
 	const handleBanner = (e) => {
 		const file = e.target.files[0];

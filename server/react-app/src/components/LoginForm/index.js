@@ -19,7 +19,7 @@ const LoginForm = ({ onClose }) => {
 		return onClose();
 	};
 
-	if (currentUser) return <Redirect to="/shop" />;
+	if (currentUser) return <Redirect to={`/user/${currentUser.id}`} />;
 
 	const demoLogin = (event) => {
 		event.preventDefault();

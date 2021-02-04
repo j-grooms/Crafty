@@ -9,6 +9,7 @@ ENV REACT_APP_BASE_URL="https://crafty-app.herokuapp.com/"
 
 # Build our React App
 RUN npm install
+RUN npm run build
 
 FROM python:3.8
 
