@@ -12,7 +12,7 @@ const SplashPage = () => {
 	const [login, setLogin] = useState(false);
 	const [signup, setSignup] = useState(false);
 
-	if (currentUser) return <Redirect to="/shop" />;
+	if (currentUser) return <Redirect to={`/user/${currentUser.id}`} />;
 
 	return (
 		<div className="splash-container">
