@@ -1,5 +1,7 @@
 .login-form {
 	margin: 5px;
+	padding: 10px;
+	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -12,6 +14,7 @@
 
 .signup-form {
 	margin: 5px;
+	border-radius: 5px;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -27,6 +30,7 @@
 .review-form {
 	margin: 5px;
 	padding: 10px;
+	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -40,6 +44,7 @@
 
 .product-form {
 	margin: 5px;
+	border-radius: 5px;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -54,6 +59,7 @@
 
 .deletion-form {
 	margin: 10px;
+	border-radius: 5px;
 	width: 400px;
 	height: 320px;
 	display: flex;

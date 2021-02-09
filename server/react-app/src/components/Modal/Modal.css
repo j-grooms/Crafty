@@ -16,8 +16,16 @@
 }
 
 .modal-button-holder {
+    position: absolute;
+    right: 15px;
+    top: 10px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    color: white;
+    color: red;
+}
+
+.modal-close-button {
+    font-size: 18px;
+    cursor: pointer;
 }
